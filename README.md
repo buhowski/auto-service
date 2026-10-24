@@ -31,7 +31,9 @@ yarn build
 │   ├── layouts/       # Page layouts
 │   ├── pages/         # Astro routes
 │   └── styles/        # SCSS styles
+├── .firebaserc        # Pages CMS configuration
 ├── .pages.yml         # Pages CMS configuration
+├── .firebaserc          # Firebase project aliases
 ├── firebase.json      # Firebase Hosting configuration
 ├── package.json       # Dependencies and scripts
 └── README.md          # Project documentation
