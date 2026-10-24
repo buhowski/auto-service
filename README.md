@@ -21,6 +21,8 @@ yarn build
 ## Structure
 
 ```sh
+├── .github/workflows/ # CI/CD pipelines
+│   └── firebase.yml # Firebase deployment workflow
 ├── public/            # Static assets
 ├── public/assets/     # Media uploaded via Pages CMS
 ├── src/
@@ -30,11 +32,22 @@ yarn build
 │   ├── pages/         # Astro routes
 │   └── styles/        # SCSS styles
 ├── .pages.yml         # Pages CMS configuration
+├── firebase.json      # Firebase Hosting configuration
 ├── package.json       # Dependencies and scripts
 └── README.md          # Project documentation
 ```
 
-## Content editing (Pages CMS)
+## Deployment
+
+The project is automatically deployed to **Firebase Hosting** via GitHub Actions.
+
+- **Trigger**: Every push to the `main` branch.
+- **Workflow**: `.github/workflows/firebase.yml`.
+- **Process**:
+  1. Install dependencies (`yarn install`).
+  2. Build the Astro site (`yarn build`).
+  3. Deploy the `dist/` folder to Firebase.
+
 
 1. Install the Pages CMS GitHub App on `buhowski/auto-service`.
 2. Open [app.pagescms.org](https://app.pagescms.org) and select this repo.
