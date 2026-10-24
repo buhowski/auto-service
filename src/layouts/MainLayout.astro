@@ -1,0 +1,18 @@
+---
+import '../styles/main.scss';
+
+const { title = "Головна" } = Astro.props;
+const brand = "Auto Service";
+---
+
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{`${title} | ${brand}`}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

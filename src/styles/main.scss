@@ -1,0 +1,21 @@
+@use 'reset';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+body {
+	color: $text;
+	background-color: $light;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+h1,
+h2,
+h3 {
+	color: $secondary;
+	line-height: 1.1;
+}
