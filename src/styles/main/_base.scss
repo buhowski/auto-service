@@ -1,0 +1,40 @@
+body {
+	font-family: var(--font-body);
+	font-size: 1.0625rem;
+	line-height: 1.65;
+	color: var(--body);
+	background: var(--white);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: var(--font-display);
+	font-weight: 700;
+	line-height: 1.02;
+	letter-spacing: 0.005em;
+	color: var(--heading);
+	text-transform: uppercase;
+}
+
+p {
+	margin-bottom: 1rem;
+}
+
+a {
+	color: var(--accent-hover);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--accent-700);
+}
+
+:focus-visible {
+	outline: 3px solid var(--accent);
+	outline-offset: 2px;
+}

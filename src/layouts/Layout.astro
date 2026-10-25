@@ -1,0 +1,68 @@
+---
+import '../styles/vendor/bootstrap-utilities.css';
+import '../styles/main/index.scss';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<!doctype html>
+<html lang="uk">
+<head>
+  <script is:inline>document.documentElement.classList.add('js');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="СТО Поршень — чесний автосервіс у Львові. Сертифіковані майстри, прозорі ціни, гарантія 24 місяці. Запис онлайн або за телефоном (032) 234-56-78.">
+  <meta name="theme-color" content="#121417">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>СТО Поршень — Львів: чесний авторемонт, ТО, діагностика</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">До основного вмісту</a>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+  
+  <script is:inline>
+    // Global scroll reveal
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    function initReveal() {
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      
+      if (prefersReduced || !('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('in'));
+        return;
+      }
+      
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.style.getPropertyValue('--delay');
+            if (delay) {
+              setTimeout(() => entry.target.classList.add('in'), parseInt(delay));
+            } else {
+              entry.target.classList.add('in');
+            }
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+      
+      els.forEach(el => io.observe(el));
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initReveal);
+    } else {
+      initReveal();
+    }
+  </script>
+</body>
+</html>
+
+

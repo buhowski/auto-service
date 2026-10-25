@@ -1,0 +1,40 @@
+---
+import './Services.scss';
+import Container from '../ui/Container.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import { getCollection } from 'astro:content';
+
+const servicesData = (await getCollection('services', ({ id }) => id === 'main'))[0]?.data;
+---
+
+<section class="services-section" id="services" aria-labelledby="services-heading">
+  <Container size="lg">
+    <SectionHeader 
+			id="services-heading"
+      eyebrow={servicesData.sectionTitle.eyebrow}
+      headline={servicesData.sectionTitle.headline}
+      centered
+    />
+    
+    <div class="services-grid">
+      {servicesData.items.map((service, index) => (
+        <article class="service-card reveal" style={`--delay: ${index * 100}ms`}>
+          <div class="service-icon">
+            <Icon name={service.icon} width="32" height="32" />
+          </div>
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+        </article>
+      ))}
+    </div>
+    
+    <div class="services-cta">
+      <Button variant="dark" size="lg" href={servicesData.cta.href}>
+        {servicesData.cta.text}
+      </Button>
+    </div>
+  </Container>
+</section>
+

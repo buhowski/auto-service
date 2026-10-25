@@ -1,0 +1,81 @@
+---
+import './Hours.scss';
+import Container from '../ui/Container.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import { getCollection } from 'astro:content';
+
+const hoursData = (await getCollection('hours', ({ id }) => id === 'main'))[0]?.data;
+---
+
+<section class="hours-section" id="visit" aria-labelledby="visit-heading">
+  <Container size="lg">
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <SectionHeader 
+			id="visit-heading"
+          eyebrow={hoursData.sectionTitle.eyebrow}
+          headline={hoursData.sectionTitle.headline}
+        />
+        <p class="lead">{hoursData.lead}</p>
+        
+        <ul class="hours-table" role="list" aria-label="Opening hours">
+          {hoursData.hours.map((hour, index) => (
+            <li class={hour.isClosed ? 'closed' : ''} data-day={index === 6 ? 0 : index + 1}>
+              <span class="day">{hour.day}</span>
+              <span class="hrs">{hour.time}</span>
+            </li>
+          ))}
+        </ul>
+        
+        <div class="visit-contact">
+          {hoursData.contact.map(item => (
+            <div class="visit-line">
+              <Icon name={item.icon} width="20" height="20" />
+              <div>
+                <b>{item.label}</b>
+                <a href={item.href}>{item.value}</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="visit-map reveal">
+        <div class="map-diag" aria-hidden="true"></div>
+        <div class="map-pin">
+          <div class="map-pin-dot" aria-hidden="true"></div>
+          <div class="map-addr">{hoursData.map.address}</div>
+          <Button variant="accent" href={hoursData.map.directionsUrl} target="_blank" rel="noopener">
+            <Icon name="google-maps" width="18" height="18" />
+            Отримати маршрут
+          </Button>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .hours-table li.today {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .hours-table li.today .day,
+  .hours-table li.today .hrs {
+    color: var(--accent);
+  }
+</style>
+
+<script>
+  const localDay = new Intl.DateTimeFormat('en-US', {
+    weekday: 'short',
+    timeZone: 'Europe/Kyiv',
+  }).format(new Date());
+  const dayIndexes = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const todayIndex = dayIndexes.indexOf(localDay);
+  document.querySelector(`.hours-table [data-day="${todayIndex}"]`)?.classList.add('today');
+</script>
+

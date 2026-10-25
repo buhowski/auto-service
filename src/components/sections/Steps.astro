@@ -1,0 +1,31 @@
+---
+import './Steps.scss';
+import { getCollection } from 'astro:content';
+import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+
+const stepsData = (await getCollection('steps', ({ id }) => id === 'main'))[0]?.data;
+---
+
+<section class="steps-section carbon" id="steps" aria-labelledby="steps-heading">
+	<Container size="lg">
+		<SectionHeader
+			id="steps-heading"
+			eyebrow={stepsData.sectionTitle.eyebrow}
+			headline={stepsData.sectionTitle.headline}
+			centered
+		/>
+
+		<div class="steps-grid">
+			{stepsData.items.map((step, index) => (
+				<article class="step reveal" style={`--delay: ${index * 100}ms`}>
+					<div class="step-number">{String(index + 1).padStart(2, '0')}</div>
+					<div class="step-icon"><Icon name={step.icon} width="32" height="32" /></div>
+					<h3>{step.title}</h3>
+					<p>{step.description}</p>
+				</article>
+			))}
+		</div>
+	</Container>
+</section>

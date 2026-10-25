@@ -1,0 +1,20 @@
+---
+import './Brands.scss';
+import Container from '../ui/Container.astro';
+import { getCollection } from 'astro:content';
+
+const brandsData = (await getCollection('brands', ({ id }) => id === 'main'))[0]?.data;
+---
+
+<section class="brands-section" aria-labelledby="brands-heading">
+  <Container size="lg">
+		<h2 id="brands-heading" class="sr-only">Марки автомобілів</h2>
+    <p class="brands-eyebrow reveal text-center">{brandsData.eyebrow}</p>
+    <div class="brands-grid reveal">
+      {brandsData.items.map(brand => (
+        <span class="brand-chip">{brand}</span>
+      ))}
+    </div>
+  </Container>
+</section>
+

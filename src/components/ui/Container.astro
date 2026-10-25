@@ -1,0 +1,18 @@
+---
+import './Container.scss';
+interface Props {
+  class?: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+
+const { class: className = '', size = 'lg' } = Astro.props;
+
+const classes = [
+  'container',
+  `container--${size}`,
+  className,
+].filter(Boolean).join(' ');
+---
+<div class={classes}>
+  <slot />
+</div>

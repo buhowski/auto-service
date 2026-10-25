@@ -1,0 +1,28 @@
+---
+import './CTA.scss';
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import { getCollection } from 'astro:content';
+
+const ctaData = (await getCollection('cta', ({ id }) => id === 'main'))[0]?.data;
+---
+
+<section class="cta-band" aria-labelledby="cta-heading">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <Container size="lg">
+    <div class="cta-content">
+      <span class="eyebrow">{ctaData.eyebrow}</span>
+      <h2 id="cta-heading">{ctaData.headline}</h2>
+      <p class="cta-sub">{ctaData.subtext}</p>
+      <div class="cta-actions">
+        <Button variant="accent" size="lg" href={ctaData.primaryCta.href}>
+          {ctaData.primaryCta.text}
+        </Button>
+        <Button variant="ghost" size="lg" href={ctaData.secondaryCta.href}>
+          {ctaData.secondaryCta.text}
+        </Button>
+      </div>
+    </div>
+  </Container>
+</section>
+

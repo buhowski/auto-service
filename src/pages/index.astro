@@ -1,9 +1,24 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Services from '../components/sections/Services.astro';
+import WhyChoose from '../components/sections/WhyChoose.astro';
+import Steps from '../components/sections/Steps.astro';
+import Stats from '../components/sections/Stats.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import Brands from '../components/sections/Brands.astro';
+import CTA from '../components/sections/CTA.astro';
+import Hours from '../components/sections/Hours.astro';
 ---
 
-<MainLayout>
-	<main class='container'>
-	<h1>Контент</h1>
-</main>
-</MainLayout>
+<Layout>
+  <Hero />
+  <Services />
+  <WhyChoose />
+  <Steps />
+  <Stats />
+  <Testimonials />
+  <Brands />
+  <CTA />
+  <Hours />
+</Layout>
