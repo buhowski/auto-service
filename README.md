@@ -11,7 +11,9 @@ Requirements:
 
 ```sh
 yarn install
+
 yarn dev
+
 yarn build
 ```
 
@@ -19,9 +21,7 @@ yarn build
 
 ```sh
 ├── .github/workflows/   # CI/CD pipelines
-│   └── firebase.yml     # Firebase deployment workflow
 ├── public/              # Static assets
-├── public/assets/       # Media uploaded via Pages CMS
 ├── src/  
 │   ├── components/      # Reusable UI components
 │   ├── content/         # CMS collections (services, reviews)
@@ -29,8 +29,6 @@ yarn build
 │   ├── pages/           # Astro routes
 │   └── styles/          # SCSS styles
 ├── .pages.yml           # Pages CMS configuration
-├── .firebaserc          # Firebase project aliases
-├── firebase.json        # Firebase Hosting configuration
 ├── package.json         # Dependencies and scripts
 └── README.md            # Project documentation
 ```
