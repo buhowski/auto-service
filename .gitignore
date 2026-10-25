@@ -5,9 +5,9 @@ node_modules/
 
 # Build output
 dist/
-.astro/
 build/
 out/
+.astro/
 .output/
 .vercel/
 .netlify/
@@ -29,12 +29,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Editor / IDE
+# IDE
 .idea/
 .vscode/
 *.swp
@@ -44,6 +44,3 @@ desktop.ini
 coverage/
 .cache/
 .parcel-cache/
-
-# Astro
-.astro/settings.json
