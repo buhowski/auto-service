@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1905 255">
+<defs>
+<linearGradient id="f" gradientUnits="userSpaceOnUse" x1="0" y1="60" x2="0" y2="167">
+<stop offset="0" stop-color="#7a7b7d"/>
+<stop offset=".04" stop-color="#c2c4c6"/>
+<stop offset=".17" stop-color="#d3d5d7"/>
+<stop offset=".22" stop-color="#e2e3e5"/>
+<stop offset=".35" stop-color="#eeeff0"/>
+<stop offset=".48" stop-color="#fcfcfd"/>
+<stop offset=".49" stop-color="#9c9d9f"/>
+<stop offset=".53" stop-color="#959698"/>
+<stop offset=".63" stop-color="#b4b5b7"/>
+<stop offset=".67" stop-color="#bcbdbf"/>
+<stop offset=".92" stop-color="#bbbcbe"/>
+<stop offset="1" stop-color="#7d7e80"/>
+</linearGradient>
+<path id="d" fill-rule="evenodd" clip-rule="evenodd" d="M7,60H190C271.6,60 292,97.5 292,113.5C292,148.3 236.8,167 200,167H7Q0,167 0,160V67Q0,60 7,60ZM70,85H160C183.2,85 218,92 218,113.5C218,128 204.4,142 150,142H70Z"/>
+<path id="dh" d="M70,85H160C183.2,85 218,92 218,113.5C218,128 204.4,142 150,142H70Z"/>
+<path id="dl" d="M64,149H150C204.4,149 219,136 219,121"/>
+<path id="o" fill-rule="evenodd" clip-rule="evenodd" d="M327,114C327,77 380.2,58 483.5,58C586.8,58 640,77 640,114C640,151 586.8,170 483.5,170C380.2,170 327,151 327,114ZM399,114.5C399,134.7 429.4,146 483.5,146C537.6,146 568,134.7 568,114.5C568,92.8 541.8,83 483.5,83C425.2,83 399,92.8 399,114.5Z"/>
+<path id="oo" d="M327,114C327,77 380.2,58 483.5,58C586.8,58 640,77 640,114C640,151 586.8,170 483.5,170C380.2,170 327,151 327,114Z"/>
+<path id="ol" d="M399,122.5C399,142.7 429.4,154 483.5,154C537.6,154 568,142.7 568,122.5"/>
+<path id="oh" d="M399,114.5C399,134.7 429.4,146 483.5,146C537.6,146 568,134.7 568,114.5C568,92.8 541.8,83 483.5,83C425.2,83 399,92.8 399,114.5Z"/>
+<path id="g" clip-rule="evenodd" d="M1120,60H1297Q1305,60 1305,68V76Q1305,84 1297,84H1170C1094,84 1075,96 1075,114C1075,137.2 1113.5,145 1130,145H1231V128H1147Q1141,128 1141,122V110Q1141,104 1147,104H1297Q1305,104 1305,112V159Q1305,167 1297,167H1100C1061.2,167 1003,156.3 1003,113.5C1003,92.1 1038.1,60 1120,60Z"/>
+<path id="gh" d="M1170,84H1400V104H1147Q1141,104 1141,110V122Q1141,128 1147,128H1231V145H1130C1113.5,145 1075,137.2 1075,114C1075,96 1094,84 1170,84Z"/>
+<path id="e" d="M1359,60H1610Q1618,60 1618,68V77Q1618,85 1610,85H1427Q1421,85 1421,91V96Q1421,102 1427,102H1600Q1608,102 1608,110V117Q1608,125 1600,125H1427Q1421,125 1421,131V137Q1421,143 1427,143H1614Q1622,143 1622,151V159Q1622,167 1614,167H1359Q1349,167 1349,157V70Q1349,60 1359,60Z"/>
+<path id="gl" d="M1080,126C1084,145 1110,153 1135,153H1236"/>
+<path id="el" d="M1418,104Q1418,110 1424,110H1606M1417,146Q1417,151 1423,151H1620"/>
+<path id="eh" d="M1700,85H1427Q1421,85 1421,91V96Q1421,102 1427,102H1700ZM1700,125H1427Q1421,125 1421,131V137Q1421,143 1427,143H1700Z"/>
+<clipPath id="cd"><use xlink:href="#d"/></clipPath>
+<clipPath id="co"><use xlink:href="#o"/></clipPath>
+<clipPath id="cg"><use xlink:href="#g"/></clipPath>
+<clipPath id="ce"><use xlink:href="#e"/></clipPath>
+<clipPath id="rd"><rect x="185" width="120" height="255"/></clipPath>
+<clipPath id="rh"><rect x="1200" width="120" height="255"/></clipPath>
+<clipPath id="rg"><rect x="990" width="125" height="255"/></clipPath>
+</defs>
+<g fill="#ff3623"><path d="M1646.5,0H1755L1535.5,255H1427Z"/><path d="M1796.5,0H1905L1685.5,255H1577Z"/></g>
+<g id="D">
+<use xlink:href="#d" fill="url(#f)"/>
+<g clip-path="url(#cd)" fill="none" stroke="#3a3b3d">
+<use xlink:href="#d" stroke-opacity=".22" stroke-width="8"/>
+<g clip-path="url(#rd)" stroke-opacity=".065" stroke-width="5"><use xlink:href="#d" x="-2"/><use xlink:href="#d" x="-4"/><use xlink:href="#d" x="-6"/><use xlink:href="#d" x="-8"/><use xlink:href="#d" x="-10"/><use xlink:href="#d" x="-12"/><use xlink:href="#d" x="-14"/><use xlink:href="#d" x="-16"/><use xlink:href="#d" x="-18"/></g>
+<g transform="translate(0,-2)" stroke-opacity=".3"><use xlink:href="#dh" stroke-width="16"/><use xlink:href="#dh" stroke-width="10"/></g>
+<use xlink:href="#dh" stroke-opacity=".6" stroke-width="5"/>
+<use xlink:href="#dl" stroke="#fff" stroke-width="5"/>
+<use xlink:href="#d" stroke="#56575a" stroke-width="4"/>
+</g>
+</g>
+<use xlink:href="#D" x="677"/>
+<use xlink:href="#o" fill="url(#f)"/>
+<g clip-path="url(#co)" fill="none" stroke="#3a3b3d">
+<use xlink:href="#o" stroke-opacity=".22" stroke-width="8"/>
+<g stroke-opacity=".065" stroke-width="5"><use xlink:href="#oo" x="-2"/><use xlink:href="#oo" x="-4"/><use xlink:href="#oo" x="-6"/><use xlink:href="#oo" x="-8"/><use xlink:href="#oo" x="-10"/><use xlink:href="#oo" x="-12"/><use xlink:href="#oo" x="-14"/><use xlink:href="#oo" x="-16"/><use xlink:href="#oo" x="-18"/><use xlink:href="#oo" x="2"/><use xlink:href="#oo" x="4"/><use xlink:href="#oo" x="6"/><use xlink:href="#oo" x="8"/><use xlink:href="#oo" x="10"/><use xlink:href="#oo" x="12"/><use xlink:href="#oo" x="14"/><use xlink:href="#oo" x="16"/><use xlink:href="#oo" x="18"/></g>
+<g transform="translate(0,-2)" stroke-opacity=".3"><use xlink:href="#oh" stroke-width="16"/><use xlink:href="#oh" stroke-width="10"/></g>
+<use xlink:href="#oh" stroke-opacity=".6" stroke-width="5"/>
+<use xlink:href="#ol" stroke="#fff" stroke-width="5"/>
+<use xlink:href="#o" stroke="#56575a" stroke-width="4"/>
+</g>
+<use xlink:href="#g" fill="url(#f)"/>
+<g clip-path="url(#cg)" fill="none" stroke="#3a3b3d">
+<use xlink:href="#g" stroke-opacity=".22" stroke-width="8"/>
+<g clip-path="url(#rg)" stroke-opacity=".065" stroke-width="5"><use xlink:href="#g" x="2"/><use xlink:href="#g" x="4"/><use xlink:href="#g" x="6"/><use xlink:href="#g" x="8"/><use xlink:href="#g" x="10"/><use xlink:href="#g" x="12"/><use xlink:href="#g" x="14"/><use xlink:href="#g" x="16"/><use xlink:href="#g" x="18"/></g>
+<g clip-path="url(#rh)" stroke-opacity=".12" stroke-width="5"><use xlink:href="#g" x="-2"/><use xlink:href="#g" x="-4"/><use xlink:href="#g" x="-6"/><use xlink:href="#g" x="-8"/></g>
+<g transform="translate(0,-2)" stroke-opacity=".3"><use xlink:href="#gh" stroke-width="16"/><use xlink:href="#gh" stroke-width="10"/></g>
+<use xlink:href="#gh" stroke-opacity=".6" stroke-width="5"/>
+<use xlink:href="#gl" stroke="#fff" stroke-width="5"/>
+<use xlink:href="#g" stroke="#56575a" stroke-width="4"/>
+</g>
+<use xlink:href="#e" fill="url(#f)"/>
+<g clip-path="url(#ce)" fill="none" stroke="#3a3b3d">
+<use xlink:href="#e" stroke-opacity=".22" stroke-width="8"/>
+<g stroke-opacity=".12" stroke-width="5"><use xlink:href="#e" x="-2"/><use xlink:href="#e" x="-4"/><use xlink:href="#e" x="-6"/><use xlink:href="#e" x="-8"/></g>
+<g transform="translate(0,-2)" stroke-opacity=".3"><use xlink:href="#eh" stroke-width="16"/><use xlink:href="#eh" stroke-width="10"/></g>
+<use xlink:href="#eh" stroke-opacity=".6" stroke-width="5"/>
+<use xlink:href="#el" stroke="#fff" stroke-width="5"/>
+<use xlink:href="#e" stroke="#56575a" stroke-width="4"/>
+</g>
+</svg>
