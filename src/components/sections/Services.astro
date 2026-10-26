@@ -2,39 +2,187 @@
 import './Services.scss';
 import Container from '../ui/Container.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
-import Button from '../ui/Button.astro';
-import Icon from '../ui/Icon.astro';
-import { getCollection } from 'astro:content';
+import ServicePricePanel from './ServicePricePanel.astro';
 
-const servicesData = (await getCollection('services', ({ id }) => id === 'main'))[0]?.data;
+const categories = [
+	{
+		id: 'diagnostics', title: 'Діагностика автомобіля', services: [
+			{ name: 'Діагностика ходової', price: '500 грн' },
+			{ name: 'Компʼютерна діагностика', price: '500 грн' },
+			{ name: 'Огляд двигуна', price: '400 грн' },
+			{ name: 'Ендоскопія двигуна', price: 'від 2500 грн' },
+			{ name: 'Замір компресії', price: 'від 1000 грн' },
+			{ name: 'Перевірка рівнів рідин у мостах', price: 'від 300 грн' },
+			{ name: 'Діагностика гальмівної системи', price: '400 грн' },
+			{ name: 'Діагностика стану робочих і технічних рідин', price: 'від 400 грн' },
+		],
+	},
+	{
+		id: 'maintenance', title: 'Технічне обслуговування', services: [
+			{ name: 'Заміна мастила в двигуні', price: 'від 500 грн' },
+			{ name: 'Заміна мастила з промивкою двигуна', price: 'від 500 грн' },
+			{ name: 'Заміна мастила гідропідсилювача керма', price: 'від 400 грн' },
+			{ name: 'Заміна мастила в мосту', price: 'від 400 грн' },
+			{ name: 'Заміна мастила в АКПП', price: 'від 1200 грн' },
+			{ name: 'Заміна ременя ГРМ', price: 'від 4000 грн' },
+			{ name: 'Регулювання / заміна підшипника ступиці колеса', price: 'від 1200 грн' },
+			{ name: 'Заміна задніх гальмівних колодок (дискові)', price: 'від 500 грн' },
+			{ name: 'Заміна задніх гальмівних колодок (барабанні)', price: 'від 1200 грн' },
+			{ name: 'Заміна повітряного фільтра', price: 'від 200 грн' },
+			{ name: 'Заміна свічок запалення', price: 'від 600 грн' },
+			{ name: 'Заміна дротів високої напруги', price: '200 грн' },
+			{ name: 'Заміна охолоджуючої рідини', price: '800 грн' },
+			{ name: 'Прокачування гальмівної системи', price: '800 грн' },
+		],
+	},
+	{
+		id: 'suspension', title: 'Ходова частина', services: [
+			{ name: 'Запресування сайлентблока', price: 'від 300 грн' },
+			{ name: 'Зняття та установка переднього амортизатора', price: '1000 грн' },
+			{ name: 'Зняття та установка амортизаторної стійки з пружиною', price: '1000 грн' },
+			{ name: 'Зняття та установка заднього амортизатора', price: '700 грн' },
+			{ name: 'Зняття та установка пружини передньої підвіски', price: '1000 грн' },
+			{ name: 'Зняття та установка пружини задньої підвіски', price: 'від 500 грн' },
+			{ name: 'Зняття та установка ступиці колеса', price: 'від 800 грн' },
+			{ name: 'Заміна шарової опори', price: 'від 600 грн' },
+		],
+	},
+	{
+		id: 'steering', title: 'Рульове керування', services: [
+			{ name: 'Реставрація механічної рейки', price: 'від 6000 грн' },
+			{ name: 'Реставрація гідравлічної рейки', price: 'від 7000 грн' },
+			{ name: 'Зняття та установка насоса гідропідсилювача', price: '1000 грн' },
+			{ name: 'Зняття та установка наконечника рульової тяги', price: '500 грн' },
+		],
+	},
+	{
+		id: 'brakes', title: 'Гальмівна система', services: [
+			{ name: 'Зняття та установка гальмівного диска', price: '500 грн' },
+			{ name: 'Зняття та установка гальмівного барабана', price: 'від 500 грн' },
+			{ name: 'Зняття та установка супорта', price: '600 грн' },
+			{ name: 'Заміна гальмівної рідини', price: '800 грн' },
+		],
+	},
+	{
+		id: 'engine', title: 'Двигун', services: [
+			{ name: 'Зняття та установка двигуна', price: 'від 12000 грн' },
+			{ name: 'Капітальний ремонт ДВЗ', price: 'від 40000 грн' },
+			{ name: 'Регулювання клапанів', price: 'від 2000 грн' },
+		],
+	},
+	{
+		id: 'transmission', title: 'Трансмісія', services: [
+			{ name: 'Зняття та установка карданного вала', price: 'від 1000 грн' },
+			{ name: 'Зняття та установка механічної КПП', price: 'від 5000 грн' },
+			{ name: 'Заміна зчеплення', price: 'від 800 грн' },
+		],
+	},
+	{
+		id: 'electrics', title: 'Електрообладнання', services: [
+			{ name: 'Зняття та установка генератора', price: 'від 800 грн' },
+			{ name: 'Зняття та установка стартера', price: 'від 1500 грн' },
+			{ name: 'ЧІП-тюнінг', price: 'від 7000 грн' },
+		],
+	},
+	{
+		id: 'pre-purchase', title: 'Діагностика автомобіля перед покупкою', services: [
+			{ name: 'Діагностика ходової', price: '500 грн' },
+			{ name: 'Компʼютерна діагностика', price: '500 грн' },
+			{ name: 'Огляд двигуна', price: '400 грн' },
+			{ name: 'Ендоскопія двигуна', price: '2500 грн' },
+			{ name: 'Замір компресії', price: 'від 1000 грн' },
+			{ name: 'Перевірка рівнів рідин у мостах', price: '400 грн' },
+		],
+	},
+];
 ---
 
-<section class="services-section" id="services" aria-labelledby="services-heading">
-  <Container size="lg">
-    <SectionHeader 
-			id="services-heading"
-      eyebrow={servicesData.sectionTitle.eyebrow}
-      headline={servicesData.sectionTitle.headline}
-      centered
-    />
-    
-    <div class="services-grid">
-      {servicesData.items.map((service, index) => (
-        <article class="service-card reveal" style={`--delay: ${index * 100}ms`}>
-          <div class="service-icon">
-            <Icon name={service.icon} width="32" height="32" />
-          </div>
-          <h3 class="service-title">{service.title}</h3>
-          <p class="service-description">{service.description}</p>
-        </article>
-      ))}
-    </div>
-    
-    <div class="services-cta">
-      <Button variant="dark" size="lg" href={servicesData.cta.href}>
-        {servicesData.cta.text}
-      </Button>
-    </div>
-  </Container>
+<section class='services-section' id='services' aria-labelledby='services-heading'>
+	<Container size='lg'>
+		<SectionHeader
+			id='services-heading'
+			eyebrow='Прайс на послуги'
+			headline='Прозорі ціни на ремонт і обслуговування'
+		/>
+
+		<div class='services-catalog'>
+			<div class='services-category-list' data-service-set='desktop'>
+				{categories.map((category, index) => (
+					<button
+						class:list={['service-category', { 'is-active': index === 0 }]}
+						id={`desktop-service-trigger-${category.id}`}
+						data-service-trigger
+						aria-expanded={index === 0 ? 'true' : 'false'}
+						aria-controls={`desktop-service-panel-${category.id}`}
+						type='button'
+					>
+						<span class='service-category-copy'>
+							<span class='service-category-title'>{category.title}</span>
+							<span class='service-category-count'>{category.services.length} послуг</span>
+						</span>
+						<span class='service-category-arrow' aria-hidden='true'>⌄</span>
+					</button>
+				))}
+			</div>
+
+			<div class='services-panel-list' data-service-set='desktop'>
+				{categories.map((category, index) => (
+					<ServicePricePanel
+						id={`desktop-service-panel-${category.id}`}
+						triggerId={`desktop-service-trigger-${category.id}`}
+						title={category.title}
+						services={category.services}
+						active={index === 0}
+					/>
+				))}
+			</div>
+		</div>
+
+		<div class='services-mobile-list' data-service-set='mobile'>
+			{categories.map((category, index) => (
+				<div class='service-entry'>
+					<button
+						class:list={['service-category', { 'is-active': index === 0 }]}
+						id={`mobile-service-trigger-${category.id}`}
+						data-service-trigger
+						aria-expanded={index === 0 ? 'true' : 'false'}
+						aria-controls={`mobile-service-panel-${category.id}`}
+						type='button'
+					>
+						<span class='service-category-copy'>
+							<span class='service-category-title'>{category.title}</span>
+							<span class='service-category-count'>{category.services.length} послуг</span>
+						</span>
+						<span class='service-category-arrow' aria-hidden='true'>⌄</span>
+					</button>
+					<ServicePricePanel
+						id={`mobile-service-panel-${category.id}`}
+						triggerId={`mobile-service-trigger-${category.id}`}
+						title={category.title}
+						services={category.services}
+						active={index === 0}
+					/>
+				</div>
+			))}
+		</div>
+	</Container>
 </section>
 
+<script>
+	document.querySelectorAll<HTMLElement>('[data-service-set]').forEach((serviceSet) => {
+		const triggers = Array.from(serviceSet.querySelectorAll<HTMLButtonElement>('[data-service-trigger]'));
+		const panels = triggers.map((trigger) => document.getElementById(trigger.getAttribute('aria-controls') ?? ''));
+		const allowCollapse = serviceSet.dataset.serviceSet === 'mobile';
+		triggers.forEach((trigger, activeIndex) => {
+			trigger.addEventListener('click', () => {
+				const shouldClose = allowCollapse && trigger.getAttribute('aria-expanded') === 'true';
+				triggers.forEach((item, index) => {
+					const expanded = !shouldClose && index === activeIndex;
+					item.setAttribute('aria-expanded', String(expanded));
+					item.classList.toggle('is-active', expanded);
+					if (panels[index]) panels[index]!.hidden = !expanded;
+				});
+			});
+		});
+	});
+</script>

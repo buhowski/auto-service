@@ -1,0 +1,41 @@
+---
+interface Service {
+	name: string;
+	price: string;
+}
+
+interface Props {
+	id: string;
+	triggerId: string;
+	title: string;
+	services: Service[];
+	active?: boolean;
+}
+
+const { id, triggerId, title, services, active = false } = Astro.props;
+---
+
+<div class='services-panel' id={id} role='region' aria-labelledby={triggerId} hidden={!active}>
+	<div class='services-panel-heading'>
+		<div>
+			<span class='services-panel-kicker'>Послуги та ціни</span>
+			<h3 class='services-panel-title'>{title}</h3>
+		</div>
+	</div>
+	<div class='services-list'>
+		{
+			services.map((service) => (
+				<div class='service-row'>
+					<span class='service-name'>{service.name}</span>
+					<span class='service-price'>{service.price}</span>
+					<a class='service-order' href='#' aria-label={`Замовити послугу: ${service.name}`}>
+						Замовити
+					</a>
+				</div>
+			))
+		}
+	</div>
+	<p class='services-note'>
+		Точна вартість залежить від марки авто та складності робіт. Підтвердимо ціну перед ремонтом.
+	</p>
+</div>

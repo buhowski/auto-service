@@ -4,11 +4,12 @@ interface Props {
 	id?: string;
   eyebrow: string;
   headline: string;
+  description?: string;
   centered?: boolean;
   class?: string;
 }
 
-const { id, eyebrow, headline, centered = false, class: className = '' } = Astro.props;
+const { id, eyebrow, headline, description, centered = false, class: className = '' } = Astro.props;
 
 const classes = [
   'section-header',
@@ -19,4 +20,5 @@ const classes = [
 <div class={classes}>
   <span class="eyebrow">{eyebrow}</span>
   <h2 id={id} class="h2">{headline}</h2>
+  {description && <p class="section-description">{description}</p>}
 </div>

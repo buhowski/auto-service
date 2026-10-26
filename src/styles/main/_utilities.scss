@@ -10,27 +10,6 @@
 	border: 0;
 }
 
-.skip-link {
-	position: absolute;
-	top: -60px;
-	left: 12px;
-	z-index: 2000;
-	padding: 0.6rem 1rem;
-	border-radius: var(--radius);
-	font-family: var(--font-display);
-	font-weight: 700;
-	letter-spacing: 0.04em;
-	color: #fff;
-	background: var(--accent);
-	text-transform: uppercase;
-	transition: top 0.2s ease;
-}
-
-.skip-link:focus {
-	top: 12px;
-	color: #fff;
-}
-
 .js .reveal {
 	opacity: 0;
 	transform: translateY(20px);
@@ -39,7 +18,9 @@
 .js .reveal.in {
 	opacity: 1;
 	transform: translateY(0);
-	transition: opacity 0.6s ease, transform 0.6s ease;
+	transition:
+		opacity 0.6s ease,
+		transform 0.6s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -64,6 +45,14 @@
 
 .carbon {
 	background-color: var(--ink);
-	background-image: linear-gradient(135deg, rgb(255 255 255 / 1.8%) 25%, transparent 25%, transparent 50%, rgb(255 255 255 / 1.8%) 50%, rgb(255 255 255 / 1.8%) 75%, transparent 75%);
+	background-image: linear-gradient(
+		135deg,
+		rgb(255 255 255 / 1.8%) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgb(255 255 255 / 1.8%) 50%,
+		rgb(255 255 255 / 1.8%) 75%,
+		transparent 75%
+	);
 	background-size: 8px 8px;
 }

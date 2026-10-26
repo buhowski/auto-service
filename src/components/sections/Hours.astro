@@ -4,9 +4,22 @@ import Container from '../ui/Container.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
-import { getCollection } from 'astro:content';
-
-const hoursData = (await getCollection('hours', ({ id }) => id === 'main'))[0]?.data;
+const hoursData = {
+	sectionTitle: { eyebrow: 'Знайдіть нас · Графік роботи', headline: 'Заїздіть до боксу' },
+	lead: 'Ми на вул. Сирецькій, поруч зі зручною парковкою та комфортною зоною очікування з кавою. Є ключова скринька для ранньої та пізньої передачі авто.',
+	hours: [
+		{ day: 'Понеділок', time: '07:30 – 18:00' }, { day: 'Вівторок', time: '07:30 – 18:00' },
+		{ day: 'Середа', time: '07:30 – 18:00' }, { day: 'Четвер', time: '07:30 – 18:00' },
+		{ day: "П'ятниця", time: '07:30 – 18:00' }, { day: 'Субота', time: '08:00 – 15:00' },
+		{ day: 'Неділя', time: 'Закрито', isClosed: true },
+	],
+	contact: [
+		{ icon: 'location', label: 'Адреса', value: 'вул. Сирецька, 42, Львів, 79000', href: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів' },
+		{ icon: 'phone', label: 'Телефон', value: '(032) 234-56-78', href: 'tel:+380322345678' },
+		{ icon: 'email', label: 'Email', value: 'service@stoporshen.ua', href: 'mailto:service@stoporshen.ua' },
+	],
+	map: { address: 'вул. Сирецька, 42, Львів', directionsUrl: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів' },
+};
 ---
 
 <section class="hours-section" id="visit" aria-labelledby="visit-heading">

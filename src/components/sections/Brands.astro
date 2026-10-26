@@ -1,20 +1,148 @@
 ---
 import './Brands.scss';
 import Container from '../ui/Container.astro';
-import { getCollection } from 'astro:content';
-
-const brandsData = (await getCollection('brands', ({ id }) => id === 'main'))[0]?.data;
+import SectionHeader from '../ui/SectionHeader.astro';
+const brandsData = {
+	eyebrow: 'Обслуговуємо популярні марки авто',
+	items: [
+		{ name: 'Toyota', logo: 'toyota' },
+		{ name: 'Volkswagen', logo: 'volkswagen' },
+		{ name: 'Renault', logo: 'renault' },
+		{ name: 'Škoda', logo: 'skoda' },
+		{ name: 'BMW', logo: 'bmw' },
+		{ name: 'Hyundai', logo: 'hyundai' },
+		{ name: 'Audi', logo: 'audi' },
+		{ name: 'Nissan', logo: 'nissan' },
+		{ name: 'Ford', logo: 'ford' },
+		{ name: 'BYD', logo: 'byd' },
+		{ name: 'Mazda', logo: 'mazda' },
+		{ name: 'Honda', logo: 'honda' },
+		{ name: 'Kia', logo: 'kia' },
+		{ name: 'Mercedes-Benz', logo: 'mercedes-benz' },
+		{ name: 'Tesla', logo: 'tesla' },
+		{ name: 'Suzuki', logo: 'suzuki' },
+	],
+};
 ---
 
-<section class="brands-section" aria-labelledby="brands-heading">
-  <Container size="lg">
-		<h2 id="brands-heading" class="sr-only">Марки автомобілів</h2>
-    <p class="brands-eyebrow reveal text-center">{brandsData.eyebrow}</p>
-    <div class="brands-grid reveal">
-      {brandsData.items.map(brand => (
-        <span class="brand-chip">{brand}</span>
-      ))}
-    </div>
-  </Container>
+<section class='brands-section' aria-labelledby='brands-heading'>
+	<Container size='lg'>
+		<SectionHeader
+			id='brands-heading'
+			eyebrow='Працюємо з різними марками'
+			headline='Сервіс для вашого авто'
+			description={`${brandsData.eyebrow}. Не знайшли свою марку? Зателефонуйте — уточнимо можливість обслуговування.`}
+			centered
+			class='brands-intro reveal'
+		/>
+		<div
+			class='brands-carousel reveal'
+			role='region'
+			aria-label='Марки автомобілів, які ми обслуговуємо'
+		>
+			<div class='brands-track'>
+				{
+					[false, true].map((isDuplicate) => (
+						<ul class='brands-grid' aria-hidden={isDuplicate ? 'true' : undefined}>
+							{brandsData.items.map((brand) => (
+								<li class='brand-item'>
+									<img
+										class='brand-logo'
+										src={`/brands/${brand.logo}.svg`}
+										alt=''
+										aria-hidden='true'
+										loading='lazy'
+										draggable='false'
+										width='88'
+										height='36'
+									/>
+									<span>{brand.name}</span>
+								</li>
+							))}
+						</ul>
+					))
+				}
+			</div>
+		</div>
+	</Container>
 </section>
 
+<script>
+	const brandsCarousel = document.querySelector<HTMLElement>('.brands-carousel');
+	const brandsTrack = brandsCarousel?.querySelector<HTMLElement>('.brands-track');
+	const brandsGrid = brandsCarousel?.querySelector<HTMLElement>('.brands-grid');
+	if (brandsCarousel && brandsTrack && brandsGrid) {
+		const updateBrandItemWidth = () => {
+			const labels = Array.from(brandsGrid.querySelectorAll<HTMLElement>('.brand-item > span'));
+			const items = Array.from(brandsGrid.querySelectorAll<HTMLElement>('.brand-item'));
+			if (!labels.length || !items.length) return;
+
+			const widestLabel = Math.max(...labels.map((label) => label.getBoundingClientRect().width));
+			const itemStyle = getComputedStyle(items[0]);
+			const inlineSpace = [
+				'padding-left',
+				'padding-right',
+				'border-left-width',
+				'border-right-width',
+			].reduce(
+				(total, property) => total + (Number.parseFloat(itemStyle.getPropertyValue(property)) || 0),
+				0,
+			);
+			brandsCarousel.style.setProperty(
+				'--brand-item-width',
+				`${Math.ceil(widestLabel + inlineSpace)}px`,
+			);
+		};
+
+		let previousTime = 0;
+		let position = brandsCarousel.scrollLeft;
+		let isDragging = false;
+		let dragStartX = 0;
+		let dragStartScroll = 0;
+		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const speed = 24;
+
+		const animate = (time: number) => {
+			if (previousTime && !isDragging && !reducedMotion.matches) {
+				position += (speed * (time - previousTime)) / 1000;
+				const loopPoint = brandsGrid.scrollWidth;
+				if (loopPoint && position >= loopPoint) {
+					position -= loopPoint;
+				}
+				brandsCarousel.scrollLeft = position;
+			}
+			previousTime = time;
+			window.requestAnimationFrame(animate);
+		};
+
+		brandsCarousel.addEventListener('pointerdown', (event) => {
+			if (event.pointerType === 'mouse' && event.button !== 0) return;
+			isDragging = true;
+			dragStartX = event.clientX;
+			dragStartScroll = brandsCarousel.scrollLeft;
+			position = dragStartScroll;
+			if (event.pointerType === 'mouse') brandsCarousel.setPointerCapture(event.pointerId);
+		});
+		brandsCarousel.addEventListener('pointermove', (event) => {
+			if (!isDragging || event.pointerType !== 'mouse') return;
+			position = dragStartScroll - (event.clientX - dragStartX);
+			brandsCarousel.scrollLeft = position;
+		});
+		const endDrag = () => {
+			if (!isDragging) return;
+			isDragging = false;
+			const loopPoint = brandsGrid.scrollWidth;
+			if (loopPoint) {
+				position = ((brandsCarousel.scrollLeft % loopPoint) + loopPoint) % loopPoint;
+				brandsCarousel.scrollLeft = position;
+			}
+		};
+		brandsCarousel.addEventListener('pointerup', endDrag);
+		brandsCarousel.addEventListener('pointercancel', endDrag);
+		brandsCarousel.addEventListener('lostpointercapture', endDrag);
+
+		document.fonts.ready.then(updateBrandItemWidth);
+		window.addEventListener('resize', updateBrandItemWidth, { passive: true });
+		window.requestAnimationFrame(animate);
+	}
+</script>

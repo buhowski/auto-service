@@ -3,147 +3,140 @@ import './Hero.scss';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
-import { getCollection } from 'astro:content';
-
-const heroData = (await getCollection('hero', ({ id }) => id === 'main'))[0]?.data;
+const heroData = {
+	badge: 'Львів',
+	openingHours: 'Пн–Пт 07:30 - 18:00 • Сб 08:00 - 15:00',
+	headline: 'Чесні ремонти Прямі відповіді',
+	highlightedWord: 'Прямі',
+	subtext:
+		'Від швидкої заміни олії до капітального ремонту двигуна — СТО Поршень тримає ваш авто в безпеці на дорозі з прозорими цінами, сертифікованими майстрами та гарантією 24 місяці на кожен ремонт.',
+	primaryCta: { text: 'Записатися', href: '#quote' },
+	secondaryCta: { text: 'Послуги', href: '#services' },
+	phone: { text: 'Любите говорити? Дзвоніть (032) 234-56-78', href: 'tel:+380322345678' },
+	quoteForm: {
+		title: 'Отримайте безкоштовний розрахунок',
+		subtitle: 'Відповімо протягом робочої години',
+		fields: [
+			{ name: 'name', label: "Ваше ім'я", type: 'text', placeholder: 'ПІБ', required: true },
+			{
+				name: 'phone',
+				label: 'Номер телефону',
+				type: 'tel',
+				placeholder: '(032) 000-00-00',
+				required: true,
+			},
+		],
+		submitText: 'Отримати розрахунок',
+		note: "Без зобов'язань. Ми узгодимо ціну перед початком будь-яких робіт.",
+		successMessage:
+			'Дякуємо — ваш запит прийнято! Сервісний консультант зателефонує вам незабаром для підтвердження розрахунку та запису.',
+	},
+	backgroundImage: '/hero-garage.jpg',
+	backgroundAlt:
+		'Механік у спецовдязі працює під авто, піднятим на гідравлічному підйомі, у сучасному сервісному боксі',
+};
 const [headlineStart, headlineEnd = ''] = heroData.headline.split(heroData.highlightedWord);
 ---
 
-<section class="hero" id="quote" aria-labelledby="hero-heading">
-  <div class="hero-bg">
-    <img 
-      src={heroData.backgroundImage} 
-      alt={heroData.backgroundAlt}
-      width="1600" 
-      height="1100" 
-      fetchpriority="high"
-    >
-  </div>
-  
-  <Container size="lg">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <span class="hero-flag">{heroData.badge}</span>
-        <h1 id="hero-heading" class="hero-title">
-          {headlineStart}<br><span class="u">{heroData.highlightedWord}</span>{headlineEnd}
-        </h1>
-        <p class="hero-sub">{heroData.subtext}</p>
-        
-        <div class="hero-actions">
-          <Button 
-            variant="accent" 
-            size="lg" 
-            href={heroData.primaryCta.href}
-          >
-            {heroData.primaryCta.text}
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="lg" 
-            href={heroData.secondaryCta.href}
-          >
-            {heroData.secondaryCta.text}
-          </Button>
-        </div>
-        
-        <div class="hero-phone">
-          <Icon name="phoneHero" width="20" height="20" />
-          <a href={heroData.phone.href}>{heroData.phone.text}</a>
-        </div>
-      </div>
-      
-      <div class="quote-card">
-        <div class="quote-head">
-          <Icon name="quoteIcon" width="26" height="26" />
-          <div>
-            <h3>{heroData.quoteForm.title}</h3>
-            <span>{heroData.quoteForm.subtitle}</span>
-          </div>
-        </div>
-        <div class="quote-body">
-          <form class="quote-form" data-validate novalidate>
-            {heroData.quoteForm.fields.map(field => (
-              <div class="field">
-                <label for={`q-${field.name}`}>{field.label}</label>
-                <input 
-                  id={`q-${field.name}`} 
-                  name={field.name} 
-                  type={field.type} 
-                  placeholder={field.placeholder} 
-                  required={field.required}
-                >
-            <span class="err">{field.type === 'tel' ? 'Введіть коректний номер телефону.' : `Заповніть поле: ${field.label.toLowerCase()}.`}</span>
-              </div>
-            ))}
-            <Button 
-              type="submit" 
-              variant="accent" 
-              block
-            >
-              {heroData.quoteForm.submitText}
-            </Button>
-            <p class="form-note">{heroData.quoteForm.note}</p>
-            <div class="form-success" hidden>{heroData.quoteForm.successMessage}</div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </Container>
+<section class='hero' id='quote' aria-labelledby='hero-heading'>
+	<div class='hero-bg'>
+		<img
+			src={heroData.backgroundImage}
+			alt={heroData.backgroundAlt}
+			width='1600'
+			height='1100'
+			fetchpriority='high'
+		/>
+	</div>
+
+	<Container size='lg'>
+		<div class='hero-grid'>
+			<div class='hero-content'>
+				<div class='hero-meta' aria-label='Місто та графік роботи'>
+					<span class='hero-location'>{heroData.badge}</span>
+					<span class='hero-meta-divider' aria-hidden='true'></span>
+					<span class='hero-hours'>{heroData.openingHours}</span>
+				</div>
+				<h1 id='hero-heading' class='hero-title'>
+					<p>{headlineStart}</p>
+					<span class='u'>{heroData.highlightedWord}</span>{headlineEnd}
+				</h1>
+				<p class='hero-sub'>{heroData.subtext}</p>
+
+				<div class='hero-actions'>
+					<Button variant='accent' size='lg' href={heroData.primaryCta.href}>
+						{heroData.primaryCta.text}
+					</Button>
+
+					<Button variant='ghost' size='lg' href={heroData.secondaryCta.href}>
+						{heroData.secondaryCta.text}
+					</Button>
+				</div>
+			</div>
+		</div>
+	</Container>
 </section>
 
-
-
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.quote-form');
-    if (!form) return;
-    
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      let valid = true;
-      
-      form.querySelectorAll('.field').forEach(field => {
-        const input = field.querySelector('input');
-        if (!input) return;
-        if (input.required && !input.value.trim()) {
-          field.classList.add('invalid');
-          valid = false;
-        } else if (input.type === 'tel' && input.value.trim() && input.value.replace(/\D/g, '').length < 7) {
-          field.classList.add('invalid');
-          valid = false;
-        } else {
-          field.classList.remove('invalid');
-        }
-      });
-      
-      if (!valid) return;
-      
-      const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-      if (!submitBtn) return;
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Відправка...';
-      
-      try {
-        await new Promise(r => setTimeout(r, 1000));
-        
-        const success = form.querySelector('.form-success');
-        if (success) {
-          success.hidden = false;
-          success.setAttribute('role', 'status');
-          success.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
-        }
-        form.reset();
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-      }
-    });
-    
-    form.querySelectorAll('input').forEach(input => {
-      input.addEventListener('input', () => {
-        input.closest('.field')?.classList.remove('invalid');
-      });
-    });
-  });
+	document.addEventListener('DOMContentLoaded', () => {
+		const form = document.querySelector('.quote-form');
+		if (!form) return;
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			let valid = true;
+
+			form.querySelectorAll('.field').forEach((field) => {
+				const input = field.querySelector('input');
+				if (!input) return;
+				if (input.required && !input.value.trim()) {
+					field.classList.add('invalid');
+					valid = false;
+				} else if (
+					input.type === 'tel' &&
+					input.value.trim() &&
+					input.value.replace(/\D/g, '').length < 7
+				) {
+					field.classList.add('invalid');
+					valid = false;
+				} else {
+					field.classList.remove('invalid');
+				}
+			});
+
+			if (!valid) return;
+
+			const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+			if (!submitBtn) return;
+			const originalText = submitBtn.textContent;
+			submitBtn.disabled = true;
+			submitBtn.textContent = 'Відправка...';
+
+			try {
+				await new Promise((r) => setTimeout(r, 1000));
+
+				const success = form.querySelector('.form-success');
+				if (success) {
+					success.hidden = false;
+					success.setAttribute('role', 'status');
+					success.scrollIntoView({
+						behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+							? 'auto'
+							: 'smooth',
+						block: 'center',
+					});
+				}
+				form.reset();
+			} finally {
+				submitBtn.disabled = false;
+				submitBtn.textContent = originalText;
+			}
+		});
+
+		form.querySelectorAll('input').forEach((input) => {
+			input.addEventListener('input', () => {
+				input.closest('.field')?.classList.remove('invalid');
+			});
+		});
+	});
 </script>
