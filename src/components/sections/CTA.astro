@@ -3,13 +3,14 @@ import './CTA.scss';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
+import { site } from '../../data/site';
 const ctaData = {
 	eyebrow: 'Готові коли ви',
 	headline: 'Запишіться на сервіс сьогодні',
 	subtext:
 		'Запис у той самий день, прозорі ціни та гарантія, на яку можна розраховувати. Подбаймо, щоб ваше авто працювало якнайкраще.',
-	primaryCta: { text: 'Записатися', href: '#quote' },
-	secondaryCta: { text: 'Зателефонувати', href: 'tel:+380322345678' },
+	primaryCta: { text: 'Записатися', href: site.links.booking },
+	secondaryCta: { text: 'Зателефонувати', href: site.phone.href },
 };
 ---
 
@@ -23,7 +24,6 @@ const ctaData = {
 				headline={ctaData.headline}
 				description={ctaData.subtext}
 				centered
-				class='cta-header'
 			/>
 			<div class='cta-actions'>
 				<Button variant='accent' size='lg' href={ctaData.primaryCta.href}>

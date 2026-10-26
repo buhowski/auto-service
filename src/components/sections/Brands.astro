@@ -2,25 +2,41 @@
 import './Brands.scss';
 import Container from '../ui/Container.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
+import AudiLogo from '../../assets/brands/audi.svg';
+import BMWLogo from '../../assets/brands/bmw.svg';
+import BYDLogo from '../../assets/brands/byd.svg';
+import FordLogo from '../../assets/brands/ford.svg';
+import HondaLogo from '../../assets/brands/honda.svg';
+import HyundaiLogo from '../../assets/brands/hyundai.svg';
+import KiaLogo from '../../assets/brands/kia.svg';
+import MazdaLogo from '../../assets/brands/mazda.svg';
+import MercedesBenzLogo from '../../assets/brands/mercedes-benz.svg';
+import NissanLogo from '../../assets/brands/nissan.svg';
+import RenaultLogo from '../../assets/brands/renault.svg';
+import SkodaLogo from '../../assets/brands/skoda.svg';
+import SuzukiLogo from '../../assets/brands/suzuki.svg';
+import TeslaLogo from '../../assets/brands/tesla.svg';
+import ToyotaLogo from '../../assets/brands/toyota.svg';
+import VolkswagenLogo from '../../assets/brands/volkswagen.svg';
 const brandsData = {
 	eyebrow: 'Обслуговуємо популярні марки авто',
 	items: [
-		{ name: 'Toyota', logo: 'toyota' },
-		{ name: 'Volkswagen', logo: 'volkswagen' },
-		{ name: 'Renault', logo: 'renault' },
-		{ name: 'Škoda', logo: 'skoda' },
-		{ name: 'BMW', logo: 'bmw' },
-		{ name: 'Hyundai', logo: 'hyundai' },
-		{ name: 'Audi', logo: 'audi' },
-		{ name: 'Nissan', logo: 'nissan' },
-		{ name: 'Ford', logo: 'ford' },
-		{ name: 'BYD', logo: 'byd' },
-		{ name: 'Mazda', logo: 'mazda' },
-		{ name: 'Honda', logo: 'honda' },
-		{ name: 'Kia', logo: 'kia' },
-		{ name: 'Mercedes-Benz', logo: 'mercedes-benz' },
-		{ name: 'Tesla', logo: 'tesla' },
-		{ name: 'Suzuki', logo: 'suzuki' },
+		{ name: 'Toyota', logo: ToyotaLogo },
+		{ name: 'Volkswagen', logo: VolkswagenLogo },
+		{ name: 'Renault', logo: RenaultLogo },
+		{ name: 'Škoda', logo: SkodaLogo },
+		{ name: 'BMW', logo: BMWLogo },
+		{ name: 'Hyundai', logo: HyundaiLogo },
+		{ name: 'Audi', logo: AudiLogo },
+		{ name: 'Nissan', logo: NissanLogo },
+		{ name: 'Ford', logo: FordLogo },
+		{ name: 'BYD', logo: BYDLogo },
+		{ name: 'Mazda', logo: MazdaLogo },
+		{ name: 'Honda', logo: HondaLogo },
+		{ name: 'Kia', logo: KiaLogo },
+		{ name: 'Mercedes-Benz', logo: MercedesBenzLogo },
+		{ name: 'Tesla', logo: TeslaLogo },
+		{ name: 'Suzuki', logo: SuzukiLogo },
 	],
 };
 ---
@@ -44,19 +60,10 @@ const brandsData = {
 				{
 					[false, true].map((isDuplicate) => (
 						<ul class='brands-grid' aria-hidden={isDuplicate ? 'true' : undefined}>
-							{brandsData.items.map((brand) => (
-								<li class='brand-item'>
-									<img
-										class='brand-logo'
-										src={`/brands/${brand.logo}.svg`}
-										alt=''
-										aria-hidden='true'
-										loading='lazy'
-										draggable='false'
-										width='88'
-										height='36'
-									/>
-									<span>{brand.name}</span>
+							{brandsData.items.map(({ name, logo: Logo }) => (
+								<li class='brand-item surface-card'>
+									<Logo class='brand-logo' aria-hidden='true' focusable='false' />
+									<span>{name}</span>
 								</li>
 							))}
 						</ul>

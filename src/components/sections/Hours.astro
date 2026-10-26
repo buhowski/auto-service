@@ -4,30 +4,23 @@ import Container from '../ui/Container.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
+import { site } from '../../data/site';
 const hoursData = {
 	sectionTitle: { eyebrow: 'Знайдіть нас · Графік роботи', headline: 'Заїздіть до боксу' },
-	lead: 'Ми на вул. Сирецькій, поруч зі зручною парковкою та комфортною зоною очікування з кавою. Є ключова скринька для ранньої та пізньої передачі авто.',
-	hours: [
-		{ day: 'Понеділок', time: '07:30 – 18:00' },
-		{ day: 'Вівторок', time: '07:30 – 18:00' },
-		{ day: 'Середа', time: '07:30 – 18:00' },
-		{ day: 'Четвер', time: '07:30 – 18:00' },
-		{ day: "П'ятниця", time: '07:30 – 18:00' },
-		{ day: 'Субота', time: '08:00 – 15:00' },
-		{ day: 'Неділя', time: 'Закрито', isClosed: true },
-	],
+	lead: `Ми на ${site.address.mapLabel}, поруч зі зручною парковкою та комфортною зоною очікування з кавою. Є ключова скринька для ранньої та пізньої передачі авто.`,
+	hours: site.openingHours,
 	contact: [
 		{
 			icon: 'location',
 			label: 'Адреса',
-			value: 'вул. Сирецька, 42, Львів, 79000',
-			href: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів',
+			value: site.address.full,
+			href: site.address.mapsUrl,
 		},
-		{ icon: 'phone', label: 'Телефон', value: '(032) 234-56-78', href: 'tel:+380322345678' },
+		{ icon: 'phone', label: 'Телефон', value: site.phone.display, href: site.phone.href },
 	],
 	map: {
-		address: 'вул. Сирецька, 42, Львів',
-		directionsUrl: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів',
+		address: site.address.mapLabel,
+		directionsUrl: site.address.mapsUrl,
 	},
 };
 ---
@@ -43,7 +36,7 @@ const hoursData = {
 				/>
 				<p class='lead'>{hoursData.lead}</p>
 
-				<ul class='hours-table' role='list' aria-label='Opening hours'>
+				<ul class='hours-table' role='list' aria-label='Графік роботи'>
 					{
 						hoursData.hours.map((hour, index) => (
 							<li class={hour.isClosed ? 'closed' : ''} data-day={index === 6 ? 0 : index + 1}>
@@ -72,7 +65,8 @@ const hoursData = {
 			<div class='visit-map reveal'>
 				<div class='map-diag' aria-hidden='true'></div>
 				<div class='map-pin'>
-					<div class='map-pin-dot' aria-hidden='true'></div>
+					<Icon name='location' class='map-pin-dot' width='40' height='40' aria-hidden={true} />
+
 					<div class='map-addr'>{hoursData.map.address}</div>
 					<Button
 						variant='accent'
@@ -88,18 +82,6 @@ const hoursData = {
 		</div>
 	</Container>
 </section>
-
-<style>
-	.hours-table li.today {
-		color: var(--accent);
-		border-bottom-color: var(--accent);
-	}
-
-	.hours-table li.today .day,
-	.hours-table li.today .hrs {
-		color: var(--accent);
-	}
-</style>
 
 <script>
 	const localDay = new Intl.DateTimeFormat('en-US', {

@@ -1,12 +1,15 @@
 ---
 import './Services.scss';
 import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import ServicePricePanel from './ServicePricePanel.astro';
 
 const categories = [
 	{
-		id: 'diagnostics', title: 'Діагностика автомобіля', services: [
+		id: 'diagnostics',
+		title: 'Діагностика автомобіля',
+		services: [
 			{ name: 'Діагностика ходової', price: '500 грн' },
 			{ name: 'Компʼютерна діагностика', price: '500 грн' },
 			{ name: 'Огляд двигуна', price: '400 грн' },
@@ -18,7 +21,9 @@ const categories = [
 		],
 	},
 	{
-		id: 'maintenance', title: 'Технічне обслуговування', services: [
+		id: 'maintenance',
+		title: 'Технічне обслуговування',
+		services: [
 			{ name: 'Заміна мастила в двигуні', price: 'від 500 грн' },
 			{ name: 'Заміна мастила з промивкою двигуна', price: 'від 500 грн' },
 			{ name: 'Заміна мастила гідропідсилювача керма', price: 'від 400 грн' },
@@ -36,7 +41,9 @@ const categories = [
 		],
 	},
 	{
-		id: 'suspension', title: 'Ходова частина', services: [
+		id: 'suspension',
+		title: 'Ходова частина',
+		services: [
 			{ name: 'Запресування сайлентблока', price: 'від 300 грн' },
 			{ name: 'Зняття та установка переднього амортизатора', price: '1000 грн' },
 			{ name: 'Зняття та установка амортизаторної стійки з пружиною', price: '1000 грн' },
@@ -48,7 +55,9 @@ const categories = [
 		],
 	},
 	{
-		id: 'steering', title: 'Рульове керування', services: [
+		id: 'steering',
+		title: 'Рульове керування',
+		services: [
 			{ name: 'Реставрація механічної рейки', price: 'від 6000 грн' },
 			{ name: 'Реставрація гідравлічної рейки', price: 'від 7000 грн' },
 			{ name: 'Зняття та установка насоса гідропідсилювача', price: '1000 грн' },
@@ -56,7 +65,9 @@ const categories = [
 		],
 	},
 	{
-		id: 'brakes', title: 'Гальмівна система', services: [
+		id: 'brakes',
+		title: 'Гальмівна система',
+		services: [
 			{ name: 'Зняття та установка гальмівного диска', price: '500 грн' },
 			{ name: 'Зняття та установка гальмівного барабана', price: 'від 500 грн' },
 			{ name: 'Зняття та установка супорта', price: '600 грн' },
@@ -64,28 +75,36 @@ const categories = [
 		],
 	},
 	{
-		id: 'engine', title: 'Двигун', services: [
+		id: 'engine',
+		title: 'Двигун',
+		services: [
 			{ name: 'Зняття та установка двигуна', price: 'від 12000 грн' },
 			{ name: 'Капітальний ремонт ДВЗ', price: 'від 40000 грн' },
 			{ name: 'Регулювання клапанів', price: 'від 2000 грн' },
 		],
 	},
 	{
-		id: 'transmission', title: 'Трансмісія', services: [
+		id: 'transmission',
+		title: 'Трансмісія',
+		services: [
 			{ name: 'Зняття та установка карданного вала', price: 'від 1000 грн' },
 			{ name: 'Зняття та установка механічної КПП', price: 'від 5000 грн' },
 			{ name: 'Заміна зчеплення', price: 'від 800 грн' },
 		],
 	},
 	{
-		id: 'electrics', title: 'Електрообладнання', services: [
+		id: 'electrics',
+		title: 'Електрообладнання',
+		services: [
 			{ name: 'Зняття та установка генератора', price: 'від 800 грн' },
 			{ name: 'Зняття та установка стартера', price: 'від 1500 грн' },
 			{ name: 'ЧІП-тюнінг', price: 'від 7000 грн' },
 		],
 	},
 	{
-		id: 'pre-purchase', title: 'Діагностика автомобіля перед покупкою', services: [
+		id: 'pre-purchase',
+		title: 'Діагностика автомобіля перед покупкою',
+		services: [
 			{ name: 'Діагностика ходової', price: '500 грн' },
 			{ name: 'Компʼютерна діагностика', price: '500 грн' },
 			{ name: 'Огляд двигуна', price: '400 грн' },
@@ -107,71 +126,85 @@ const categories = [
 
 		<div class='services-catalog'>
 			<div class='services-category-list' data-service-set='desktop'>
-				{categories.map((category, index) => (
-					<button
-						class:list={['service-category', { 'is-active': index === 0 }]}
-						id={`desktop-service-trigger-${category.id}`}
-						data-service-trigger
-						aria-expanded={index === 0 ? 'true' : 'false'}
-						aria-controls={`desktop-service-panel-${category.id}`}
-						type='button'
-					>
-						<span class='service-category-copy'>
-							<span class='service-category-title'>{category.title}</span>
-							<span class='service-category-count'>{category.services.length} послуг</span>
-						</span>
-						<span class='service-category-arrow' aria-hidden='true'>⌄</span>
-					</button>
-				))}
+				{
+					categories.map((category, index) => (
+						<button
+							class:list={['service-category', { 'is-active': index === 0 }]}
+							id={`desktop-service-trigger-${category.id}`}
+							data-service-trigger
+							aria-expanded={index === 0 ? 'true' : 'false'}
+							aria-controls={`desktop-service-panel-${category.id}`}
+							type='button'
+						>
+							<span class='service-category-copy'>
+								<span class='service-category-title'>{category.title}</span>
+								<span class='service-category-count'>{category.services.length} послуг</span>
+							</span>
+							<span class='service-category-arrow' aria-hidden='true'>
+								<Icon name='circleArrowDown' width='20' height='20' />
+							</span>
+						</button>
+					))
+				}
 			</div>
 
 			<div class='services-panel-list' data-service-set='desktop'>
-				{categories.map((category, index) => (
-					<ServicePricePanel
-						id={`desktop-service-panel-${category.id}`}
-						triggerId={`desktop-service-trigger-${category.id}`}
-						title={category.title}
-						services={category.services}
-						active={index === 0}
-					/>
-				))}
+				{
+					categories.map((category, index) => (
+						<ServicePricePanel
+							id={`desktop-service-panel-${category.id}`}
+							triggerId={`desktop-service-trigger-${category.id}`}
+							title={category.title}
+							services={category.services}
+							active={index === 0}
+						/>
+					))
+				}
 			</div>
 		</div>
 
 		<div class='services-mobile-list' data-service-set='mobile'>
-			{categories.map((category, index) => (
-				<div class='service-entry'>
-					<button
-						class:list={['service-category', { 'is-active': index === 0 }]}
-						id={`mobile-service-trigger-${category.id}`}
-						data-service-trigger
-						aria-expanded={index === 0 ? 'true' : 'false'}
-						aria-controls={`mobile-service-panel-${category.id}`}
-						type='button'
-					>
-						<span class='service-category-copy'>
-							<span class='service-category-title'>{category.title}</span>
-							<span class='service-category-count'>{category.services.length} послуг</span>
-						</span>
-						<span class='service-category-arrow' aria-hidden='true'>⌄</span>
-					</button>
-					<ServicePricePanel
-						id={`mobile-service-panel-${category.id}`}
-						triggerId={`mobile-service-trigger-${category.id}`}
-						title={category.title}
-						services={category.services}
-						active={index === 0}
-					/>
-				</div>
-			))}
+			{
+				categories.map((category, index) => (
+					<div class='service-entry'>
+						<button
+							class:list={['service-category', { 'is-active': index === 0 }]}
+							id={`mobile-service-trigger-${category.id}`}
+							data-service-trigger
+							aria-expanded={index === 0 ? 'true' : 'false'}
+							aria-controls={`mobile-service-panel-${category.id}`}
+							type='button'
+						>
+							<span class='service-category-copy'>
+								<span class='service-category-title'>{category.title}</span>
+								<span class='service-category-count'>{category.services.length} послуг</span>
+							</span>
+							<span class='service-category-arrow' aria-hidden='true'>
+								<Icon name='circleArrowDown' width='20' height='20' />
+							</span>
+						</button>
+						<ServicePricePanel
+							id={`mobile-service-panel-${category.id}`}
+							triggerId={`mobile-service-trigger-${category.id}`}
+							title={category.title}
+							services={category.services}
+							active={index === 0}
+						/>
+					</div>
+				))
+			}
 		</div>
 	</Container>
 </section>
 
 <script>
 	document.querySelectorAll<HTMLElement>('[data-service-set]').forEach((serviceSet) => {
-		const triggers = Array.from(serviceSet.querySelectorAll<HTMLButtonElement>('[data-service-trigger]'));
-		const panels = triggers.map((trigger) => document.getElementById(trigger.getAttribute('aria-controls') ?? ''));
+		const triggers = Array.from(
+			serviceSet.querySelectorAll<HTMLButtonElement>('[data-service-trigger]'),
+		);
+		const panels = triggers.map((trigger) =>
+			document.getElementById(trigger.getAttribute('aria-controls') ?? ''),
+		);
 		const allowCollapse = serviceSet.dataset.serviceSet === 'mobile';
 		triggers.forEach((trigger, activeIndex) => {
 			trigger.addEventListener('click', () => {

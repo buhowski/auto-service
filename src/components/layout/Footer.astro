@@ -3,12 +3,10 @@ import './Footer.scss';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
 import SocialLinks from './SocialLinks.astro';
+import { openingHoursSummary, site } from '../../data/site';
 
 const year = new Date().getFullYear();
-const footerAbout =
-	'Сімейне СТО у Львові: чесні кошториси, сертифіковані майстри та гарантія 24 місяці на кожну роботу.';
-const address = 'вул. Сирецька, 42, Львів, 79000';
-const mapsUrl = 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів';
+const footerAbout = `Сімейне СТО у Львові: чесні кошториси, сертифіковані майстри та гарантія 24 місяці на кожну роботу.`;
 ---
 
 <footer class='footer' role='contentinfo'>
@@ -16,34 +14,40 @@ const mapsUrl = 'https://maps.google.com/?q=вул.+Сирецька,+42,+Льв
 	<Container size='lg'>
 		<div class='footer-main'>
 			<div class='footer-brand'>
-				<a class='brand' href='/' aria-label='СТО Поршень — на початок сторінки'>
+				<a class='brand' href='/' aria-label={`${site.name} — на головну`}>
 					<span class='brand-mark' aria-hidden='true'>
 						<Icon name='brandMark' width='24' height='24' />
 					</span>
-					СТО <b>Поршень</b>
+					{site.brand.prefix}
+					<b>{site.brand.name}</b>
 				</a>
 				<p class='footer-about'>{footerAbout}</p>
 				<SocialLinks className='footer-social' />
 			</div>
 
 			<address class='footer-contact' aria-label='Контактна інформація'>
-				<a class='footer-contact__item footer-contact__phone' href='tel:+380322345678'>
+				<a class='footer-contact__item footer-contact__phone' href={site.phone.href}>
 					<Icon name='phone' width='20' height='20' />
-					<span>(032) 234-56-78</span>
+					<span>{site.phone.display}</span>
 				</a>
-				<a class='footer-contact__item' href={mapsUrl} target='_blank' rel='noreferrer'>
+				<a
+					class='footer-contact__item'
+					href={site.address.mapsUrl}
+					target='_blank'
+					rel='noreferrer'
+				>
 					<Icon name='location' width='20' height='20' />
-					<span>{address}</span>
+					<span>{site.address.full}</span>
 				</a>
-				<p class='footer-contact__item footer-hours'>
+				<p class='footer-contact__item'>
 					<Icon name='clock' width='20' height='20' />
-					<span>Пн-Пт 07:30-18:00 · Сб 08:00-15:00 · Нд зачинено</span>
+					<span>{openingHoursSummary}</span>
 				</p>
 			</address>
 		</div>
 
 		<div class='footer-bottom'>
-			<p class='copyright'>© {year} СТО Поршень. Усі права захищено.</p>
+			<p class='copyright'>© {year} {site.name}. Усі права захищено.</p>
 		</div>
 	</Container>
 </footer>

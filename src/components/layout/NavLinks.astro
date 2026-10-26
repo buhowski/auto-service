@@ -1,14 +1,16 @@
 ---
+import { site } from '../../data/site';
+
 interface Props {
 	className?: string;
 }
 
 const { className = '' } = Astro.props;
 const links = [
-	{ href: '#services', label: 'Послуги' },
-	{ href: '#why-choose', label: 'Чому ми' },
-	{ href: '#testimonials', label: 'Відгуки' },
-	{ href: '#visit', label: 'Контакти' },
+	{ href: site.links.services, label: 'Послуги' },
+	{ href: site.links.whyUs, label: 'Чому ми' },
+	{ href: site.links.testimonials, label: 'Відгуки' },
+	{ href: site.links.contacts, label: 'Контакти' },
 ];
 ---
 

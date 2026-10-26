@@ -1,34 +1,38 @@
 ---
 import './Header.scss';
 import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import NavLinks from './NavLinks.astro';
 import SocialLinks from './SocialLinks.astro';
-const brandParts = ['СТО ', 'Поршень', ''];
+import { site } from '../../data/site';
 ---
 
 <header class='header' role='banner'>
-	<nav class='nav' aria-label='Primary navigation'>
+	<nav class='nav' aria-label='Основна навігація'>
 		<Container size='lg'>
-			<a class='brand' href='#main' aria-label='СТО Поршень — home'>
+			<a class='brand' href='#main' aria-label={`${site.name} — на головну`}>
 				<span class='brand-mark' aria-hidden='true'>
 					<Icon name='brandMark' width='24' height='24' />
 				</span>
-				{brandParts[0]}<b>{brandParts[1]}</b>{brandParts[2]}
+				{site.brand.prefix}
+				<b>{site.brand.name}</b>
 			</a>
 
 			<NavLinks className='nav-links nav-desktop' />
 
 			<div class='nav-cta nav-desktop'>
-				<SocialLinks className='nav-social' />
-				<a class='nav-phone' href='tel:+380322345678' aria-label='Зателефонувати: (032) 234-56-78'
-					>(032) 234-56-78</a
+				<SocialLinks />
+				<a
+					class='nav-phone'
+					href={site.phone.href}
+					aria-label={`Зателефонувати: ${site.phone.display}`}>{site.phone.display}</a
 				>
 			</div>
 
 			<button
 				class='burger'
-				aria-label='Open menu'
+				aria-label='Відкрити меню'
 				aria-expanded='false'
 				aria-controls='mobileMenu'
 			>
@@ -38,14 +42,16 @@ const brandParts = ['СТО ', 'Поршень', ''];
 	</nav>
 
 	<div class='overlay' aria-hidden='true'></div>
-	<nav class='mobile' id='mobileMenu' aria-label='Mobile navigation'>
-		<button class='mobile-close' aria-label='Close menu'>
+	<nav class='mobile' id='mobileMenu' aria-label='Мобільна навігація'>
+		<button class='mobile-close' aria-label='Закрити меню' aria-controls='mobileMenu'>
 			<Icon name='close' width='24' height='24' />
 		</button>
 		<NavLinks className='mobile-links' />
 		<SocialLinks className='mobile-social' />
-		<a href='tel:+380322345678' class='mobile-phone'>(032) 234-56-78</a>
-		<a href='#quote' class='btn btn--accent btn--block'>Записатися</a>
+
+		<a href={site.phone.href} class='mobile-phone'>{site.phone.display}</a>
+
+		<Button variant='accent' block href={site.links.booking}>Записатися</Button>
 	</nav>
 </header>
 

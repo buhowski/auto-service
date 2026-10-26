@@ -1,6 +1,6 @@
 .brands-section {
-	padding: clamp(3.5rem, 7vw, 6rem) 0;
-	background: var(--paper);
+	padding-block: var(--section-space);
+	background: var(--color-paper);
 }
 
 .brands-intro {
@@ -14,7 +14,13 @@
 	user-select: none;
 	touch-action: auto;
 	cursor: auto;
-	mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+	mask-image: linear-gradient(
+		to right,
+		transparent,
+		var(--color-black) 3%,
+		var(--color-black) 97%,
+		transparent
+	);
 }
 
 .brands-carousel::-webkit-scrollbar {
@@ -24,7 +30,7 @@
 .brands-track {
 	display: flex;
 	width: max-content;
-	padding: 0.25rem 0;
+	padding: 20px 0;
 	user-select: none;
 	-webkit-user-select: none;
 }
@@ -49,10 +55,7 @@
 	justify-content: center;
 	gap: 0.4rem;
 	padding: 12px 22px;
-	border: 1px solid var(--line);
-	border-radius: var(--radius);
-	background: #fff;
-	color: var(--body);
+	color: var(--color-text);
 	font-family: var(--font-display);
 	font-size: 1rem;
 	font-weight: 700;
@@ -87,9 +90,9 @@
 
 @media (hover: hover) and (pointer: fine) {
 	.brand-item:hover {
-		border-color: rgb(255 106 26 / 35%);
-		background: #fffaf7;
-		color: var(--accent-700);
+		border-color: rgb(var(--color-accent-rgb) / 35%);
+		background: var(--color-accent-wash);
+		color: var(--color-accent-strong);
 		.brand-logo {
 			filter: none;
 			opacity: 1;
@@ -98,9 +101,6 @@
 }
 
 @media (max-width: 600px) {
-	.brands-section {
-		padding: 3.5rem 0;
-	}
 	.brands-intro {
 		margin-bottom: 1.5rem;
 	}
@@ -116,14 +116,5 @@
 	.brand-logo {
 		width: min(4.5rem, 80%);
 		height: 1.8rem;
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.brands-carousel {
-		scroll-behavior: auto;
-	}
-	.brand-item {
-		transition: none;
 	}
 }

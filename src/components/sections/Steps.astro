@@ -14,7 +14,7 @@ const stepsData = {
 };
 ---
 
-<section class="steps-section carbon" id="steps" aria-labelledby="steps-heading">
+<section class="steps-section" id="steps" aria-labelledby="steps-heading">
 	<Container size="lg">
 		<SectionHeader
 			id="steps-heading"
@@ -25,7 +25,7 @@ const stepsData = {
 
 		<div class="steps-grid">
 			{stepsData.items.map((step, index) => (
-				<article class="step reveal" style={`--delay: ${index * 100}ms`}>
+				<article class="step surface-card reveal" style={`--delay: ${index * 100}ms`}>
 					<div class="step-meta">
 						<span class="step-number">{String(index + 1).padStart(2, '0')}</span>
 						<span class="step-icon"><Icon name={step.icon} width="24" height="24" /></span>

@@ -6,149 +6,201 @@ import Icon from '../ui/Icon.astro';
 const testimonialsData = {
 	sectionTitle: { eyebrow: 'Прямо з парковки', headline: 'Що кажуть наші клієнти' },
 	items: [
-		{ rating: 5, quote: "Дилер просив $1200 за 'роботу з двигуном'. СТО Поршень знайшли несправну котушку, виправили за частину ціни та показали стару деталь. Ніколи більше не піду в інше місце.", author: { name: 'Олександр К.', role: 'Власник Ford F-150', image: '/cust-1.jpg', imageAlt: 'Фото клієнта Олександра К.' } },
-		{ rating: 5, quote: 'Гальма зробили, і я був на дорозі до обіду. Чесна ціна, чиста зона очікування, а майстер реально пояснив, що зносилося. Рекомендую.', author: { name: 'Софія Р.', role: 'Власник Honda CR-V', image: '/cust-2.jpg', imageAlt: 'Фото клієнта Софії Р.' } },
-		{ rating: 5, quote: "Веземо всі родинні авто сюди вже 12 років. Чесні майстри, ніколи не нав'язують непотрібне. Гарантія дає реальний спокій.", author: { name: 'Ахмед К.', role: 'Власник Toyota Camry', image: '/cust-3.jpg', imageAlt: 'Фото клієнта Ахмеда К.' } },
-		{ rating: 5, quote: 'Привіз Jeep на діагностику перед далекою поїздкою. Пояснили проблему, узгодили ціну та повернули авто вчасно. Поїздка минула без пригод.', author: { name: 'Денис М.', role: 'Власник Jeep Grand Cherokee', image: '/cust-1.jpg', imageAlt: 'Фото клієнта Дениса М.' } },
+		{
+			rating: 5,
+			quote:
+				"Дилер просив $1200 за 'роботу з двигуном'. СТО Поршень знайшли несправну котушку, виправили за частину ціни та показали стару деталь. Ніколи більше не піду в інше місце.",
+			author: {
+				name: 'Олександр К.',
+				role: 'Власник Ford F-150',
+				image: '/cust-1.jpg',
+				imageAlt: 'Фото клієнта Олександра К.',
+			},
+		},
+		{
+			rating: 5,
+			quote:
+				'Гальма зробили, і я був на дорозі до обіду. Чесна ціна, чиста зона очікування, а майстер реально пояснив, що зносилося. Рекомендую.',
+			author: {
+				name: 'Софія Р.',
+				role: 'Власник Honda CR-V',
+				image: '/cust-2.jpg',
+				imageAlt: 'Фото клієнта Софії Р.',
+			},
+		},
+		{
+			rating: 5,
+			quote:
+				"Веземо всі родинні авто сюди вже 12 років. Чесні майстри, ніколи не нав'язують непотрібне. Гарантія дає реальний спокій.",
+			author: {
+				name: 'Ахмед К.',
+				role: 'Власник Toyota Camry',
+				image: '/cust-3.jpg',
+				imageAlt: 'Фото клієнта Ахмеда К.',
+			},
+		},
+		{
+			rating: 5,
+			quote:
+				'Привіз Jeep на діагностику перед далекою поїздкою. Пояснили проблему, узгодили ціну та повернули авто вчасно. Поїздка минула без пригод.',
+			author: {
+				name: 'Денис М.',
+				role: 'Власник Jeep Grand Cherokee',
+				image: '/cust-1.jpg',
+				imageAlt: 'Фото клієнта Дениса М.',
+			},
+		},
 	],
 };
 ---
 
-<section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
-  <Container size="lg">
-    <SectionHeader 
-			id="testimonials-heading"
-      eyebrow={testimonialsData.sectionTitle.eyebrow}
-      headline={testimonialsData.sectionTitle.headline}
-      centered
-    />
-    
-    <div class="testi" data-testi>
-      <div class="testi-viewport">
-        <div class="testi-track" aria-live="polite">
-          {testimonialsData.items.map((testi, index) => (
-            <div class="testi-slide" aria-label={`Відгук ${index + 1}`} tabindex="-1">
-              <article class="testi-card">
-                <div class="testi-stars" aria-label={`Оцінка ${testi.rating} з 5`} role="img">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Icon name="star" width="18" height="18" fill="currentColor" class={i < testi.rating ? 'filled' : ''} />
-                  ))}
-                </div>
-                <p class="testi-quote">"{testi.quote}"</p>
-                <div class="testi-who">
-                  <img 
-                    src={testi.author.image} 
-                    alt={testi.author.imageAlt}
-                    width="52" 
-                    height="52" 
-                    loading="lazy"
-                  >
-                  <div>
-                    <b>{testi.author.name}</b>
-                    <span>{testi.author.role}</span>
-                  </div>
-                </div>
-              </article>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div class="testi-nav" aria-label="Навігація відгуків">
-        <button class="testi-btn" data-testi-prev aria-label="Попередній відгук">
-          <Icon name="chevronLeft" width="20" height="20" stroke-width="2.2" />
-        </button>
-        <button class="testi-btn" data-testi-next aria-label="Наступний відгук">
-          <Icon name="chevronRight" width="20" height="20" stroke-width="2.2" />
-        </button>
-      </div>
-    </div>
-  </Container>
+<section class='testimonials carbon' id='testimonials' aria-labelledby='testimonials-heading'>
+	<Container size='lg'>
+		<SectionHeader
+			id='testimonials-heading'
+			eyebrow={testimonialsData.sectionTitle.eyebrow}
+			headline={testimonialsData.sectionTitle.headline}
+			centered
+		/>
+
+		<div class='testi' data-testi>
+			<div class='testi-viewport'>
+				<div class='testi-track' aria-live='polite'>
+					{
+						testimonialsData.items.map((testi, index) => (
+							<div class='testi-slide' aria-label={`Відгук ${index + 1}`} tabindex='-1'>
+								<article class='testi-card surface-card surface-card--dark'>
+									<div class='testi-stars' aria-label={`Оцінка ${testi.rating} з 5`} role='img'>
+										{Array.from({ length: 5 }).map((_, i) => (
+											<Icon
+												name={i < testi.rating ? 'star' : 'starOutline'}
+												width='18'
+												height='18'
+											/>
+										))}
+									</div>
+									<p class='testi-quote'>"{testi.quote}"</p>
+									<div class='testi-who'>
+										<img
+											src={testi.author.image}
+											alt={testi.author.imageAlt}
+											width='52'
+											height='52'
+											loading='lazy'
+										/>
+										<div>
+											<b>{testi.author.name}</b>
+											<span>{testi.author.role}</span>
+										</div>
+									</div>
+								</article>
+							</div>
+						))
+					}
+				</div>
+			</div>
+			<div class='testi-nav' aria-label='Навігація відгуків'>
+				<button class='testi-btn' data-testi-prev aria-label='Попередній відгук'>
+					<Icon name='chevronLeft' width='20' height='20' />
+				</button>
+				<button class='testi-btn' data-testi-next aria-label='Наступний відгук'>
+					<Icon name='chevronRight' width='20' height='20' />
+				</button>
+			</div>
+		</div>
+	</Container>
 </section>
 
-
-
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const testi = document.querySelector('[data-testi]');
-    if (!testi) return;
-    
-    const track = testi.querySelector('.testi-track');
-    const slides = testi.querySelectorAll('.testi-slide');
-    const prevBtn = testi.querySelector('[data-testi-prev]');
-    const nextBtn = testi.querySelector('[data-testi-next]');
-    
-    if (!track || slides.length <= 1) {
-      prevBtn?.remove();
-      nextBtn?.remove();
-      return;
-    }
-    
-    let currentIndex = 0;
-    let intervalId: ReturnType<typeof setInterval> | undefined;
+	document.addEventListener('DOMContentLoaded', () => {
+		const testi = document.querySelector('[data-testi]');
+		if (!testi) return;
 
-    const slidesPerView = () => window.innerWidth >= 768 ? 2 : 1;
-    const maxIndex = () => Math.max(0, slides.length - slidesPerView());
-    
-    function updatePosition() {
-      currentIndex = Math.min(currentIndex, maxIndex());
-      track.style.transform = `translateX(-${(100 / slidesPerView()) * currentIndex}%)`;
-      slides.forEach((slide, index) => {
-        const isVisible = index >= currentIndex && index < currentIndex + slidesPerView();
-        slide.setAttribute('aria-hidden', String(!isVisible));
-      });
-    }
-    
-    function next() {
-      currentIndex = currentIndex >= maxIndex() ? 0 : currentIndex + 1;
-      updatePosition();
-    }
-    
-    function prev() {
-      currentIndex = currentIndex <= 0 ? maxIndex() : currentIndex - 1;
-      updatePosition();
-    }
-    
-    prevBtn?.addEventListener('click', prev);
-    nextBtn?.addEventListener('click', next);
-    
-    const stopAutoAdvance = () => {
-      if (intervalId) clearInterval(intervalId);
-    };
+		const track = testi.querySelector('.testi-track');
+		const slides = testi.querySelectorAll('.testi-slide');
+		const prevBtn = testi.querySelector('[data-testi-prev]');
+		const nextBtn = testi.querySelector('[data-testi-next]');
 
-    const startAutoAdvance = () => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      stopAutoAdvance();
-      intervalId = setInterval(next, 6000);
-    };
+		if (!track || slides.length <= 1) {
+			prevBtn?.remove();
+			nextBtn?.remove();
+			return;
+		}
 
-    testi.addEventListener('mouseenter', stopAutoAdvance);
-    testi.addEventListener('mouseleave', startAutoAdvance);
-    
-    // Touch/swipe support
-    let touchStartX = 0;
-    track.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-      stopAutoAdvance();
-    }, { passive: true });
-    
-    track.addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].clientX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 50) {
-        diff > 0 ? next() : prev();
-      }
-      startAutoAdvance();
-    }, { passive: true });
-    
-    // Keyboard navigation
-    testi.tabIndex = 0;
-    testi.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'ArrowRight') next();
-    });
+		let currentIndex = 0;
+		let intervalId: ReturnType<typeof setInterval> | undefined;
 
-    window.addEventListener('resize', updatePosition);
-    updatePosition();
-    startAutoAdvance();
-  });
+		const slidesPerView = () => (window.innerWidth >= 768 ? 2 : 1);
+		const maxIndex = () => Math.max(0, slides.length - slidesPerView());
+
+		function updatePosition() {
+			currentIndex = Math.min(currentIndex, maxIndex());
+			track.style.transform = `translateX(-${(100 / slidesPerView()) * currentIndex}%)`;
+			slides.forEach((slide, index) => {
+				const isVisible = index >= currentIndex && index < currentIndex + slidesPerView();
+				slide.setAttribute('aria-hidden', String(!isVisible));
+			});
+		}
+
+		function next() {
+			currentIndex = currentIndex >= maxIndex() ? 0 : currentIndex + 1;
+			updatePosition();
+		}
+
+		function prev() {
+			currentIndex = currentIndex <= 0 ? maxIndex() : currentIndex - 1;
+			updatePosition();
+		}
+
+		prevBtn?.addEventListener('click', prev);
+		nextBtn?.addEventListener('click', next);
+
+		const stopAutoAdvance = () => {
+			if (intervalId) clearInterval(intervalId);
+		};
+
+		const startAutoAdvance = () => {
+			if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+			stopAutoAdvance();
+			intervalId = setInterval(next, 6000);
+		};
+
+		testi.addEventListener('mouseenter', stopAutoAdvance);
+		testi.addEventListener('mouseleave', startAutoAdvance);
+
+		// Touch/swipe support
+		let touchStartX = 0;
+		track.addEventListener(
+			'touchstart',
+			(e) => {
+				touchStartX = e.touches[0].clientX;
+				stopAutoAdvance();
+			},
+			{ passive: true },
+		);
+
+		track.addEventListener(
+			'touchend',
+			(e) => {
+				const touchEndX = e.changedTouches[0].clientX;
+				const diff = touchStartX - touchEndX;
+				if (Math.abs(diff) > 50) {
+					diff > 0 ? next() : prev();
+				}
+				startAutoAdvance();
+			},
+			{ passive: true },
+		);
+
+		// Keyboard navigation
+		testi.tabIndex = 0;
+		testi.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') prev();
+			if (e.key === 'ArrowRight') next();
+		});
+
+		window.addEventListener('resize', updatePosition);
+		updatePosition();
+		startAutoAdvance();
+	});
 </script>
