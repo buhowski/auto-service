@@ -2,80 +2,48 @@
 import './Footer.scss';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
-const brandParts = ['СТО ', 'Поршень', ''];
-const footerAbout = 'Сімейне СТО з сертифікованими майстрами, яким можна довіряти. Чесні кошториси, якісні запчастини та гарантія 24 місяці на кожну роботу.';
-const socialLinks = [
-	{ href: '#', icon: 'facebook', ariaLabel: 'СТО Поршень на Facebook' },
-	{ href: '#', icon: 'instagram', ariaLabel: 'СТО Поршень в Instagram' },
-	{ href: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів', icon: 'google-maps', ariaLabel: 'СТО Поршень на Google Maps' },
-];
-const footerLinks = {
-	services: ['Двигун та трансмісія', 'Гальмівна система', 'Підвіска та кермування', 'Електрика та діагностика', 'Клімат-контроль', 'ТО та заміна техплин'],
-	company: ['Переваги', 'Як ми працюємо', 'Відгуки', 'Графік роботи'],
-	visit: [
-		{ icon: 'location', value: 'вул. Сирецька, 42\nЛьвів, 79000', href: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів' },
-		{ icon: 'phone', value: '(032) 234-56-78', href: 'tel:+380322345678' },
-		{ icon: 'clock', value: 'Пн-Пт 07:30-18:00 · Сб 08:00-15:00\nНд - зачинено' },
-	],
-};
+import SocialLinks from './SocialLinks.astro';
+
+const year = new Date().getFullYear();
+const footerAbout =
+	'Сімейне СТО у Львові: чесні кошториси, сертифіковані майстри та гарантія 24 місяці на кожну роботу.';
+const address = 'вул. Сирецька, 42, Львів, 79000';
+const mapsUrl = 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів';
 ---
 
-<footer class="footer" role="contentinfo">
-  <div class="hazard-thin" role="presentation"></div>
-  <Container size="lg">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="brand" href="/" aria-label="СТО Поршень — home">
-          <span class="brand-mark" aria-hidden="true">
-            <Icon name="brandMark" width="24" height="24" />
-          </span>
-          {brandParts[0]}<b>{brandParts[1]}</b>{brandParts[2]}
-        </a>
-        <p class="footer-about">{footerAbout}</p>
-        <div class="footer-social" role="list" aria-label="Social links">
-          {socialLinks.map(social => (
-            <a href={social.href} aria-label={social.ariaLabel} role="listitem">
-              <Icon name={social.icon} width="20" height="20" />
-            </a>
-          ))}
-        </div>
-      </div>
-      
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <div class="footer-col">
-          <h4>Послуги</h4>
-          <ul>
-            {footerLinks.services.map(text => (
-              <li><a href="#services">{text}</a></li>
-            ))}
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Компанія</h4>
-          <ul>
-            {footerLinks.company.map((text, index) => (
-              <li><a href={['#why-choose', '#steps', '#testimonials', '#visit'][index]}>{text}</a></li>
-            ))}
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Завітайте до нас</h4>
-          <ul class="footer-contact">
-            {footerLinks.visit.map(item => (
-              <li>
-                <Icon name={item.icon} width="20" height="20" />
-                {item.href ? <a href={item.href}>{item.value}</a> : <span>{item.value}</span>}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
-    </div>
-    
-    <div class="footer-bottom">
-      <p class="copyright">© 2025 СТО Поршень. Усі права захищено.</p>
-      <a href="#main">На початок</a>
-    </div>
-  </Container>
-</footer>
+<footer class='footer' role='contentinfo'>
+	<div class='hazard-thin' role='presentation'></div>
+	<Container size='lg'>
+		<div class='footer-main'>
+			<div class='footer-brand'>
+				<a class='brand' href='/' aria-label='СТО Поршень — на початок сторінки'>
+					<span class='brand-mark' aria-hidden='true'>
+						<Icon name='brandMark' width='24' height='24' />
+					</span>
+					СТО <b>Поршень</b>
+				</a>
+				<p class='footer-about'>{footerAbout}</p>
+				<SocialLinks className='footer-social' />
+			</div>
 
+			<address class='footer-contact' aria-label='Контактна інформація'>
+				<a class='footer-contact__item footer-contact__phone' href='tel:+380322345678'>
+					<Icon name='phone' width='20' height='20' />
+					<span>(032) 234-56-78</span>
+				</a>
+				<a class='footer-contact__item' href={mapsUrl} target='_blank' rel='noreferrer'>
+					<Icon name='location' width='20' height='20' />
+					<span>{address}</span>
+				</a>
+				<p class='footer-contact__item footer-hours'>
+					<Icon name='clock' width='20' height='20' />
+					<span>Пн-Пт 07:30-18:00 · Сб 08:00-15:00 · Нд зачинено</span>
+				</p>
+			</address>
+		</div>
+
+		<div class='footer-bottom'>
+			<p class='copyright'>© {year} СТО Поршень. Усі права захищено.</p>
+		</div>
+	</Container>
+</footer>

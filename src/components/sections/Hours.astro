@@ -8,87 +8,105 @@ const hoursData = {
 	sectionTitle: { eyebrow: 'Знайдіть нас · Графік роботи', headline: 'Заїздіть до боксу' },
 	lead: 'Ми на вул. Сирецькій, поруч зі зручною парковкою та комфортною зоною очікування з кавою. Є ключова скринька для ранньої та пізньої передачі авто.',
 	hours: [
-		{ day: 'Понеділок', time: '07:30 – 18:00' }, { day: 'Вівторок', time: '07:30 – 18:00' },
-		{ day: 'Середа', time: '07:30 – 18:00' }, { day: 'Четвер', time: '07:30 – 18:00' },
-		{ day: "П'ятниця", time: '07:30 – 18:00' }, { day: 'Субота', time: '08:00 – 15:00' },
+		{ day: 'Понеділок', time: '07:30 – 18:00' },
+		{ day: 'Вівторок', time: '07:30 – 18:00' },
+		{ day: 'Середа', time: '07:30 – 18:00' },
+		{ day: 'Четвер', time: '07:30 – 18:00' },
+		{ day: "П'ятниця", time: '07:30 – 18:00' },
+		{ day: 'Субота', time: '08:00 – 15:00' },
 		{ day: 'Неділя', time: 'Закрито', isClosed: true },
 	],
 	contact: [
-		{ icon: 'location', label: 'Адреса', value: 'вул. Сирецька, 42, Львів, 79000', href: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів' },
+		{
+			icon: 'location',
+			label: 'Адреса',
+			value: 'вул. Сирецька, 42, Львів, 79000',
+			href: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів',
+		},
 		{ icon: 'phone', label: 'Телефон', value: '(032) 234-56-78', href: 'tel:+380322345678' },
-		{ icon: 'email', label: 'Email', value: 'service@stoporshen.ua', href: 'mailto:service@stoporshen.ua' },
 	],
-	map: { address: 'вул. Сирецька, 42, Львів', directionsUrl: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів' },
+	map: {
+		address: 'вул. Сирецька, 42, Львів',
+		directionsUrl: 'https://maps.google.com/?q=вул.+Сирецька,+42,+Львів',
+	},
 };
 ---
 
-<section class="hours-section" id="visit" aria-labelledby="visit-heading">
-  <Container size="lg">
-    <div class="visit-grid">
-      <div class="visit-info reveal">
-        <SectionHeader 
-			id="visit-heading"
-          eyebrow={hoursData.sectionTitle.eyebrow}
-          headline={hoursData.sectionTitle.headline}
-        />
-        <p class="lead">{hoursData.lead}</p>
-        
-        <ul class="hours-table" role="list" aria-label="Opening hours">
-          {hoursData.hours.map((hour, index) => (
-            <li class={hour.isClosed ? 'closed' : ''} data-day={index === 6 ? 0 : index + 1}>
-              <span class="day">{hour.day}</span>
-              <span class="hrs">{hour.time}</span>
-            </li>
-          ))}
-        </ul>
-        
-        <div class="visit-contact">
-          {hoursData.contact.map(item => (
-            <div class="visit-line">
-              <Icon name={item.icon} width="20" height="20" />
-              <div>
-                <b>{item.label}</b>
-                <a href={item.href}>{item.value}</a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      <div class="visit-map reveal">
-        <div class="map-diag" aria-hidden="true"></div>
-        <div class="map-pin">
-          <div class="map-pin-dot" aria-hidden="true"></div>
-          <div class="map-addr">{hoursData.map.address}</div>
-          <Button variant="accent" href={hoursData.map.directionsUrl} target="_blank" rel="noopener">
-            <Icon name="google-maps" width="18" height="18" />
-            Отримати маршрут
-          </Button>
-        </div>
-      </div>
-    </div>
-  </Container>
+<section class='hours-section' id='visit' aria-labelledby='visit-heading'>
+	<Container size='lg'>
+		<div class='visit-grid'>
+			<div class='visit-info reveal'>
+				<SectionHeader
+					id='visit-heading'
+					eyebrow={hoursData.sectionTitle.eyebrow}
+					headline={hoursData.sectionTitle.headline}
+				/>
+				<p class='lead'>{hoursData.lead}</p>
+
+				<ul class='hours-table' role='list' aria-label='Opening hours'>
+					{
+						hoursData.hours.map((hour, index) => (
+							<li class={hour.isClosed ? 'closed' : ''} data-day={index === 6 ? 0 : index + 1}>
+								<span class='day'>{hour.day}</span>
+								<span class='hrs'>{hour.time}</span>
+							</li>
+						))
+					}
+				</ul>
+
+				<div class='visit-contact'>
+					{
+						hoursData.contact.map((item) => (
+							<div class='visit-line'>
+								<Icon name={item.icon} width='20' height='20' />
+								<div>
+									<b>{item.label}</b>
+									<a href={item.href}>{item.value}</a>
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</div>
+
+			<div class='visit-map reveal'>
+				<div class='map-diag' aria-hidden='true'></div>
+				<div class='map-pin'>
+					<div class='map-pin-dot' aria-hidden='true'></div>
+					<div class='map-addr'>{hoursData.map.address}</div>
+					<Button
+						variant='accent'
+						href={hoursData.map.directionsUrl}
+						target='_blank'
+						rel='noopener'
+					>
+						<Icon name='google-maps' width='18' height='18' />
+						Отримати маршрут
+					</Button>
+				</div>
+			</div>
+		</div>
+	</Container>
 </section>
 
 <style>
-  .hours-table li.today {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
+	.hours-table li.today {
+		color: var(--accent);
+		border-bottom-color: var(--accent);
+	}
 
-  .hours-table li.today .day,
-  .hours-table li.today .hrs {
-    color: var(--accent);
-  }
+	.hours-table li.today .day,
+	.hours-table li.today .hrs {
+		color: var(--accent);
+	}
 </style>
 
 <script>
-  const localDay = new Intl.DateTimeFormat('en-US', {
-    weekday: 'short',
-    timeZone: 'Europe/Kyiv',
-  }).format(new Date());
-  const dayIndexes = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const todayIndex = dayIndexes.indexOf(localDay);
-  document.querySelector(`.hours-table [data-day="${todayIndex}"]`)?.classList.add('today');
+	const localDay = new Intl.DateTimeFormat('en-US', {
+		weekday: 'short',
+		timeZone: 'Europe/Kyiv',
+	}).format(new Date());
+	const dayIndexes = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	const todayIndex = dayIndexes.indexOf(localDay);
+	document.querySelector(`.hours-table [data-day="${todayIndex}"]`)?.classList.add('today');
 </script>
-

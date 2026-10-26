@@ -1,0 +1,17 @@
+---
+interface Props {
+	className?: string;
+}
+
+const { className = '' } = Astro.props;
+const links = [
+	{ href: '#services', label: 'Послуги' },
+	{ href: '#why-choose', label: 'Чому ми' },
+	{ href: '#testimonials', label: 'Відгуки' },
+	{ href: '#visit', label: 'Контакти' },
+];
+---
+
+<ul class={className} role='list'>
+	{links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+</ul>

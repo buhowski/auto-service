@@ -1,0 +1,28 @@
+---
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+	className?: string;
+}
+
+const { className = '' } = Astro.props;
+const links = [
+	{ href: 'viber://chat?number=%2B380322345678', label: 'Написати у Viber', title: 'Viber', icon: 'viber' },
+	{ href: 'https://t.me/sto_porshen', label: 'Написати у Telegram', title: 'Telegram', icon: 'telegram', external: true },
+	{ href: 'https://instagram.com/sto_porshen', label: 'СТО Поршень в Instagram', title: 'Instagram', icon: 'instagram', external: true },
+];
+---
+
+<nav class={className} aria-label='Соціальні мережі'>
+	{links.map((link) => (
+		<a
+			href={link.href}
+			aria-label={link.label}
+			title={link.title}
+			target={link.external ? '_blank' : undefined}
+			rel={link.external ? 'noopener noreferrer' : undefined}
+		>
+			<Icon name={link.icon} width='22' height='22' />
+		</a>
+	))}
+</nav>
