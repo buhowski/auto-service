@@ -3,14 +3,14 @@
 .booking-modal {
 	position: fixed;
 	inset: 0;
-	z-index: 1000;
-	background: rgba(8, 10, 12, 0.78);
-	backdrop-filter: blur(5px);
+	z-index: 200;
+	background: rgba(8, 10, 12, 0.7);
+	backdrop-filter: blur(6px);
 	overflow: hidden;
 	height: 100dvh;
 
 	> div {
-		padding: 100px 15px 40px;
+		padding: 40px 15px;
 		height: 100%;
 		overflow-y: auto;
 		display: grid;

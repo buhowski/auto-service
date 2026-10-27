@@ -5,12 +5,13 @@
 	color: var(--color-white);
 	overflow: hidden;
 	background: var(--color-ink);
-	padding: 12rem 0 8rem;
+	padding: 12rem 0;
 	display: flex;
 	align-items: center;
+	min-height: 100dvh;
 
 	@include bp.mobile {
-		padding: 7rem 0 5rem;
+		padding: 7rem 0;
 	}
 }
 .hero-bg {

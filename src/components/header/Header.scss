@@ -5,7 +5,7 @@
 	position: fixed;
 	top: 0;
 	width: 100%;
-	z-index: 1300;
+	z-index: 100;
 	transition:
 		box-shadow var(--motion-standard) ease,
 		background-color var(--motion-standard) ease;
@@ -122,7 +122,7 @@
 	border-color: rgba(var.$color-white, 35%);
 }
 
-.overlay {
+.mobile_overlay {
 	position: fixed;
 	inset: 0;
 	background: rgba(var.$color-ink, 60%);
@@ -132,10 +132,11 @@
 		opacity 0.28s ease,
 		visibility 0.28s ease;
 	z-index: 200;
-}
-.overlay.open {
-	opacity: 1;
-	visibility: visible;
+
+	&.open {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 
 .mobile {
@@ -207,8 +208,7 @@
 	min-height: 48px;
 }
 .mobile-links li a:is(:hover, :focus-visible, .is-active) {
-	color: var(--color-white);
-	background: var(--color-surface-dark);
+	color: var(--color-accent);
 }
 .mobile-links li + li {
 	margin-top: 0.2rem;

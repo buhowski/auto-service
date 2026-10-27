@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const burger = document.querySelector('.burger');
 	const menu = document.querySelector('.mobile');
-	const overlay = document.querySelector('.overlay');
+	const overlay = document.querySelector('.mobile_overlay');
 	const closeBtn = document.querySelector('.mobile-close');
 
 	if (!burger || !menu) return;

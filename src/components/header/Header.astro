@@ -35,17 +35,18 @@ import { site } from '../../data/site';
 			</button>
 		</Container>
 	</nav>
-
-	<div class='overlay' aria-hidden='true'></div>
-	<nav class='mobile' id='mobileMenu' aria-label='Мобільна навігація'>
-		<button class='mobile-close' aria-label='Закрити меню' aria-controls='mobileMenu'>
-			<Icon name='close' width='24' height='24' />
-		</button>
-		<NavLinks className='mobile-links' />
-		<SocialLinks className='mobile-social' />
-
-		<Button variant='primary' block href={site.links.booking} data-booking-open>Записатися</Button>
-	</nav>
 </header>
 
-<script src="../../scripts/header.ts"></script>
+<div class='mobile_overlay' aria-hidden='true'></div>
+
+<nav class='mobile' id='mobileMenu' aria-label='Мобільна навігація'>
+	<button class='mobile-close' aria-label='Закрити меню' aria-controls='mobileMenu'>
+		<Icon name='close' width='24' height='24' />
+	</button>
+	<NavLinks className='mobile-links' />
+	<SocialLinks className='mobile-social' />
+
+	<Button variant='primary' block href={site.links.booking} data-booking-open>Записатися</Button>
+</nav>
+
+<script src='../../scripts/header.ts'></script>
