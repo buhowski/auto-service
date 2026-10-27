@@ -1,18 +1,14 @@
 ---
 import './Container.scss';
 interface Props {
-  class?: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+	class?: string;
 }
 
-const { class: className = '', size = 'lg' } = Astro.props;
+const { class: className = '' } = Astro.props;
 
-const classes = [
-  'container',
-  `container--${size}`,
-  className,
-].filter(Boolean).join(' ');
+const classes = ['container', className].filter(Boolean).join(' ');
 ---
+
 <div class={classes}>
-  <slot />
+	<slot />
 </div>

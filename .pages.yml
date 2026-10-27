@@ -1,2 +1,351 @@
-# Pages CMS configuration
-# https://pagescms.org/docs/configuration
+components:
+  backgroundMedia:
+    type: object
+    fields:
+      - name: type
+        label: Background type
+        type: select
+        required: true
+        options:
+          values:
+            - name: none
+              label: No media
+            - name: image
+              label: Image
+            - name: video
+              label: Video
+      - name: image
+        label: Background image or video poster
+        type: image
+        options:
+          media: uploads
+          path: public/uploads
+          categories: [image]
+      - name: video
+        label: Background video
+        type: file
+        options:
+          media: uploads
+          path: public/uploads
+          categories: [video]
+          extensions: [mp4, webm]
+      - name: alt
+        label: Image description
+        type: string
+
+media:
+  - name: uploads
+    label: Images and SVG files
+    input: public/uploads
+    output: /uploads
+    categories: [image, video]
+
+content:
+  - name: site
+    label: Site settings
+    type: file
+    path: src/content/site.json
+    fields:
+      - name: brandPrefix
+        label: Brand prefix
+        type: string
+      - name: brandName
+        label: Brand name
+        type: string
+      - name: city
+        label: City
+        type: string
+      - name: phoneNumber
+        label: Phone number in international format
+        type: string
+      - name: streetAddress
+        label: Street address
+        type: string
+      - name: postalCode
+        label: Postal code
+        type: string
+      - name: footerAbout
+        label: Footer description
+        type: text
+      - name: navigation
+        label: Navigation links
+        type: object
+        list: true
+        fields:
+          - name: href
+            label: Section link
+            type: string
+          - name: label
+            label: Link text
+            type: string
+      - name: socialLinks
+        label: Social links
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Network
+            type: string
+          - name: label
+            label: Accessible label
+            type: string
+          - name: href
+            label: URL
+            type: string
+          - name: icon
+            label: Icon name
+            type: string
+          - name: external
+            label: Opens in a new tab
+            type: boolean
+      - name: booking
+        label: Booking form labels
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: intro
+            label: Intro
+            type: text
+          - name: submitLabel
+            label: Submit button
+            type: string
+          - name: namePlaceholder
+            label: Name placeholder
+            type: string
+          - name: phonePlaceholder
+            label: Phone placeholder
+            type: string
+          - name: notePlaceholder
+            label: Note placeholder
+            type: string
+          - name: status
+            label: Status message
+            type: text
+  - name: homepage
+    label: Homepage content
+    type: file
+    path: src/content/homepage.json
+    fields:
+      - name: hero
+        label: Hero
+        type: object
+        fields:
+          - name: headline
+            label: Headline
+            type: string
+          - name: highlightedWord
+            label: Highlighted word
+            type: string
+          - name: subtext
+            label: Description
+            type: text
+          - name: background
+            label: Background media
+            component: backgroundMedia
+          - name: primaryCta
+            label: Primary button
+            type: string
+          - name: secondaryCta
+            label: Secondary button
+            type: string
+      - name: whyChoose
+        label: Why choose us
+        type: object
+        fields:
+          - name: eyebrow
+            label: Eyebrow
+            type: string
+          - name: headline
+            label: Headline
+            type: string
+          - name: lead
+            label: Intro
+            type: text
+          - name: image
+            label: Image
+            type: image
+          - name: imageAlt
+            label: Image description
+            type: string
+          - name: items
+            label: Benefits
+            type: object
+            list: true
+            fields:
+              - name: icon
+                label: Icon name
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: description
+                label: Description
+                type: text
+      - name: steps
+        label: Process steps
+        type: object
+        list: true
+        fields:
+          - name: icon
+            label: SVG icon name
+            type: string
+          - name: title
+            label: Title
+            type: string
+          - name: description
+            label: Description
+            type: text
+      - name: testimonials
+        label: Testimonials
+        type: object
+        fields:
+          - name: eyebrow
+            label: Eyebrow
+            type: string
+          - name: headline
+            label: Headline
+            type: string
+          - name: items
+            label: Reviews
+            type: object
+            list: true
+            fields:
+              - name: rating
+                label: Rating
+                type: number
+              - name: quote
+                label: Review
+                type: text
+              - name: author
+                label: Author
+                type: object
+                fields:
+                  - name: name
+                    label: Name
+                    type: string
+                  - name: role
+                    label: Vehicle
+                    type: string
+                  - name: image
+                    label: Photo
+                    type: image
+                  - name: imageAlt
+                    label: Photo description
+                    type: string
+      - name: brands
+        label: Car brands
+        type: object
+        fields:
+          - name: eyebrow
+            label: Eyebrow
+            type: string
+          - name: headline
+            label: Headline
+            type: string
+          - name: items
+            label: Brands
+            type: object
+            list: true
+            fields:
+              - name: name
+                label: Brand name
+                type: string
+              - name: logo
+                label: SVG logo
+                type: image
+      - name: cta
+        label: Call to action
+        type: object
+        fields:
+          - name: eyebrow
+            label: Eyebrow
+            type: string
+          - name: headline
+            label: Headline
+            type: string
+          - name: subtext
+            label: Description
+            type: text
+          - name: background
+            label: Background media
+            component: backgroundMedia
+          - name: primaryCta
+            label: Primary button
+            type: string
+          - name: secondaryCta
+            label: Secondary button
+            type: string
+      - name: hours
+        label: Contact section
+        type: object
+        fields:
+          - name: eyebrow
+            label: Eyebrow
+            type: string
+          - name: headline
+            label: Headline
+            type: string
+          - name: lead
+            label: Description. Use {address} for the address.
+            type: text
+          - name: directionsLabel
+            label: Directions button
+            type: string
+  - name: services
+    label: Services and prices
+    type: file
+    path: src/content/services.json
+    fields:
+      - name: eyebrow
+        label: Eyebrow
+        type: string
+      - name: headline
+        label: Headline
+        type: string
+      - name: categories
+        label: Categories
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: ID
+            type: string
+          - name: title
+            label: Category
+            type: string
+          - name: services
+            label: Services
+            type: object
+            list: true
+            fields:
+              - name: name
+                label: Service
+                type: string
+              - name: price
+                label: Price
+                type: string
+  - name: schedule
+    label: Opening hours
+    type: file
+    path: src/content/opening-hours.json
+    fields:
+      - name: groups
+        label: Schedule groups
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Days label
+            type: string
+          - name: days
+            label: Weekday indexes (Sunday is 0)
+            type: number
+            list: true
+          - name: open
+            label: Opens at
+            type: string
+          - name: close
+            label: Closes at
+            type: string

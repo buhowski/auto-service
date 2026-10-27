@@ -36,45 +36,7 @@ import { site } from '../data/site';
 		<Footer />
 		<BookingModal />
 
-		<script is:inline>
-			// Global scroll reveal
-			const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-			function initReveal() {
-				const els = document.querySelectorAll('.reveal');
-				if (!els.length) return;
-
-				if (prefersReduced || !('IntersectionObserver' in window)) {
-					els.forEach((el) => el.classList.add('in'));
-					return;
-				}
-
-				const io = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								const delay = entry.target.style.getPropertyValue('--delay');
-								if (delay) {
-									setTimeout(() => entry.target.classList.add('in'), parseInt(delay));
-								} else {
-									entry.target.classList.add('in');
-								}
-								io.unobserve(entry.target);
-							}
-						});
-					},
-					{ threshold: 0.14, rootMargin: '0px 0px -8% 0px' },
-				);
-
-				els.forEach((el) => io.observe(el));
-			}
-
-			if (document.readyState === 'loading') {
-				document.addEventListener('DOMContentLoaded', initReveal);
-			} else {
-				initReveal();
-			}
-		</script>
+		<script src='../scripts/reveal.ts'></script>
 	</body>
 
 

@@ -6,12 +6,7 @@ interface Props {
 }
 
 const { className = '' } = Astro.props;
-const links = [
-	{ href: site.links.services, label: 'Послуги' },
-	{ href: site.links.whyUs, label: 'Чому ми' },
-	{ href: site.links.testimonials, label: 'Відгуки' },
-	{ href: site.links.contacts, label: 'Контакти' },
-];
+const links = site.navigation;
 ---
 
 <ul class={className} role='list'>

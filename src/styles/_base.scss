@@ -6,8 +6,8 @@ body {
 	line-height: 1.6;
 	color: var(--color-text);
 	background: var(--color-white);
-	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
+	cursor: default;
 }
 
 h1,
@@ -83,13 +83,17 @@ p {
 	color: var(--color-black);
 }
 
-.brand-mark svg {
-	fill: currentColor;
+.icon-mask {
+	display: inline-block;
+	width: var(--icon-width);
+	height: var(--icon-height);
+	flex: none;
+	background-color: currentColor;
+	mask: var(--icon-source) center / contain no-repeat;
 }
 
 .social-links {
 	display: flex;
-	align-items: center;
 	gap: 0.6rem;
 }
 
@@ -128,7 +132,7 @@ a:hover {
 }
 
 :focus-visible {
-	outline: 3px solid var(--color-secondary);
+	outline: 2px solid var(--color-secondary);
 	outline-offset: 2px;
 }
 

@@ -3,23 +3,16 @@ import './Steps.scss';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
-
-const stepsData = {
-	sectionTitle: { eyebrow: 'Просто від початку до кінця', headline: 'Три кроки до справного авто' },
-	items: [
-		{ icon: 'step1', title: 'Запишіться на візит', description: 'Оберіть час online або зателефонуйте. Для планового обслуговування часто є місця на сьогодні.' },
-		{ icon: 'step2', title: 'Діагностика і кошторис', description: 'Майстер огляне авто, пояснить причину несправності та погодить письмовий кошторис до початку робіт.' },
-		{ icon: 'step3', title: 'Ремонт з гарантією', description: 'Сертифіковані майстри виконають ремонт, перевірять авто на дорозі й передадуть його з гарантією 24 місяці.' },
-	],
-};
+import content from '../../content/homepage.json';
+const stepsData = content.steps;
 ---
 
 <section class="steps-section" id="steps" aria-labelledby="steps-heading">
 	<Container size="lg">
 		<SectionHeader
 			id="steps-heading"
-			eyebrow={stepsData.sectionTitle.eyebrow}
-			headline={stepsData.sectionTitle.headline}
+			eyebrow={stepsData.eyebrow}
+			headline={stepsData.headline}
 			centered
 		/>
 
@@ -28,7 +21,7 @@ const stepsData = {
 				<article class="step surface-card reveal" style={`--delay: ${index * 100}ms`}>
 					<div class="step-meta">
 						<span class="step-number">{String(index + 1).padStart(2, '0')}</span>
-						<span class="step-icon"><Icon name={step.icon} width="24" height="24" /></span>
+						<span class="step-icon"><Icon name={step.icon as 'step1' | 'step2' | 'step3'} width="24" height="24" /></span>
 					</div>
 					<h3>{step.title}</h3>
 					<p>{step.description}</p>

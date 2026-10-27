@@ -1,4 +1,5 @@
 @use '../../styles/variables' as var;
+@use '../../styles/breakpoints' as bp;
 
 .footer {
 	background: var(--color-ink);
@@ -13,10 +14,10 @@
 .footer-main {
 	display: grid;
 	grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-	align-items: center;
 	gap: clamp(2rem, 6vw, 6rem);
 	padding: 2.5rem 0 2rem;
 	border-bottom: 1px solid rgba(var.$color-white, 16%);
+	align-items: start;
 }
 
 .footer .brand {
@@ -25,7 +26,7 @@
 
 .footer-about {
 	max-width: 440px;
-	margin: 0 0 1.25rem;
+	margin-bottom: 0;
 	font-size: 0.95rem;
 	line-height: 1.7;
 	color: var(--color-text-on-dark);
@@ -39,15 +40,12 @@
 
 .footer-contact {
 	display: grid;
-	gap: 0.9rem;
-	margin: 0;
-	font-style: normal;
+	justify-items: end;
+	gap: 30px;
 }
 
 .footer-contact__item {
-	display: grid;
-	grid-template-columns: 24px minmax(0, 1fr);
-	align-items: start;
+	display: flex;
 	column-gap: 0.75rem;
 	margin: 0;
 	color: var(--color-white);
@@ -81,16 +79,6 @@ a.footer-contact__item {
 }
 
 .footer-business-hours {
-	margin-top: 0.15rem;
-
-	.business-hours__city {
-		display: none;
-	}
-
-	.business-hours__status {
-		column-gap: 0.75rem;
-	}
-
 	.business-hours__panel {
 		top: auto;
 		bottom: calc(100% + 0.45rem);
@@ -113,12 +101,14 @@ a.footer-contact__item {
 
 .copyright {
 	margin: 0;
-	font-size: 0.85rem;
+	font-size: 12px;
 	color: var(--color-text-on-dark);
 }
 
-@media (max-width: 700px) {
-	.footer > .container {
+
+.footer {
+	@include bp.mobile {
+	> .container {
 		margin-top: 2rem;
 	}
 	.footer-main {
@@ -131,4 +121,5 @@ a.footer-contact__item {
 		flex-direction: column;
 		gap: 0.5rem;
 	}
+}
 }

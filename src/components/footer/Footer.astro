@@ -4,10 +4,9 @@ import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
 import BusinessHours from '../ui/BusinessHours.astro';
 import SocialLinks from '../header/SocialLinks.astro';
-import { site } from '../../data/site';
+import { footerAbout, site } from '../../data/site';
 
 const year = new Date().getFullYear();
-const footerAbout = `Сімейне СТО у Львові: чесні кошториси, сертифіковані майстри та гарантія 24 місяці на кожну роботу.`;
 ---
 
 <footer class='footer' role='contentinfo'>
@@ -23,14 +22,9 @@ const footerAbout = `Сімейне СТО у Львові: чесні кошт�
 					<b>{site.brand.name}</b>
 				</a>
 				<p class='footer-about'>{footerAbout}</p>
-				<SocialLinks className='footer-social' />
 			</div>
 
 			<address class='footer-contact' aria-label='Контактна інформація'>
-				<a class='footer-contact__item footer-contact__phone' href={site.phone.href}>
-					<Icon name='phone' width='20' height='20' />
-					<span>{site.phone.display}</span>
-				</a>
 				<a
 					class='footer-contact__item'
 					href={site.address.mapsUrl}
@@ -40,16 +34,15 @@ const footerAbout = `Сімейне СТО у Львові: чесні кошт�
 					<Icon name='location' width='20' height='20' />
 					<span>{site.address.full}</span>
 				</a>
-				<div class='footer-contact__item'>
-					<Icon name='clock' width='20' height='20' />
 
-					<BusinessHours id='footer-business-hours' class='footer-business-hours' />
-				</div>
+				<SocialLinks className='footer-social' />
 			</address>
 		</div>
 
 		<div class='footer-bottom'>
 			<p class='copyright'>© {year} {site.name}. Усі права захищено.</p>
+
+			<BusinessHours id='footer-business-hours' class='footer-business-hours' />
 		</div>
 	</Container>
 </footer>

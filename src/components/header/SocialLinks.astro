@@ -4,29 +4,29 @@ import { site } from '../../data/site';
 
 interface Props {
 	className?: string;
-	includePhone?: boolean;
+	socialOnly?: boolean;
 }
 
-const { className = '', includePhone = false } = Astro.props;
+const { className = '', socialOnly = false } = Astro.props;
+const socialLinks = Object.fromEntries(site.socialLinks.map((link) => [link.icon, link]));
+const phoneLink = {
+	href: site.phone.href,
+	label: `Зателефонувати: ${site.phone.display}`,
+	title: 'Телефон',
+	icon: 'phone',
+	external: false,
+};
 const links = [
-	...(includePhone
-		? [
-				{
-					href: site.phone.href,
-					label: `Зателефонувати: ${site.phone.display}`,
-					title: 'Зателефонувати',
-					icon: 'phone' as const,
-					external: false,
-				},
-			]
-		: []),
-	...site.socialLinks,
+	...(socialOnly ? [] : [phoneLink]),
+	socialLinks.telegram,
+	socialLinks.viber,
+	socialLinks.instagram,
 ];
 ---
 
 <nav
 	class={`social-links ${className}`.trim()}
-	aria-label={includePhone ? 'Телефон і соціальні мережі' : 'Соціальні мережі'}
+	aria-label={socialOnly ? 'Соціальні мережі' : 'Телефон і соціальні мережі'}
 >
 	{
 		links.map((link) => (

@@ -5,22 +5,28 @@ import SectionHeader from '../ui/SectionHeader.astro';
 import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
 import { site } from '../../data/site';
+import content from '../../content/homepage.json';
+const hoursContent = content.hours;
 const hoursData = {
-	sectionTitle: { eyebrow: 'Знайдіть нас · Графік роботи', headline: 'Заїздіть до боксу' },
-	lead: `Ми на ${site.address.mapLabel}, поруч зі зручною парковкою та комфортною зоною очікування з кавою. Є ключова скринька для ранньої та пізньої передачі авто.`,
+	sectionTitle: { eyebrow: hoursContent.eyebrow, headline: hoursContent.headline },
+	lead: hoursContent.lead.replace('{address}', site.address.mapLabel),
 	hours: site.openingHours,
 	contact: [
 		{
 			icon: 'location',
 			label: 'Адреса',
-			value: site.address.full,
-			href: site.address.mapsUrl,
+			links: [{ display: site.address.full, href: site.address.mapsUrl }],
 		},
-		{ icon: 'phone', label: 'Телефон', value: site.phone.display, href: site.phone.href },
+		{
+			icon: 'phone',
+			label: 'Контакти',
+			links: [site.phone],
+		},
 	],
 	map: {
 		address: site.address.mapLabel,
 		directionsUrl: site.address.mapsUrl,
+		directionsLabel: hoursContent.directionsLabel,
 	},
 };
 ---
@@ -38,8 +44,8 @@ const hoursData = {
 
 				<ul class='hours-table' role='list' aria-label='Графік роботи'>
 					{
-						hoursData.hours.map((hour, index) => (
-							<li class={hour.isClosed ? 'closed' : ''} data-day={index === 6 ? 0 : index + 1}>
+						hoursData.hours.map((hour) => (
+							<li class={hour.isClosed ? 'closed' : ''} data-day={hour.weekday}>
 								<span class='day'>{hour.day}</span>
 								<span class='hrs'>{hour.time}</span>
 							</li>
@@ -54,7 +60,14 @@ const hoursData = {
 								<Icon name={item.icon} width='20' height='20' />
 								<div>
 									<b>{item.label}</b>
-									<a href={item.href}>{item.value}</a>
+
+									<div class='visit-line__block'>
+										{item.links.map((link) => (
+											<a class='visit-line__link' href={link.href}>
+												{link.display}
+											</a>
+										))}
+									</div>
 								</div>
 							</div>
 						))
@@ -69,7 +82,7 @@ const hoursData = {
 
 					<div class='map-addr'>{hoursData.map.address}</div>
 					<Button variant='dark' href={hoursData.map.directionsUrl} target='_blank' rel='noopener'>
-						Отримати маршрут
+						{hoursData.map.directionsLabel}
 					</Button>
 				</div>
 			</div>
@@ -77,12 +90,4 @@ const hoursData = {
 	</Container>
 </section>
 
-<script>
-	const localDay = new Intl.DateTimeFormat('en-US', {
-		weekday: 'short',
-		timeZone: 'Europe/Kyiv',
-	}).format(new Date());
-	const dayIndexes = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-	const todayIndex = dayIndexes.indexOf(localDay);
-	document.querySelector(`.hours-table [data-day="${todayIndex}"]`)?.classList.add('today');
-</script>
+<script src='../../scripts/hours.ts'></script>

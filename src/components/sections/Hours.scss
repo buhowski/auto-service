@@ -1,4 +1,5 @@
 @use '../../styles/variables' as var;
+@use '../../styles/breakpoints' as bp;
 
 .hours-section {
 	padding-block: var(--section-space);
@@ -13,6 +14,11 @@
 	grid-template-columns: 1fr 1fr;
 	gap: clamp(2rem, 5vw, 3.5rem);
 	align-items: stretch;
+
+	@include bp.tablet-md {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
 }
 .visit-info {
 	padding-top: 0.5rem;
@@ -71,12 +77,25 @@
 	display: flex;
 	gap: 1rem;
 	padding: 0;
+
+	// .visit-line__block
+	&__block {
+	}
+
+	// .visit-line__link
+	&__link {
+		color: var(--color-ink);
+		font-weight: 500;
+		display: block;
+		width: max-content;
+		margin-top: 5px;
+
+		&:hover {
+			color: var(--color-secondary);
+		}
+	}
 }
-.visit-line svg {
-	flex: none;
-	color: var(--color-secondary);
-	margin-top: 2px;
-}
+
 .visit-line b {
 	display: block;
 	font-size: 0.85rem;
@@ -84,14 +103,10 @@
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	color: var(--color-text-muted);
-	margin-bottom: 0.2rem;
 }
-.visit-line a {
-	color: var(--color-ink);
-	font-weight: 500;
-}
-.visit-line a:hover {
-	color: var(--color-secondary);
+
+.visit-social-links {
+	margin-top: 0.7rem;
 }
 
 .visit-map {
@@ -102,6 +117,11 @@
 	overflow: hidden;
 	background: var(--color-surface-dark);
 	border-radius: var(--radius-md);
+
+	@include bp.tablet-md {
+		order: -1;
+		min-height: clamp(280px, 62vw, 380px);
+	}
 }
 .map-diag {
 	position: absolute;
@@ -150,15 +170,4 @@
 .hours-table li.today .day,
 .hours-table li.today .hrs {
 	color: var(--color-secondary);
-}
-
-@media (max-width: 991px) {
-	.visit-grid {
-		grid-template-columns: 1fr;
-		gap: 2rem;
-	}
-	.visit-map {
-		order: -1;
-		min-height: clamp(280px, 62vw, 380px);
-	}
 }

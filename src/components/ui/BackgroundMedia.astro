@@ -1,0 +1,41 @@
+---
+interface Props {
+	media: {
+		type: string;
+		image?: string;
+		video?: string;
+		alt?: string;
+	};
+	fetchPriority?: 'high' | 'low' | 'auto';
+}
+
+const { media, fetchPriority = 'auto' } = Astro.props;
+---
+
+{
+	media.type === 'video' && media.video ? (
+		<video
+			class='background-media'
+			src={media.video}
+			poster={media.image || undefined}
+			autoplay
+			muted
+			loop
+			playsinline
+			controls={false}
+			disablepictureinpicture
+			disableremoteplayback
+			preload='metadata'
+			aria-hidden='true'
+		/>
+	) : media.type === 'image' && media.image ? (
+		<img
+			class='background-media'
+			src={media.image}
+			alt={media.alt ?? ''}
+			width='1600'
+			height='1100'
+			fetchpriority={fetchPriority}
+		/>
+	) : null
+}

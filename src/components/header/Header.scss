@@ -1,4 +1,5 @@
 @use '../../styles/variables' as var;
+@use '../../styles/breakpoints' as bp;
 
 .header {
 	position: fixed;
@@ -227,22 +228,18 @@ body.nav-lock {
 	overflow: hidden;
 }
 
-@media (max-width: 900px) {
-	.nav-links.nav-desktop {
-		display: none;
-	}
+@include bp.tablet-lg {
+	.nav-links.nav-desktop,
 	.nav-cta.nav-desktop {
 		display: none;
 	}
 	.burger {
 		display: grid;
-	}
-	.burger {
 		margin-left: 0;
 	}
 }
 
-@media (max-width: 480px) {
+@include bp.tablet-lg {
 	.header .brand {
 		font-size: 1.3rem;
 	}

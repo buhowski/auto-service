@@ -3,18 +3,8 @@ import './WhyChoose.scss';
 import Container from '../ui/Container.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import Icon from '../ui/Icon.astro';
-import whyShopImage from '../../assets/img/why-shop.jpg?url';
-const whyChooseData = {
-	sectionTitle: { eyebrow: 'Чому обирають СТО Поршень', headline: 'Гараж, де поважають клієнта, а не рахунок' },
-	lead: 'Ми побудували СТО Поршень на простій обіцянці: ремонтуємо якісно з першого разу, ставимо чесну ціну і пояснюємо все простою мовою. Тому родини у Львові довіряють нам вже понад 10 років.',
-	items: [
-		{ icon: 'certified', title: 'Сертифіковані майстри', description: 'Кожен ремонт виконує кваліфікований технік, не стажер. Ми інвестуємо в постійне навчання, щоб сервісувати сучасні гібриди та турбомотори.' },
-		{ icon: 'quote', title: 'Прозорі кошториси', description: 'Ви затверджуєте ціну до того, як ми візьмемо ключі. Ніяких прихованих платежів, непотрібних запчастин або навязування послуг.' },
-		{ icon: 'warranty', title: 'Гарантія 24 місяці на ремонт', description: 'Запчастини та робочі години покриті гарантією по всій Україні на 2 роки або 40 000 км — бо ми стоїмо за своєю роботою.' },
-		{ icon: 'speed', title: 'Швидкий термін виконання', description: 'Більшість ТО виконуємо за один день. Потрібен трансфер? Безкоштовний шатл у межах міста та заміна авто на час капітального ремонту.' },
-	],
-	image: { src: whyShopImage, alt: "Інтер'єр чистого, сучасного СТО з авто на підйомах та організованими інструментами" },
-};
+import content from '../../content/homepage.json';
+const whyChooseData = content.whyChoose;
 ---
 
 <section class="why-choose carbon" id="why-choose" aria-labelledby="why-choose-heading">
@@ -22,18 +12,18 @@ const whyChooseData = {
     <div class="why-grid">
       <div class="why-media reveal">
         <img 
-          src={whyChooseData.image.src} 
-          alt={whyChooseData.image.alt}
+					  src={whyChooseData.image}
+					  alt={whyChooseData.imageAlt}
           width="1000" 
           height="1200" 
           loading="lazy"
         >
       </div>
       <div class="why-content">
-        <SectionHeader 
-			id="why-choose-heading"
-          eyebrow={whyChooseData.sectionTitle.eyebrow}
-          headline={whyChooseData.sectionTitle.headline}
+				<SectionHeader
+					id="why-choose-heading"
+					eyebrow={whyChooseData.eyebrow}
+					headline={whyChooseData.headline}
         />
         <p class="lead">{whyChooseData.lead}</p>
         
@@ -41,7 +31,7 @@ const whyChooseData = {
           {whyChooseData.items.map((item, index) => (
             <li class="why-item reveal" style={`--delay: ${index * 100}ms`}>
               <span class="why-icon">
-                <Icon name={item.icon} width="24" height="24" />
+									<Icon name={item.icon as 'certified' | 'quote' | 'warranty' | 'speed'} width="24" height="24" />
               </span>
               <div>
                 <h4>{item.title}</h4>

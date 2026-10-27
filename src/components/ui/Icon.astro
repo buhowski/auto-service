@@ -1,33 +1,10 @@
 ---
-import BrandMark from '../../assets/icons/brandMark.svg';
-import Certified from '../../assets/icons/certified.svg';
-import CircleArrowDown from '../../assets/icons/circle-arrow-down.svg';
-import ChevronLeft from '../../assets/icons/chevronLeft.svg';
-import ChevronRight from '../../assets/icons/chevronRight.svg';
-import Clock from '../../assets/icons/clock.svg';
-import Close from '../../assets/icons/close.svg';
-import GoogleMaps from '../../assets/icons/google-maps.svg';
-import Instagram from '../../assets/icons/instagram.svg';
-import Location from '../../assets/icons/location.svg';
-import Phone from '../../assets/icons/phone.svg';
-import Quote from '../../assets/icons/quote.svg';
-import Speed from '../../assets/icons/speed.svg';
-import Star from '../../assets/icons/star.svg';
-import StarOutline from '../../assets/icons/star-outline.svg';
-import Step1 from '../../assets/icons/step1.svg';
-import Step2 from '../../assets/icons/step2.svg';
-import Step3 from '../../assets/icons/step3.svg';
-import Telegram from '../../assets/icons/telegram.svg';
-import Viber from '../../assets/icons/viber.svg';
-import Warranty from '../../assets/icons/warranty.svg';
-
 interface Props {
 	name: string;
 	class?: string;
 	width?: number | string;
 	height?: number | string;
 	'aria-hidden'?: boolean;
-	fill?: string;
 }
 
 const {
@@ -36,41 +13,41 @@ const {
 	width = 24,
 	height = 24,
 	'aria-hidden': ariaHidden = true,
-	fill,
 } = Astro.props;
 
-const icons = {
-	brandMark: BrandMark,
-	certified: Certified,
-	circleArrowDown: CircleArrowDown,
-	chevronLeft: ChevronLeft,
-	chevronRight: ChevronRight,
-	clock: Clock,
-	close: Close,
-	'google-maps': GoogleMaps,
-	instagram: Instagram,
-	location: Location,
-	phone: Phone,
-	quote: Quote,
-	speed: Speed,
-	star: Star,
-	starOutline: StarOutline,
-	step1: Step1,
-	step2: Step2,
-	step3: Step3,
-	telegram: Telegram,
-	viber: Viber,
-	warranty: Warranty,
-} as const;
+const iconFiles: Record<string, string> = {
+	brandMark: 'brandMark.svg',
+	certified: 'certified.svg',
+	circleArrowDown: 'circle-arrow-down.svg',
+	chevronLeft: 'chevronLeft.svg',
+	chevronRight: 'chevronRight.svg',
+	clock: 'clock.svg',
+	close: 'close.svg',
+	'google-maps': 'google-maps.svg',
+	instagram: 'instagram.svg',
+	location: 'location.svg',
+	phone: 'phone.svg',
+	quote: 'quote.svg',
+	speed: 'speed.svg',
+	star: 'star.svg',
+	starOutline: 'star-outline.svg',
+	step1: 'step1.svg',
+	step2: 'step2.svg',
+	step3: 'step3.svg',
+	telegram: 'telegram.svg',
+	viber: 'viber.svg',
+	warranty: 'warranty.svg',
+};
 
-const IconComponent = icons[name as keyof typeof icons] ?? BrandMark;
+const iconPath = `/uploads/icons/${iconFiles[name] ?? iconFiles.brandMark}`;
+const toCssSize = (size: number | string) =>
+	typeof size === 'number' || /^\d+(\.\d+)?$/.test(size) ? `${size}px` : size;
+const iconWidth = toCssSize(width);
+const iconHeight = toCssSize(height);
 ---
 
-<IconComponent
-	class={className}
-	style='fill: currentColor;'
-	width={width}
-	height={height}
+<span
+	class:list={['icon-mask', className]}
+	style={`--icon-width: ${iconWidth}; --icon-height: ${iconHeight}; --icon-source: url('${iconPath}');`}
 	aria-hidden={ariaHidden}
-	fill={fill}
-/>
+></span>

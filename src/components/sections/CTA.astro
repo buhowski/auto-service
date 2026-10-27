@@ -3,19 +3,16 @@ import './CTA.scss';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
+import BackgroundMedia from '../ui/BackgroundMedia.astro';
 import { site } from '../../data/site';
-const ctaData = {
-	eyebrow: 'Готові коли ви',
-	headline: 'Запишіться на сервіс сьогодні',
-	subtext:
-		'Запис у той самий день, прозорі ціни та гарантія, на яку можна розраховувати. Подбаймо, щоб ваше авто працювало якнайкраще.',
-	primaryCta: { text: 'Записатися', href: site.links.booking },
-	secondaryCta: { text: 'Зателефонувати', href: site.phone.href },
-};
+import content from '../../content/homepage.json';
+const ctaData = content.cta;
 ---
 
 <section class='cta-band' aria-labelledby='cta-heading'>
-	<div class='cta-bg' aria-hidden='true'></div>
+	<div class='cta-bg bg-overlay' aria-hidden='true'>
+		<BackgroundMedia media={ctaData.background} />
+	</div>
 	<div class='cta-chequer' aria-hidden='true'></div>
 	<div class='cta-chequer cta-chequer--bottom' aria-hidden='true'></div>
 	<Container>
@@ -28,12 +25,10 @@ const ctaData = {
 				centered
 			/>
 			<div class='cta-actions'>
-				<Button variant='primary' href={ctaData.primaryCta.href} data-booking-open>
-					{ctaData.primaryCta.text}
-				</Button>
-				<Button variant='secondary' href={ctaData.secondaryCta.href}>
-					{ctaData.secondaryCta.text}
-				</Button>
+				<Button variant='primary' href={site.links.booking} data-booking-open
+					>{ctaData.primaryCta}</Button
+				>
+				<Button variant='secondary' href={site.phone.href}>{ctaData.secondaryCta}</Button>
 			</div>
 		</div>
 	</Container>

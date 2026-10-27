@@ -1,0 +1,47 @@
+{
+	"brandPrefix": "СТО",
+	"brandName": "Поршень",
+	"city": "Львів",
+	"phoneNumber": "+380322345678",
+	"streetAddress": "вул. Сирецька, 42",
+	"postalCode": "79000",
+	"navigation": [
+		{ "href": "#services", "label": "Послуги" },
+		{ "href": "#why-choose", "label": "Переваги" },
+		{ "href": "#testimonials", "label": "Відгуки" },
+		{ "href": "#visit", "label": "Контакти" }
+	],
+	"socialLinks": [
+		{
+			"href": "viber://chat?number=%2B380322345678",
+			"label": "Написати у Viber",
+			"title": "Viber",
+			"icon": "viber",
+			"external": false
+		},
+		{
+			"href": "https://t.me/sto_porshen",
+			"label": "Написати у Telegram",
+			"title": "Telegram",
+			"icon": "telegram",
+			"external": true
+		},
+		{
+			"href": "https://instagram.com/sto_porshen",
+			"label": "СТО Поршень в Instagram",
+			"title": "Instagram",
+			"icon": "instagram",
+			"external": true
+		}
+	],
+	"footerAbout": "Сімейне СТО у Львові: чесні кошториси, сертифіковані майстри та гарантія 24 місяці на кожну роботу.",
+	"booking": {
+		"title": "Записатися на сервіс",
+		"intro": "Залиште свої контакти, і ми зателефонуємо, щоб узгодити зручний час.",
+		"submitLabel": "Надіслати заявку",
+		"namePlaceholder": "Як до вас звертатися",
+		"phonePlaceholder": "XX XXX XX XX",
+		"notePlaceholder": "Марка авто та коротко проблему",
+		"status": "Форма ще не підключена до надсилання заявок. Зателефонуйте нам за номером нижче."
+	}
+}

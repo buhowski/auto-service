@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as bp;
+
 .section-header {
 	width: min(100%, 50rem);
 	&--center {
@@ -46,15 +48,17 @@
 	margin-top: var(--space-4);
 }
 
-@media (max-width: 600px) {
-	.section-header .eyebrow {
-		font-size: 0.72rem;
-	}
-	.section-header .h2 {
-		max-width: 20ch;
-		font-size: clamp(1.75rem, 8vw, 2.3rem);
-	}
-	.section-header .section-description {
-		margin-top: var(--space-3);
+.section-header {
+	@include bp.mobile {
+		.eyebrow {
+			font-size: 0.72rem;
+		}
+		.h2 {
+			max-width: 20ch;
+			font-size: clamp(1.75rem, 8vw, 2.3rem);
+		}
+		.section-description {
+			margin-top: var(--space-3);
+		}
 	}
 }

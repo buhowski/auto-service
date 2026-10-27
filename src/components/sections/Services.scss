@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as bp;
+
 .services-section {
 	padding-block: var(--section-space);
 	background: var(--color-paper);
@@ -204,7 +206,7 @@
 	font-size: 0.88rem;
 	letter-spacing: 0.035em;
 	white-space: nowrap;
-	padding: 12px 18px 11px;
+	padding: 10px 15px 9px;
 
 	background: var(--color-ink);
 	color: var(--color-white);
@@ -233,7 +235,7 @@
 	}
 }
 
-@media (max-width: 900px) {
+@include bp.tablet-md {
 	.services-catalog {
 		column-gap: 1rem;
 	}
@@ -249,9 +251,7 @@
 		grid-column: 1 / -1;
 		justify-self: start;
 	}
-}
 
-@media (max-width: 700px) {
 	.services-section {
 		padding: 4rem 0;
 	}
@@ -275,7 +275,7 @@
 		margin-bottom: var(--space-2);
 	}
 	.service-category {
-		min-height: 68px;
+		min-height: 58px;
 		padding: 0.8rem 0.85rem 0.8rem 1rem;
 		white-space: normal;
 	}
@@ -292,28 +292,13 @@
 	.services-panel {
 		margin-top: var(--space-2);
 		animation: none;
-	}
-	.service-category-arrow {
-		transition: none;
-	}
-}
-
-@media (max-width: 480px) {
-	.service-category {
-		min-height: 58px;
-	}
-	.service-category-copy {
-		gap: 0.15rem;
-	}
-	.services-panel {
 		padding: 1rem;
 	}
 	.services-panel-heading {
 		padding-bottom: 0.9rem;
 	}
-	.service-row {
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 0.5rem;
+	.service-category-copy {
+		gap: 0.15rem;
 	}
 	.service-name {
 		font-size: 0.9rem;
@@ -321,8 +306,13 @@
 	.service-price {
 		font-size: 0.88rem;
 	}
+	.service-category-arrow {
+		transition: none;
+	}
+	.service-row {
+		gap: 0.5rem;
+	}
 	.service-order {
-		grid-column: 1 / -1;
 		min-height: 34px;
 	}
 }
