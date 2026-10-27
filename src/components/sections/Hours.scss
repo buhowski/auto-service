@@ -59,13 +59,10 @@
 }
 .hours-table .day {
 	font-family: var(--font-display);
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
+	font-weight: var(--semibold);
+	text-transform: var(--text-transform-display);
+	letter-spacing: var(--tracking-normal);
 	color: var(--color-ink);
-}
-.hours-table .hrs {
-	color: var(--color-text);
 }
 .visit-contact {
 	display: flex;
@@ -85,7 +82,7 @@
 	// .visit-line__link
 	&__link {
 		color: var(--color-ink);
-		font-weight: 500;
+		font-weight: var(--medium);
 		display: block;
 		width: max-content;
 		margin-top: 5px;
@@ -98,10 +95,10 @@
 
 .visit-line b {
 	display: block;
-	font-size: 0.85rem;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
+	font-size: var(--text-sm);
+	font-weight: var(--semibold);
+	text-transform: var(--text-transform-display);
+	letter-spacing: var(--tracking-wide);
 	color: var(--color-text-muted);
 }
 
@@ -152,12 +149,12 @@
 }
 .map-addr {
 	font-family: var(--font-display);
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
+	font-weight: var(--semibold);
+	text-transform: var(--text-transform-display);
+	letter-spacing: var(--tracking-normal);
 	color: var(--color-white);
 	margin-bottom: 1.2rem;
-	font-size: 1.3rem;
+	font-size: var(--text-xl);
 }
 
 .hours-table li.today {

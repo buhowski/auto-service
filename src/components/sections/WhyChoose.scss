@@ -38,10 +38,6 @@
 	border-radius: var(--radius-md);
 }
 
-.why-content {
-	padding-top: 1rem;
-}
-
 .why-content .lead {
 	color: var(--color-text-on-dark);
 }
@@ -76,17 +72,13 @@
 
 .why-item h4 {
 	margin: 0 0 0.3rem;
-	font-family: var(--font-display);
-	font-size: 1.35rem;
-	font-weight: 600;
-	letter-spacing: 0.02em;
+	font-size: var(--text-2xl);
+	letter-spacing: var(--tracking-normal);
 	color: var(--color-white);
-	text-transform: uppercase;
 }
 
 .why-item p {
 	margin: 0;
 	color: var(--color-text-on-dark);
-	font-size: 0.95rem;
-	line-height: 1.6;
+	font-size: var(--text-sm);
 }

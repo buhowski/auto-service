@@ -6,6 +6,16 @@
 	top: 0;
 	width: 100%;
 	z-index: 1300;
+	transition:
+		box-shadow var(--motion-standard) ease,
+		background-color var(--motion-standard) ease;
+
+	&.scrolled {
+		background-color: rgba(var.$color-ink, 90%);
+		backdrop-filter: blur(6px);
+		border-bottom: 1px solid rgba(var.$color-white, 12%);
+		box-shadow: 0 4px 20px rgba(var.$color-black, 66%);
+	}
 }
 
 .nav-cta {
@@ -16,20 +26,6 @@
 	display: none;
 }
 
-.nav {
-	position: sticky;
-	top: 0;
-	z-index: auto;
-	background: rgba(var.$color-ink, 98%);
-	backdrop-filter: blur(6px);
-	border-bottom: 1px solid rgba(var.$color-white, 16%);
-	transition:
-		box-shadow 0.2s ease,
-		background-color 0.2s ease;
-}
-.nav.scrolled {
-	box-shadow: 0 10px 30px -18px rgba(var.$color-black, 80%);
-}
 .nav .container {
 	display: flex;
 	align-items: center;
@@ -49,10 +45,10 @@
 .nav-links a {
 	color: var(--color-text-on-dark);
 	font-family: var(--font-display);
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	font-size: 1rem;
+	font-weight: var(--font-weight-semibold);
+	text-transform: var(--text-transform-display);
+	letter-spacing: var(--tracking-wide);
+	font-size: var(--text-base);
 	padding: 0.4rem 0;
 	position: relative;
 	text-decoration: none;
@@ -67,10 +63,10 @@
 	background: var(--color-accent);
 	transition: width 0.2s ease;
 }
-.nav-links a:hover {
+.nav-links a:is(:hover, .is-active) {
 	color: var(--color-white);
 }
-.nav-links a:hover::after {
+.nav-links a:is(:hover, .is-active)::after {
 	width: 100%;
 }
 .nav-cta {
@@ -188,10 +184,10 @@
 .mobile-links a {
 	color: var(--color-text-on-dark);
 	font-family: var(--font-display);
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
-	font-size: 1.15rem;
+	font-weight: var(--font-weight-semibold);
+	text-transform: var(--text-transform-display);
+	letter-spacing: var(--tracking-normal);
+	font-size: var(--text-lg);
 	padding: 0.65rem 0.75rem;
 	border: 0;
 	border-radius: var(--radius-sm);
@@ -210,8 +206,7 @@
 	align-items: center;
 	min-height: 48px;
 }
-.mobile-links li a:hover,
-.mobile-links li a:focus-visible {
+.mobile-links li a:is(:hover, :focus-visible, .is-active) {
 	color: var(--color-white);
 	background: var(--color-surface-dark);
 }
@@ -241,7 +236,7 @@ body.nav-lock {
 
 @include bp.tablet-lg {
 	.header .brand {
-		font-size: 1.3rem;
+		font-size: var(--text-xl);
 	}
 	.header .brand-mark {
 		width: 36px;

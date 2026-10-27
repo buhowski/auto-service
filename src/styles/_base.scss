@@ -3,7 +3,7 @@
 body {
 	font-family: var(--font-body);
 	font-size: var(--text-base);
-	line-height: 1.6;
+	line-height: var(--line-height-copy);
 	color: var(--color-text);
 	background: var(--color-white);
 	text-rendering: optimizeLegibility;
@@ -16,15 +16,25 @@ h3,
 h4,
 h5 {
 	font-family: var(--font-display);
-	font-weight: 700;
-	line-height: 1.02;
-	letter-spacing: 0.005em;
+	line-height: var(--line-height-heading);
+	letter-spacing: var(--tracking-tight);
 	color: var(--color-ink);
-	text-transform: uppercase;
+	text-transform: var(--text-transform-display);
+}
+
+h1,
+h2 {
+	font-weight: var(--semibold);
+}
+
+h3,
+h4,
+h5 {
+	font-weight: var(--medium);
 }
 
 h1 {
-	font-size: clamp(2.75rem, 6vw, 4.75rem);
+	font-size: var(--heading-hero);
 }
 
 h2 {
@@ -32,11 +42,11 @@ h2 {
 }
 
 h3 {
-	font-size: clamp(1.2rem, 2vw, 1.5rem);
+	font-size: var(--heading-subsection);
 }
 
 section {
-	scroll-margin-top: 5rem;
+	scroll-margin-top: 2rem;
 }
 
 p {
@@ -46,8 +56,8 @@ p {
 .lead {
 	max-width: 60ch;
 	margin-bottom: 2rem;
-	font-size: clamp(1.0625rem, 1.4vw, 1.14rem);
-	line-height: 1.7;
+	font-size: var(--text-lg);
+	line-height: var(--line-height-copy-relaxed);
 }
 
 .brand {
@@ -55,12 +65,12 @@ p {
 	align-items: center;
 	gap: 0.6rem;
 	font-family: var(--font-display);
-	font-size: 1.55rem;
-	font-weight: 700;
-	letter-spacing: 0.02em;
+	font-size: var(--text-2xl);
+	font-weight: var(--semibold);
+	letter-spacing: var(--tracking-normal);
 	color: var(--color-white);
 	text-decoration: none;
-	text-transform: uppercase;
+	text-transform: var(--text-transform-display);
 }
 
 .brand:hover {
@@ -69,7 +79,7 @@ p {
 
 .brand b {
 	color: var(--color-accent);
-	font-weight: 700;
+	font-weight: var(--semibold);
 }
 
 .brand-mark {

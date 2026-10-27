@@ -1,26 +1,27 @@
 @use '../../styles/variables' as var;
 @use '../../styles/breakpoints' as bp;
 
+:root {
+	--dot-size: 9px;
+}
+
 .business-hours {
 	position: relative;
 	z-index: 4;
-	width: fit-content;
-	max-width: 100%;
 	color: var(--color-white);
 	font-variant-numeric: tabular-nums;
-	font-size: 12px;
+	font-size: var(--text-xs);
+	width: fit-content;
 }
 
 .business-hours__trigger {
 	display: flex;
 	align-items: center;
 	gap: 0.7rem;
-	max-width: 100%;
 	padding: 12px 20px;
 	border: 1px solid rgba(var.$color-white, 16%);
 	border-radius: var(--radius-sm);
 	background: rgba(var.$color-ink, 30%);
-
 	text-align: left;
 	cursor: pointer;
 	backdrop-filter: blur(6px);
@@ -41,19 +42,13 @@
 
 .business-hours {
 	&__trigger {
-		&:hover,
-		&:focus-visible,
-		.business-hours:hover & {
+		&:focus-visible {
 			background: rgba(var.$color-ink, 90%);
 		}
 
 		&[aria-expanded='true'] {
 			background: rgba(var.$color-ink, 96%);
 		}
-	}
-
-	&:hover .business-hours__chevron {
-		transform: rotate(-90deg);
 	}
 }
 
@@ -62,7 +57,6 @@
 	min-width: 0;
 	align-items: center;
 	gap: 0.6rem;
-	white-space: nowrap;
 }
 
 .business-hours__status.is-closed .business-hours__dot {
@@ -70,8 +64,8 @@
 }
 
 .business-hours__dot {
-	width: 10px;
-	height: 10px;
+	width: var(--dot-size);
+	height: var(--dot-size);
 	flex: none;
 	border-radius: 50%;
 	background: #62c982;
@@ -82,8 +76,8 @@
 }
 
 .business-hours__chevron {
-	width: 12px;
-	height: 12px;
+	width: 11px;
+	height: 11px;
 	flex: none;
 	transform: rotate(90deg);
 	transition: transform var(--motion-fast) ease;
@@ -134,7 +128,6 @@
 			color var(--motion-fast) ease,
 			transform var(--motion-fast) ease;
 
-		&:hover,
 		&[aria-expanded='true'] {
 			background: transparent;
 			color: var(--color-accent);
@@ -143,11 +136,6 @@
 				fill: currentColor;
 			}
 		}
-	}
-
-	&:hover .business-hours__trigger {
-		background: transparent;
-		color: var(--color-accent);
 	}
 
 	.business-hours__panel {
@@ -162,8 +150,33 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+	.business-hours__trigger:hover,
+	.business-hours:hover .business-hours__trigger {
+		background: rgba(var.$color-ink, 90%);
+	}
+
+	.business-hours:hover .business-hours__chevron {
+		transform: rotate(-90deg);
+	}
+
 	.business-hours:hover .business-hours__panel[hidden] {
 		display: block;
+	}
+
+	.footer-business-hours {
+		.business-hours__trigger:hover {
+			background: transparent;
+			color: var(--color-accent);
+
+			svg {
+				fill: currentColor;
+			}
+		}
+
+		&:hover .business-hours__trigger {
+			background: transparent;
+			color: var(--color-accent);
+		}
 	}
 }
 
@@ -180,7 +193,7 @@
 
 	&.is-current {
 		background: rgba(var.$color-accent, 14%);
-		font-weight: 600;
+		font-weight: var(--semibold);
 	}
 }
 
@@ -205,12 +218,6 @@
 		min-height: 46px;
 		gap: 0.55rem;
 		padding-inline: 0.9rem;
-	}
-
-	.business-hours__status {
-		max-width: 220px;
-		white-space: normal;
-		line-height: 1.25;
 	}
 }
 

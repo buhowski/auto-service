@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
 	<Container>
 		<div class='footer-main'>
 			<div class='footer-brand'>
-				<a class='brand' href='/' aria-label={`${site.name} — на головну`}>
+				<a class='brand' href='#main' aria-label={`${site.name} — на головну`}>
 					<span class='brand-mark' aria-hidden='true'>
 						<Icon name='brandMark' width='24' height='24' />
 					</span>
@@ -40,9 +40,9 @@ const year = new Date().getFullYear();
 		</div>
 
 		<div class='footer-bottom'>
-			<p class='copyright'>© {year} {site.name}. Усі права захищено.</p>
-
 			<BusinessHours id='footer-business-hours' class='footer-business-hours' />
+
+			<p class='copyright'>© {year} {site.name}. Усі права захищено.</p>
 		</div>
 	</Container>
 </footer>

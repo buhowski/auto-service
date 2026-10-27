@@ -10,13 +10,13 @@
 	border: 1px solid transparent;
 	border-radius: var(--radius-sm);
 	font-family: var(--font-display);
-	font-size: 1rem;
-	font-weight: 700;
-	line-height: 1;
-	letter-spacing: 0.05em;
+	font-size: var(--text-base);
+	font-weight: var(--semibold);
+	line-height: var(--line-height-tight);
+	letter-spacing: var(--tracking-wide);
 	text-align: center;
 	text-decoration: none;
-	text-transform: uppercase;
+	text-transform: var(--text-transform-display);
 	white-space: nowrap;
 	cursor: pointer;
 	transition:
@@ -93,7 +93,7 @@
 	&--secondary {
 		border: 0;
 		border-radius: 0;
-		letter-spacing: 0.08em;
+		letter-spacing: var(--tracking-wider);
 		transition:
 			color var(--motion-fast) ease,
 			background-color var(--motion-fast) ease;

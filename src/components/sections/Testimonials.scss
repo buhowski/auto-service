@@ -58,17 +58,27 @@
 }
 
 .testi-quote {
-	flex: 1;
+	flex: 0 1 auto;
+	max-height: calc(1.5em * 5);
+	overflow-y: auto;
 	margin: 0 0 var(--space-6);
 	color: var(--color-white);
-	font-size: 1.12rem;
-	line-height: 1.6;
+	font-size: var(--text-lg);
+	line-height: 1.5;
+	overscroll-behavior: contain;
+
+	&:focus-visible {
+		border-radius: var(--radius-sm);
+		outline: 2px solid var(--color-accent);
+		outline-offset: 4px;
+	}
 }
 
 .testi-who {
 	display: flex;
 	align-items: center;
 	gap: 0.75rem;
+	margin-top: auto;
 }
 
 .testi-who img {
@@ -87,14 +97,14 @@
 .testi-who b {
 	color: var(--color-white);
 	font-family: var(--font-display);
-	font-size: 1.2rem;
-	letter-spacing: 0.02em;
-	text-transform: uppercase;
+	font-size: var(--text-xl);
+	letter-spacing: var(--tracking-normal);
+	text-transform: var(--text-transform-display);
 }
 
 .testi-who span {
 	color: var(--color-text-on-dark);
-	font-size: 0.85rem;
+	font-size: var(--text-sm);
 }
 
 .testi-nav {
@@ -134,5 +144,9 @@
 
 	.testi-card {
 		padding: 1.25rem;
+	}
+
+	.testi-quote {
+		max-height: calc(1.5em * 10);
 	}
 }

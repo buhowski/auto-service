@@ -42,8 +42,8 @@
 		border: 1px solid var(--color-line);
 		background: transparent;
 		color: var(--color-ink);
-		font-size: 1.75rem;
-		line-height: 1;
+		font-size: var(--text-2xl);
+		line-height: var(--line-height-tight);
 		cursor: pointer;
 
 		&:hover {
@@ -55,7 +55,7 @@
 	&__title {
 		max-width: 85%;
 		margin: 0 0 0.75rem;
-		font-size: clamp(1.65rem, 5vw, 2.1rem);
+		font-size: var(--heading-subsection);
 	}
 
 	&__intro {
@@ -78,8 +78,8 @@
 
 		label {
 			color: var(--color-ink);
-			font-size: 0.9rem;
-			font-weight: 700;
+			font-size: var(--text-sm);
+			font-weight: var(--semibold);
 
 			span {
 				color: var(--color-error);
@@ -94,7 +94,6 @@
 			border-radius: var(--radius-sm);
 			background: var(--color-white);
 			color: var(--color-ink);
-			font: inherit;
 			transition:
 				border-color var(--motion-fast) ease,
 				box-shadow var(--motion-fast) ease;
@@ -121,6 +120,7 @@
 
 		textarea.form-control {
 			height: 6rem;
+			font: inherit;
 			resize: vertical;
 		}
 	}
@@ -170,19 +170,19 @@
 	&__country-code {
 		padding-left: 0.9rem;
 		color: var(--color-ink);
-		font-weight: 700;
+		font-weight: var(--semibold);
 		white-space: nowrap;
 	}
 
 	&__call {
 		margin: 0;
 		color: var(--color-text-muted);
-		font-size: 0.9rem;
+		font-size: var(--text-sm);
 		text-align: center;
 
 		a {
 			color: var(--color-ink);
-			font-weight: 800;
+			font-weight: var(--semibold);
 			white-space: nowrap;
 		}
 	}
@@ -193,7 +193,7 @@
 		border-left: 3px solid var(--color-accent);
 		background: rgba(232, 184, 75, 0.12);
 		color: var(--color-ink);
-		font-size: 0.9rem;
+		font-size: var(--text-sm);
 	}
 
 	.btn--primary:hover {
@@ -201,7 +201,6 @@
 		color: var(--color-accent);
 	}
 }
-
 
 .booking-modal {
 	@include bp.mobile {
