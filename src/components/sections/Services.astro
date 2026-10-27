@@ -209,12 +209,20 @@ const categories = [
 		triggers.forEach((trigger, activeIndex) => {
 			trigger.addEventListener('click', () => {
 				const shouldClose = allowCollapse && trigger.getAttribute('aria-expanded') === 'true';
+				const triggerTop = allowCollapse ? trigger.getBoundingClientRect().top : 0;
 				triggers.forEach((item, index) => {
 					const expanded = !shouldClose && index === activeIndex;
 					item.setAttribute('aria-expanded', String(expanded));
 					item.classList.toggle('is-active', expanded);
 					if (panels[index]) panels[index]!.hidden = !expanded;
 				});
+
+				if (allowCollapse) {
+					requestAnimationFrame(() => {
+						const topShift = trigger.getBoundingClientRect().top - triggerTop;
+						if (Math.abs(topShift) > 1) window.scrollBy(0, topShift);
+					});
+				}
 			});
 		});
 	});
