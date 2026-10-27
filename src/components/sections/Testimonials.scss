@@ -1,6 +1,8 @@
+@use '../../styles/variables' as var;
+
 .testimonials {
 	padding-block: var(--section-space);
-	color: var(--color-steel-light);
+	color: var(--color-text-on-dark);
 }
 
 .testimonials .section-header {
@@ -85,7 +87,7 @@
 }
 
 .testi-who span {
-	color: var(--color-steel);
+	color: var(--color-text-on-dark);
 	font-size: 0.85rem;
 }
 
@@ -101,9 +103,9 @@
 	width: 48px;
 	height: 48px;
 	place-items: center;
-	border: 1px solid var(--color-line-dark);
+	border: 1px solid rgba(var.$color-white, 16%);
 	border-radius: var(--radius-sm);
-	background: var(--color-graphite-high);
+	background: var(--color-surface-dark);
 	color: var(--color-white);
 	cursor: pointer;
 	transition:
@@ -113,9 +115,9 @@
 }
 
 .testi-btn:hover {
-	border-color: var(--color-accent-strong);
-	background: var(--color-accent-strong);
-	color: var(--color-white);
+	border-color: var(--color-accent);
+	background: var(--color-accent);
+	color: var(--color-black);
 }
 
 @media (min-width: 768px) {

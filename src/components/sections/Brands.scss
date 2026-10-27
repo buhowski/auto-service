@@ -1,6 +1,12 @@
+@use '../../styles/variables' as var;
+
 .brands-section {
 	padding-block: var(--section-space);
 	background: var(--color-paper);
+
+	.section-header .eyebrow {
+		color: var(--color-secondary);
+	}
 }
 
 .brands-intro {
@@ -64,9 +70,9 @@
 	text-align: center;
 	text-transform: uppercase;
 	transition:
-		color 0.18s ease,
-		border-color 0.18s ease,
-		background-color 0.18s ease;
+		color var(--motion-standard) ease,
+		border-color var(--motion-standard) ease,
+		background-color var(--motion-standard) ease;
 }
 
 .brand-item > span {
@@ -84,15 +90,15 @@
 	user-select: none;
 	-webkit-user-drag: none;
 	transition:
-		filter 0.18s ease,
-		opacity 0.18s ease;
+		filter var(--motion-standard) ease,
+		opacity var(--motion-standard) ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
 	.brand-item:hover {
-		border-color: rgb(var(--color-accent-rgb) / 35%);
-		background: var(--color-accent-wash);
-		color: var(--color-accent-strong);
+		border-color: rgba(var.$color-secondary, 35%);
+		background: rgba(var.$color-secondary, 20%);
+		color: var(--color-secondary);
 		.brand-logo {
 			filter: none;
 			opacity: 1;

@@ -1,17 +1,20 @@
 .section-header {
 	width: min(100%, 50rem);
-	&--center { margin-inline: auto; text-align: center; }
-  .eyebrow {
+	&--center {
+		margin-inline: auto;
+		text-align: center;
+	}
+	.eyebrow {
 		display: block;
-    font-family: var(--font-display);
+		font-family: var(--font-display);
 		font-weight: 700;
-    text-transform: uppercase;
+		text-transform: uppercase;
 		letter-spacing: 0.12em;
 		font-size: var(--text-caption);
 		line-height: 1.4;
-		color: var(--color-accent-strong);
+		color: var(--color-accent);
 		margin: 0 0 0.65rem;
-  }
+	}
 	.h2 {
 		max-width: 24ch;
 		margin: 0;
@@ -22,12 +25,16 @@
 		letter-spacing: 0.005em;
 		text-transform: uppercase;
 	}
-	&--center .h2 { margin-inline: auto; }
-	&--center .section-description { margin-inline: auto; }
+	&--center .h2 {
+		margin-inline: auto;
+	}
+	&--center .section-description {
+		margin-inline: auto;
+	}
 	.section-description {
 		max-width: 42rem;
 		margin-top: 0.8rem;
-		color: var(--color-muted);
+		color: var(--color-text-muted);
 		font-family: var(--font-body);
 		font-size: clamp(var(--text-small), 1.4vw, 1.05rem);
 		line-height: 1.55;
@@ -35,7 +42,14 @@
 }
 
 @media (max-width: 600px) {
-	.section-header .eyebrow { font-size: 0.72rem; }
-	.section-header .h2 { max-width: 20ch; font-size: clamp(1.75rem, 8vw, 2.3rem); }
-	.section-header .section-description { margin-top: 0.65rem; }
+	.section-header .eyebrow {
+		font-size: 0.72rem;
+	}
+	.section-header .h2 {
+		max-width: 20ch;
+		font-size: clamp(1.75rem, 8vw, 2.3rem);
+	}
+	.section-header .section-description {
+		margin-top: 0.65rem;
+	}
 }

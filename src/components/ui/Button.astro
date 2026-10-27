@@ -2,8 +2,7 @@
 import './Button.scss';
 
 interface Props {
-	variant?: 'accent' | 'dark' | 'ghost' | 'outline';
-	size?: 'sm' | 'md' | 'lg';
+	variant?: string;
 	block?: boolean;
 	href?: string;
 	type?: 'button' | 'submit' | 'reset';
@@ -13,7 +12,6 @@ interface Props {
 
 const {
 	variant = 'accent',
-	size = 'md',
 	block = false,
 	href,
 	type = 'button',
@@ -22,23 +20,19 @@ const {
 	...attrs
 } = Astro.props;
 
-const classes = [
-	'btn',
-	`btn--${variant}`,
-	size !== 'md' && `btn--${size}`,
-	block && 'btn--block',
-	className,
-]
+const classes = ['btn', `btn--${variant}`, block && 'btn--block', className]
 	.filter(Boolean)
 	.join(' ');
 ---
 
-{href ? (
-	<a class={classes} href={href} aria-label={ariaLabel} {...attrs}>
-		<slot />
-	</a>
-) : (
-	<button class={classes} type={type} aria-label={ariaLabel} {...attrs}>
-		<slot />
-	</button>
-)}
+{
+	href ? (
+		<a class={classes} href={href} aria-label={ariaLabel} {...attrs}>
+			<slot />
+		</a>
+	) : (
+		<button class={classes} type={type} aria-label={ariaLabel} {...attrs}>
+			<slot />
+		</button>
+	)
+}

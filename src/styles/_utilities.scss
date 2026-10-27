@@ -1,3 +1,5 @@
+@use 'variables' as var;
+
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -33,13 +35,13 @@
 }
 
 .hazard-thin {
-	height: 6px;
+	height: 8px;
 	background-image: repeating-linear-gradient(
 		-45deg,
 		var(--color-accent) 0,
 		var(--color-accent) 12px,
-		var(--color-graphite-high) 12px,
-		var(--color-graphite-high) 24px
+		var(--color-surface-dark) 12px,
+		var(--color-surface-dark) 24px
 	);
 }
 
@@ -47,11 +49,11 @@
 	background-color: var(--color-ink);
 	background-image: linear-gradient(
 		135deg,
-		rgb(var(--color-white-rgb) / 1.8%) 25%,
+		rgba(var.$color-white, 1.8%) 25%,
 		transparent 25%,
 		transparent 50%,
-		rgb(var(--color-white-rgb) / 1.8%) 50%,
-		rgb(var(--color-white-rgb) / 1.8%) 75%,
+		rgba(var.$color-white, 1.8%) 50%,
+		rgba(var.$color-white, 1.8%) 75%,
 		transparent 75%
 	);
 	background-size: 8px 8px;

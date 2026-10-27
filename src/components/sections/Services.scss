@@ -1,6 +1,10 @@
 .services-section {
 	padding-block: var(--section-space);
 	background: var(--color-paper);
+
+	.section-header .eyebrow {
+		color: var(--color-secondary);
+	}
 }
 
 .services-section .section-header {
@@ -42,32 +46,34 @@
 	border: 1px solid var(--color-line);
 	border-radius: var(--radius-sm);
 	background: var(--color-white);
-	color: var(--color-heading);
+	color: var(--color-ink);
 	text-align: left;
 	cursor: pointer;
 	transition:
-		border-color 0.18s ease,
-		background-color 0.18s ease,
-		color 0.18s ease,
-		transform 0.18s ease;
+		border-color var(--motion-standard) ease,
+		background-color var(--motion-standard) ease,
+		color var(--motion-standard) ease,
+		transform var(--motion-standard) ease;
 
 	&::before {
 		position: absolute;
 		inset: 0 auto 0 0;
 		width: 4px;
-		background: var(--color-accent);
+		background: var(--color-secondary);
 		content: '';
 		transform: scaleY(0.55);
-		transition: transform 0.18s ease;
+		transition:
+			transform var(--motion-standard) ease,
+			color var(--motion-standard) ease;
 	}
 
 	&:hover {
-		border-color: var(--color-accent);
+		border-color: var(--color-secondary);
 		transform: translateX(2px);
 	}
 
 	&:focus-visible {
-		outline: 3px solid var(--color-accent-strong);
+		outline: 3px solid var(--color-secondary);
 		outline-offset: 2px;
 	}
 
@@ -78,9 +84,10 @@
 
 		&::before {
 			transform: scaleY(1);
+			background: var(--color-accent);
 		}
 		.service-category-count {
-			color: var(--color-steel-light);
+			color: var(--color-text-on-dark);
 		}
 		.service-category-arrow {
 			color: var(--color-accent);
@@ -104,10 +111,10 @@
 }
 
 .service-category-count {
-	color: var(--color-muted);
+	color: var(--color-text-muted);
 	font-size: 0.78rem;
 	font-weight: 600;
-	transition: color 0.18s ease;
+	transition: color var(--motion-standard) ease;
 }
 
 .service-category-arrow {
@@ -116,11 +123,11 @@
 	width: 1.25rem;
 	height: 1.25rem;
 	place-items: center;
-	color: var(--color-muted);
+	color: var(--color-text-muted);
 	transform: rotate(0);
 	transition:
-		color 0.18s ease,
-		transform 0.18s ease;
+		color var(--motion-standard) ease,
+		transform var(--motion-standard) ease;
 }
 
 .service-category-arrow svg {
@@ -147,7 +154,7 @@
 .services-panel-kicker {
 	display: block;
 	margin-bottom: 0.4rem;
-	color: var(--color-accent-strong);
+	color: var(--color-secondary);
 	font-family: var(--font-display);
 	font-size: 0.78rem;
 	font-weight: 700;
@@ -157,7 +164,7 @@
 
 .services-panel-title {
 	margin: 0;
-	color: var(--color-heading);
+	color: var(--color-ink);
 	font-family: var(--font-display);
 	font-size: clamp(1.4rem, 2.4vw, 1.9rem);
 	font-weight: 700;
@@ -176,7 +183,7 @@
 	gap: 1rem;
 	min-height: 58px;
 	padding: 0.65rem 0;
-	border-bottom: 1px solid var(--color-paper-raised);
+	border-bottom: 1px solid var(--color-line);
 }
 
 .service-name {
@@ -186,46 +193,31 @@
 }
 
 .service-price {
-	color: var(--color-heading);
+	color: var(--color-ink);
 	font-size: 0.95rem;
 	font-weight: 700;
 	white-space: nowrap;
 }
 
 .service-order {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.35rem;
-	min-width: 108px;
 	min-height: 36px;
-	padding: 0.45rem 0.7rem;
-	border: 1px solid rgb(var(--color-accent-rgb) / 45%);
-	border-radius: var(--radius-sm);
-	color: var(--color-accent-strong);
-	font-family: var(--font-display);
 	font-size: 0.88rem;
-	font-weight: 700;
 	letter-spacing: 0.035em;
-	text-decoration: none;
-	text-transform: uppercase;
 	white-space: nowrap;
-	transition:
-		color 0.18s ease,
-		border-color 0.18s ease,
-		background-color 0.18s ease;
+	padding: 12px 18px 11px;
 
-	&:hover,
-	&:focus-visible {
-		border-color: var(--color-accent-strong);
-		background: var(--color-accent-strong);
-		color: var(--color-white);
+	background: var(--color-ink);
+	color: var(--color-white);
+
+	&:hover {
+		background: var(--color-ink);
+		color: var(--color-accent);
 	}
 }
 
 .services-note {
 	margin: 1.2rem 0 0;
-	color: var(--color-muted);
+	color: var(--color-text-muted);
 	font-size: 0.85rem;
 	line-height: 1.45;
 }

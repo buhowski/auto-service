@@ -30,7 +30,7 @@ const [headlineStart, headlineEnd = ''] = heroData.headline.split(heroData.highl
 		/>
 	</div>
 
-	<Container size='lg'>
+	<Container>
 		<div class='hero-grid'>
 			<div class='hero-content'>
 				<div class='hero-meta' aria-label='Місто та графік роботи'>
@@ -45,11 +45,11 @@ const [headlineStart, headlineEnd = ''] = heroData.headline.split(heroData.highl
 				<p class='hero-sub'>{heroData.subtext}</p>
 
 				<div class='hero-actions'>
-					<Button variant='accent' size='lg' href={heroData.primaryCta.href}>
+					<Button variant='primary' href={heroData.primaryCta.href}>
 						{heroData.primaryCta.text}
 					</Button>
 
-					<Button variant='ghost' size='lg' href={heroData.secondaryCta.href}>
+					<Button variant='secondary' href={heroData.secondaryCta.href}>
 						{heroData.secondaryCta.text}
 					</Button>
 				</div>
@@ -57,4 +57,3 @@ const [headlineStart, headlineEnd = ''] = heroData.headline.split(heroData.highl
 		</div>
 	</Container>
 </section>
-

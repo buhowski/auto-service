@@ -16,7 +16,9 @@ const ctaData = {
 
 <section class='cta-band' aria-labelledby='cta-heading'>
 	<div class='cta-bg' aria-hidden='true'></div>
-	<Container size='lg'>
+	<div class='cta-chequer' aria-hidden='true'></div>
+	<div class='cta-chequer cta-chequer--bottom' aria-hidden='true'></div>
+	<Container>
 		<div class='cta-content'>
 			<SectionHeader
 				id='cta-heading'
@@ -26,10 +28,10 @@ const ctaData = {
 				centered
 			/>
 			<div class='cta-actions'>
-				<Button variant='accent' size='lg' href={ctaData.primaryCta.href}>
+				<Button variant='primary' href={ctaData.primaryCta.href}>
 					{ctaData.primaryCta.text}
 				</Button>
-				<Button variant='ghost' size='lg' href={ctaData.secondaryCta.href}>
+				<Button variant='secondary' href={ctaData.secondaryCta.href}>
 					{ctaData.secondaryCta.text}
 				</Button>
 			</div>

@@ -1,3 +1,5 @@
+@use '../../styles/variables' as var;
+
 .header {
 	position: fixed;
 	top: 0;
@@ -31,15 +33,15 @@
 	position: sticky;
 	top: 0;
 	z-index: auto;
-	background: rgb(var(--color-ink-rgb) / 98%);
+	background: rgba(var.$color-ink, 98%);
 	backdrop-filter: blur(6px);
-	border-bottom: 1px solid var(--color-line-dark);
+	border-bottom: 1px solid rgba(var.$color-white, 16%);
 	transition:
 		box-shadow 0.2s ease,
 		background-color 0.2s ease;
 }
 .nav.scrolled {
-	box-shadow: 0 10px 30px -18px rgb(var(--color-black-rgb) / 80%);
+	box-shadow: 0 10px 30px -18px rgba(var.$color-black, 80%);
 }
 .nav .container {
 	display: flex;
@@ -58,7 +60,7 @@
 	padding: 0;
 }
 .nav-links a {
-	color: var(--color-steel-light);
+	color: var(--color-text-on-dark);
 	font-family: var(--font-display);
 	font-weight: 600;
 	text-transform: uppercase;
@@ -96,8 +98,8 @@
 	z-index: 2;
 	width: 44px;
 	height: 44px;
-	border: 1px solid var(--color-line-dark);
-	background: var(--color-graphite-raised);
+	border: 1px solid rgba(var.$color-white, 16%);
+	background: var(--color-surface-dark);
 	border-radius: var(--radius-sm);
 	cursor: pointer;
 	padding: 0;
@@ -110,8 +112,8 @@
 }
 .burger:hover,
 .burger:focus-visible {
-	background: var(--color-graphite-high);
-	border-color: var(--color-steel);
+	background: var(--color-surface-dark);
+	border-color: rgba(var.$color-white, 35%);
 }
 .burger span {
 	display: block;
@@ -133,14 +135,14 @@
 	transform: translateY(-7px) rotate(-45deg);
 }
 .burger.open {
-	background: var(--color-graphite-high);
-	border-color: var(--color-steel);
+	background: var(--color-surface-dark);
+	border-color: rgba(var.$color-white, 35%);
 }
 
 .overlay {
 	position: fixed;
 	inset: 0;
-	background: rgb(var(--color-shadow-rgb) / 60%);
+	background: rgba(var.$color-ink, 60%);
 	opacity: 0;
 	visibility: hidden;
 	transition:
@@ -159,7 +161,7 @@
 	right: 0;
 	height: 100%;
 	width: min(86vw, 340px);
-	background: var(--color-graphite);
+	background: var(--color-surface-dark);
 	border-left: 2px solid var(--color-accent);
 	transform: translateX(100%);
 	transition: transform 0.28s ease;
@@ -183,8 +185,8 @@
 	place-items: center;
 	padding: 0;
 	color: var(--color-white);
-	background: var(--color-graphite-raised);
-	border: 1px solid var(--color-line-dark);
+	background: var(--color-surface-dark);
+	border: 1px solid rgba(var.$color-white, 16%);
 	border-radius: var(--radius-sm);
 	cursor: pointer;
 	transition:
@@ -193,11 +195,11 @@
 }
 .mobile-close:hover,
 .mobile-close:focus-visible {
-	background: var(--color-graphite-high);
-	border-color: var(--color-steel);
+	background: var(--color-surface-dark);
+	border-color: rgba(var.$color-white, 35%);
 }
 .mobile-links a {
-	color: var(--color-steel-light);
+	color: var(--color-text-on-dark);
 	font-family: var(--font-display);
 	font-weight: 600;
 	text-transform: uppercase;
@@ -224,7 +226,7 @@
 .mobile-links li a:hover,
 .mobile-links li a:focus-visible {
 	color: var(--color-white);
-	background: var(--color-graphite-raised);
+	background: var(--color-surface-dark);
 }
 .mobile-links li + li {
 	margin-top: 0.2rem;
@@ -239,9 +241,9 @@
 	font-weight: 700;
 	letter-spacing: 0;
 	text-transform: none;
-	color: var(--color-steel-light);
-	background: var(--color-graphite-raised);
-	border: 1px solid var(--color-line-dark);
+	color: var(--color-text-on-dark);
+	background: var(--color-surface-dark);
+	border: 1px solid rgba(var.$color-white, 16%);
 	border-radius: var(--radius-sm);
 	padding: 0.7rem 1rem;
 	transition:
@@ -252,8 +254,8 @@
 .mobile .mobile-phone:hover,
 .mobile .mobile-phone:focus-visible {
 	color: var(--color-white);
-	background: var(--color-graphite-high);
-	border-color: var(--color-steel);
+	background: var(--color-surface-dark);
+	border-color: rgba(var.$color-white, 35%);
 }
 .mobile .mobile-social {
 	display: flex;
@@ -266,16 +268,16 @@
 	width: 48px;
 	height: 48px;
 	padding: 0;
-	color: var(--color-steel-light);
-	background: var(--color-graphite-raised);
-	border: 1px solid var(--color-line-dark);
+	color: var(--color-text-on-dark);
+	background: var(--color-surface-dark);
+	border: 1px solid rgba(var.$color-white, 16%);
 	border-radius: var(--radius-sm);
 }
 .mobile .mobile-social a:hover,
 .mobile .mobile-social a:focus-visible {
 	color: var(--color-white);
-	background: var(--color-accent-strong);
-	border-color: var(--color-accent-strong);
+	background: var(--color-secondary);
+	border-color: var(--color-secondary);
 }
 .mobile .mobile-social svg {
 	width: 24px;

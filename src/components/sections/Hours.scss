@@ -1,6 +1,12 @@
+@use '../../styles/variables' as var;
+
 .hours-section {
 	padding-block: var(--section-space);
 	background: var(--color-paper);
+
+	.section-header .eyebrow {
+		color: var(--color-secondary);
+	}
 }
 .visit-grid {
 	display: grid;
@@ -31,10 +37,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0.75rem 0;
+	padding: 0.7rem 0.8rem;
+	border-bottom: 1px solid rgba(var.$color-ink, 0.2);
 }
 .hours-table li:hover {
-	color: var(--color-accent-strong);
+	color: var(--color-secondary);
 }
 .hours-table li.closed .day,
 .hours-table li.closed .hrs {
@@ -45,12 +52,10 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
-	font-size: 0.9rem;
-	color: var(--color-heading);
+	color: var(--color-ink);
 }
 .hours-table .hrs {
 	color: var(--color-text);
-	font-size: 0.95rem;
 }
 .visit-contact {
 	display: flex;
@@ -65,7 +70,7 @@
 }
 .visit-line svg {
 	flex: none;
-	color: var(--color-accent-strong);
+	color: var(--color-secondary);
 	margin-top: 2px;
 }
 .visit-line b {
@@ -74,15 +79,15 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
-	color: var(--color-muted);
+	color: var(--color-text-muted);
 	margin-bottom: 0.2rem;
 }
 .visit-line a {
-	color: var(--color-heading);
+	color: var(--color-ink);
 	font-weight: 500;
 }
 .visit-line a:hover {
-	color: var(--color-accent-hover);
+	color: var(--color-secondary);
 }
 
 .visit-map {
@@ -91,16 +96,17 @@
 	display: grid;
 	place-items: center;
 	overflow: hidden;
-	background: var(--color-graphite-raised);
+	background: var(--color-surface-dark);
+	border-radius: var(--radius-md);
 }
 .map-diag {
 	position: absolute;
 	inset: 0;
-	background-color: var(--color-graphite);
+	background-color: var(--color-surface-dark);
 	background-image: repeating-linear-gradient(
 		-45deg,
 		transparent 0 40px,
-		rgb(var(--color-accent-rgb) / 4%) 40px 41px
+		rgba(var.$color-accent, 4%) 40px 41px
 	);
 }
 .map-pin {
@@ -116,8 +122,8 @@
 	display: block;
 	width: 40px;
 	height: 40px;
-	color: var(--color-accent);
-	filter: drop-shadow(0 0 8px rgb(var(--color-accent-rgb) / 45%));
+	color: var(--color-secondary);
+	filter: drop-shadow(0 4px 12px rgba(var.$color-secondary, 60%));
 	margin: 0 auto 1.4rem;
 }
 .map-addr {
@@ -129,23 +135,19 @@
 	margin-bottom: 1.2rem;
 	font-size: 1.3rem;
 }
-.map-pin .btn {
-	width: 100%;
-	max-width: 240px;
-	position: relative;
-}
 
 .hours-table li.today {
-	background: var(--color-accent-soft);
-	margin: 0 -0.8rem;
-	padding: 0.7rem 0.8rem;
+	// background: rgba(var.$color-secondary, 20%);
+	background: #dfd2c0;
+	border-bottom: 0;
+	margin-top: -1px;
 }
 .hours-table li.closed.today {
-	color: var(--color-accent-strong);
+	color: var(--color-secondary);
 }
 .hours-table li.today .day,
 .hours-table li.today .hrs {
-	color: var(--color-accent-strong);
+	color: var(--color-secondary);
 }
 
 @media (max-width: 991px) {

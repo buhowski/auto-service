@@ -1,10 +1,14 @@
+@use '../../styles/variables' as var;
+
 .footer {
 	background: var(--color-ink);
-	color: var(--color-steel-light);
+	color: var(--color-text-on-dark);
 	padding: 0;
 }
 
-.footer > .container { margin-top: 3rem; }
+.footer > .container {
+	margin-top: 3rem;
+}
 
 .footer-main {
 	display: grid;
@@ -12,7 +16,7 @@
 	align-items: center;
 	gap: clamp(2rem, 6vw, 6rem);
 	padding: 2.5rem 0 2rem;
-	border-bottom: 1px solid var(--color-line-dark);
+	border-bottom: 1px solid rgba(var.$color-white, 16%);
 }
 
 .footer .brand {
@@ -24,7 +28,7 @@
 	margin: 0 0 1.25rem;
 	font-size: 0.95rem;
 	line-height: 1.7;
-	color: var(--color-steel-light);
+	color: var(--color-text-on-dark);
 }
 
 .footer-social a:focus-visible,
@@ -45,10 +49,11 @@
 	align-items: flex-start;
 	gap: 0.7rem;
 	margin: 0;
-	color: var(--color-steel-light);
+	color: var(--color-text-on-dark);
 	font-size: 0.9rem;
 	line-height: 1.5;
 	text-decoration: none;
+	transition: color var(--motion-standard);
 }
 
 .footer-contact__item svg {
@@ -57,8 +62,14 @@
 	color: var(--color-accent);
 }
 
-a.footer-contact__item:hover { color: var(--color-white); }
-.footer-contact__phone { color: var(--color-white); font-weight: 700; font-size: 1.05rem; }
+a.footer-contact__item:hover {
+	color: var(--color-accent);
+}
+.footer-contact__phone {
+	color: var(--color-white);
+	font-weight: 700;
+	font-size: 1.05rem;
+}
 
 .footer-bottom {
 	display: flex;
@@ -69,10 +80,24 @@ a.footer-contact__item:hover { color: var(--color-white); }
 	font-size: 0.85rem;
 }
 
-.copyright { margin: 0; font-size: 0.85rem; color: var(--color-steel); }
+.copyright {
+	margin: 0;
+	font-size: 0.85rem;
+	color: var(--color-text-on-dark);
+}
 
 @media (max-width: 700px) {
-	.footer > .container { margin-top: 2rem; }
-	.footer-main { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 0 1.5rem; }
-	.footer-bottom { align-items: flex-start; flex-direction: column; gap: 0.5rem; }
+	.footer > .container {
+		margin-top: 2rem;
+	}
+	.footer-main {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		padding: 2rem 0 1.5rem;
+	}
+	.footer-bottom {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
 }

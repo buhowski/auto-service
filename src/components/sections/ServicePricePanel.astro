@@ -1,5 +1,6 @@
 ---
 import { site } from '../../data/site';
+import Button from '../ui/Button.astro';
 
 interface Service {
 	name: string;
@@ -17,7 +18,13 @@ interface Props {
 const { id, triggerId, title, services, active = false } = Astro.props;
 ---
 
-<div class='services-panel surface-card' id={id} role='region' aria-labelledby={triggerId} hidden={!active}>
+<div
+	class='services-panel surface-card'
+	id={id}
+	role='region'
+	aria-labelledby={triggerId}
+	hidden={!active}
+>
 	<div class='services-panel-heading'>
 		<div>
 			<span class='services-panel-kicker'>Послуги та ціни</span>
@@ -30,9 +37,14 @@ const { id, triggerId, title, services, active = false } = Astro.props;
 				<div class='service-row'>
 					<span class='service-name'>{service.name}</span>
 					<span class='service-price'>{service.price}</span>
-					<a class='service-order' href={site.phone.href} aria-label={`Замовити послугу: ${service.name}`}>
+					<Button
+						variant='primary'
+						class='service-order'
+						href={site.phone.href}
+						aria-label={`Замовити послугу: ${service.name}`}
+					>
 						Замовити
-					</a>
+					</Button>
 				</div>
 			))
 		}

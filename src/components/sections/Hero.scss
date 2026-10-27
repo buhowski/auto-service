@@ -1,3 +1,5 @@
+@use '../../styles/variables' as var;
+
 .hero {
 	position: relative;
 	color: var(--color-white);
@@ -21,9 +23,9 @@
 	inset: 0;
 	background: linear-gradient(
 		90deg,
-		rgb(var(--color-ink-rgb) / 94%) 0%,
-		rgb(var(--color-ink-rgb) / 78%) 48%,
-		rgb(var(--color-ink-rgb) / 48%) 100%
+		rgba(var.$color-ink, 94%) 0%,
+		rgba(var.$color-ink, 78%) 48%,
+		rgba(var.$color-ink, 48%) 100%
 	);
 }
 .hero .container {
@@ -49,8 +51,8 @@
 	margin-bottom: 1.5rem;
 	padding: 0.65rem 0.9rem;
 	color: var(--color-white);
-	background: rgb(var(--color-ink-rgb) / 58%);
-	border: 1px solid rgb(var(--color-white-rgb) / 16%);
+	background: rgba(var.$color-ink, 58%);
+	border: 1px solid rgba(var.$color-white, 16%);
 	border-radius: var(--radius-sm);
 	font-size: 0.95rem;
 	line-height: 1.35;
@@ -68,13 +70,13 @@
 	text-transform: uppercase;
 }
 .hero-hours {
-	color: var(--color-steel-light);
+	color: var(--color-text-on-dark);
 }
 .hero-meta-divider {
 	width: 1px;
 	align-self: stretch;
 	margin: 0 0.85rem;
-	background: rgb(var(--color-white-rgb) / 22%);
+	background: rgba(var.$color-white, 22%);
 }
 .hero-title {
 	color: var(--color-white);
@@ -90,7 +92,7 @@
 }
 .hero-sub {
 	font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-	color: var(--color-steel-light);
+	color: var(--color-text-on-dark);
 	max-width: 46ch;
 	margin-bottom: 1.8rem;
 }

@@ -26,7 +26,7 @@ const hoursData = {
 ---
 
 <section class='hours-section' id='visit' aria-labelledby='visit-heading'>
-	<Container size='lg'>
+	<Container>
 		<div class='visit-grid'>
 			<div class='visit-info reveal'>
 				<SectionHeader
@@ -68,13 +68,7 @@ const hoursData = {
 					<Icon name='location' class='map-pin-dot' width='40' height='40' aria-hidden={true} />
 
 					<div class='map-addr'>{hoursData.map.address}</div>
-					<Button
-						variant='accent'
-						href={hoursData.map.directionsUrl}
-						target='_blank'
-						rel='noopener'
-					>
-						<Icon name='google-maps' width='18' height='18' />
+					<Button variant='dark' href={hoursData.map.directionsUrl} target='_blank' rel='noopener'>
 						Отримати маршрут
 					</Button>
 				</div>
