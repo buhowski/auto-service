@@ -4,21 +4,41 @@ import { site } from '../../data/site';
 
 interface Props {
 	className?: string;
+	includePhone?: boolean;
 }
 
-const { className = '' } = Astro.props;
+const { className = '', includePhone = false } = Astro.props;
+const links = [
+	...(includePhone
+		? [
+				{
+					href: site.phone.href,
+					label: `Зателефонувати: ${site.phone.display}`,
+					title: 'Зателефонувати',
+					icon: 'phone' as const,
+					external: false,
+				},
+			]
+		: []),
+	...site.socialLinks,
+];
 ---
 
-<nav class={`social-links ${className}`.trim()} aria-label='Соціальні мережі'>
-	{site.socialLinks.map((link) => (
-		<a
-			href={link.href}
-			aria-label={link.label}
-			title={link.title}
-			target={link.external ? '_blank' : undefined}
-			rel={link.external ? 'noopener noreferrer' : undefined}
-		>
-			<Icon name={link.icon} width='22' height='22' />
-		</a>
-	))}
+<nav
+	class={`social-links ${className}`.trim()}
+	aria-label={includePhone ? 'Телефон і соціальні мережі' : 'Соціальні мережі'}
+>
+	{
+		links.map((link) => (
+			<a
+				href={link.href}
+				aria-label={link.label}
+				title={link.title}
+				target={link.external ? '_blank' : undefined}
+				rel={link.external ? 'noopener noreferrer' : undefined}
+			>
+				<Icon name={link.icon} width='22' height='22' />
+			</a>
+		))
+	}
 </nav>

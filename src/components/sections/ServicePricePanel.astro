@@ -40,8 +40,8 @@ const { id, triggerId, title, services, active = false } = Astro.props;
 					<Button
 						variant='primary'
 						class='service-order'
-						href={site.phone.href}
 						aria-label={`Замовити послугу: ${service.name}`}
+						data-booking-open
 					>
 						Замовити
 					</Button>

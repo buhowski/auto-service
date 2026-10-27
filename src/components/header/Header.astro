@@ -22,17 +22,7 @@ import { site } from '../../data/site';
 			<NavLinks className='nav-links nav-desktop' />
 
 			<div class='nav-cta nav-desktop'>
-				<a
-					class='nav-phone'
-					href={site.phone.href}
-					aria-label={`Зателефонувати: ${site.phone.display}`}
-					title={`Зателефонувати: ${site.phone.display}`}
-				>
-					<Icon name='phone' width='21' height='21' />
-				</a
-				>
-
-				<SocialLinks />
+				<SocialLinks includePhone />
 			</div>
 
 			<button
@@ -52,11 +42,9 @@ import { site } from '../../data/site';
 			<Icon name='close' width='24' height='24' />
 		</button>
 		<NavLinks className='mobile-links' />
-		<SocialLinks className='mobile-social' />
+		<SocialLinks className='mobile-social' includePhone />
 
-		<a href={site.phone.href} class='mobile-phone'>{site.phone.display}</a>
-
-		<Button variant='primary' block href={site.links.booking}>Записатися</Button>
+		<Button variant='primary' block href={site.links.booking} data-booking-open>Записатися</Button>
 	</nav>
 </header>
 
@@ -69,34 +57,36 @@ import { site } from '../../data/site';
 		const closeBtn = document.querySelector('.mobile-close');
 
 		if (!burger || !menu) return;
+		const activeBurger = burger;
+		const activeMenu = menu;
 
 		function open() {
-			menu.classList.add('open');
+			activeMenu.classList.add('open');
 			overlay?.classList.add('open');
-			burger.classList.add('open');
-			burger.setAttribute('aria-expanded', 'true');
+			activeBurger.classList.add('open');
+			activeBurger.setAttribute('aria-expanded', 'true');
 			document.body.classList.add('nav-lock');
 		}
 
 		function close() {
-			menu.classList.remove('open');
+			activeMenu.classList.remove('open');
 			overlay?.classList.remove('open');
-			burger.classList.remove('open');
-			burger.setAttribute('aria-expanded', 'false');
+			activeBurger.classList.remove('open');
+			activeBurger.setAttribute('aria-expanded', 'false');
 			document.body.classList.remove('nav-lock');
 		}
 
 		function toggle() {
-			menu.classList.contains('open') ? close() : open();
+			activeMenu.classList.contains('open') ? close() : open();
 		}
 
 		burger.addEventListener('click', toggle);
 		overlay?.addEventListener('click', close);
 		closeBtn?.addEventListener('click', close);
-		menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+		activeMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
 
 		document.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape' && menu.classList.contains('open')) close();
+			if (e.key === 'Escape' && activeMenu.classList.contains('open')) close();
 		});
 		const nav = document.querySelector('.nav');
 		const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 20);

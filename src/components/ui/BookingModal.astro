@@ -1,0 +1,179 @@
+---
+import './BookingModal.scss';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { site } from '../../data/site';
+---
+
+<div class='booking-modal' data-booking-modal hidden>
+	<div>
+		<div
+			class='booking-modal__panel'
+			role='dialog'
+			aria-modal='true'
+			aria-labelledby='booking-title'
+		>
+			<button
+				class='booking-modal__close'
+				type='button'
+				aria-label='Закрити форму'
+				data-booking-close
+			>
+				<Icon name='close' width='16' height='16' />
+			</button>
+
+			<h2 class='booking-modal__title' id='booking-title'>Записатися на сервіс</h2>
+			<p class='booking-modal__intro'>
+				Залиште свої контакти, і ми зателефонуємо, щоб узгодити зручний час.
+			</p>
+
+			<form class='booking-form' data-booking-form>
+				<div class='booking-form__field'>
+					<label for='booking-name'>Ім'я <span aria-hidden='true'>*</span></label>
+					<input
+						id='booking-name'
+						name='name'
+						type='text'
+						autocomplete='name'
+						class='form-control'
+						maxlength='80'
+						placeholder='Як до вас звертатися'
+						required
+					/>
+				</div>
+
+				<div class='booking-form__field'>
+					<label for='booking-phone'>Телефон <span aria-hidden='true'>*</span></label>
+					<div class='booking-form__phone'>
+						<span class='booking-form__country-code' aria-hidden='true'>+380</span>
+						<input
+							id='booking-phone'
+							name='phone'
+							type='tel'
+							inputmode='numeric'
+							autocomplete='tel-national'
+							placeholder='XX XXX XX XX'
+							class='form-control'
+							maxlength='19'
+							pattern='[0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}'
+							required
+						/>
+					</div>
+				</div>
+
+				<div class='booking-form__field'>
+					<label for='booking-note'>Що потрібно зробити?</label>
+					<textarea
+						id='booking-note'
+						name='note'
+						rows='3'
+						class='form-control'
+						maxlength='500'
+						placeholder='Марка авто та коротко проблему'></textarea>
+				</div>
+
+				<Button variant='primary' block type='submit'>Надіслати заявку</Button>
+				<p class='booking-form__status' data-booking-status aria-live='polite' hidden>
+					Форма ще не підключена до надсилання заявок. Зателефонуйте нам за номером нижче.
+				</p>
+				<p class='booking-form__call'>
+					Або зателефонуйте: <a href={site.phone.href}>{site.phone.display}</a>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+	const bookingModal = document.querySelector<HTMLElement>('[data-booking-modal]');
+	const bookingForm = bookingModal?.querySelector<HTMLFormElement>('[data-booking-form]');
+	const phoneInput = bookingModal?.querySelector<HTMLInputElement>('#booking-phone');
+	const submitStatus = bookingModal?.querySelector<HTMLElement>('[data-booking-status]');
+	let lastBookingTrigger: HTMLElement | null = null;
+
+	function closeBookingModal() {
+		if (!bookingModal) return;
+		bookingModal.hidden = true;
+		document.body.classList.remove('booking-modal-open');
+		lastBookingTrigger?.focus();
+	}
+
+	document.addEventListener('click', (event) => {
+		const target = event.target;
+		if (!(target instanceof Element)) return;
+
+		const trigger = target.closest<HTMLElement>('[data-booking-open]');
+		if (trigger && bookingModal) {
+			event.preventDefault();
+			lastBookingTrigger = trigger;
+			bookingModal.hidden = false;
+			document.body.classList.add('booking-modal-open');
+			bookingModal.querySelector<HTMLInputElement>('#booking-name')?.focus();
+			return;
+		}
+
+		if (!bookingModal || bookingModal.hidden) return;
+
+		const panel = bookingModal.querySelector<HTMLElement>('.booking-modal__panel');
+		const clickedClose = target.closest('[data-booking-close]');
+		const clickedOutsidePanel = panel && !panel.contains(target);
+		if (clickedClose || clickedOutsidePanel) {
+			closeBookingModal();
+		}
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape' && bookingModal && !bookingModal.hidden) closeBookingModal();
+	});
+
+	const formFields = bookingForm
+		? Array.from(bookingForm.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]'))
+		: [];
+
+	function updateFieldState(field: HTMLInputElement | HTMLTextAreaElement, force = false) {
+		if (!force && !field.value.trim()) {
+			field.removeAttribute('aria-invalid');
+			return;
+		}
+		field.setAttribute('aria-invalid', String(!field.validity.valid));
+	}
+
+	formFields.forEach((field) => {
+		field.addEventListener('blur', () => updateFieldState(field, true));
+		field.addEventListener('input', () => {
+			if (field.hasAttribute('aria-invalid')) updateFieldState(field, true);
+		});
+	});
+
+	phoneInput?.addEventListener('input', () => {
+		const oldValue = phoneInput.value;
+		const oldCaret = phoneInput.selectionStart ?? oldValue.length;
+		let digits = oldValue.replace(/\D/g, '');
+		if (digits.startsWith('380')) digits = digits.slice(3);
+		else if (digits.startsWith('0')) digits = digits.slice(1);
+		digits = digits.slice(0, 9);
+		const digitsBeforeCaret = oldValue.slice(0, oldCaret).replace(/\D/g, '').length;
+		const formatted = digits
+			.replace(/^(\d{2})(\d)/, '$1 $2')
+			.replace(/^(\d{2} \d{3})(\d)/, '$1 $2')
+			.replace(/^(\d{2} \d{3} \d{2})(\d)/, '$1 $2');
+		phoneInput.value = formatted;
+
+		let caret = 0;
+		let countedDigits = 0;
+		while (caret < formatted.length && countedDigits < digitsBeforeCaret) {
+			if (/\d/.test(formatted[caret])) countedDigits += 1;
+			caret += 1;
+		}
+		if (formatted[caret] === ' ' && countedDigits < digits.length) caret += 1;
+		phoneInput.setSelectionRange(caret, caret);
+		if (phoneInput.hasAttribute('aria-invalid')) updateFieldState(phoneInput, true);
+	});
+
+	bookingForm?.addEventListener('submit', (event) => {
+		event.preventDefault();
+		formFields.forEach((field) => updateFieldState(field, true));
+		if (!bookingForm.reportValidity() || !submitStatus) return;
+		submitStatus.hidden = false;
+	});
+</script>
