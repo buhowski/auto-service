@@ -4,6 +4,10 @@
 .why-choose {
 	padding-block: var(--section-space);
 	color: var(--color-text-on-dark);
+
+	@include bp.tablet-md {
+		padding-top: 0;
+	}
 }
 
 .why-choose h2,
@@ -29,6 +33,7 @@
 
 	@include bp.tablet-md {
 		order: -1;
+		margin: 0 -15px;
 	}
 }
 

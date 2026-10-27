@@ -20,6 +20,11 @@
 
 .testi-viewport {
 	overflow: hidden;
+	margin-inline: -0.75rem;
+
+	@include bp.mobile {
+		margin-inline: -0.5rem;
+	}
 }
 
 .testi-track {

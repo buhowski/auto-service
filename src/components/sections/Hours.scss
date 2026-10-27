@@ -5,6 +5,10 @@
 	padding-block: var(--section-space);
 	background: var(--color-paper);
 
+	@include bp.tablet-md {
+		padding-top: 0;
+	}
+
 	.section-header .eyebrow {
 		color: var(--color-secondary);
 	}
@@ -97,7 +101,7 @@
 	display: block;
 	font-size: var(--text-sm);
 	font-weight: var(--semibold);
-	text-transform: var(--text-transform-display);
+	semiboldnsform: var(--text-transform-display);
 	letter-spacing: var(--tracking-wide);
 	color: var(--color-text-muted);
 }
@@ -114,10 +118,11 @@
 	overflow: hidden;
 	background: var(--color-surface-dark);
 	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-md);
 
 	@include bp.tablet-md {
+		margin: 0 -15px;
 		order: -1;
-		min-height: clamp(280px, 62vw, 380px);
 	}
 }
 .map-diag {
@@ -144,12 +149,11 @@
 	width: 40px;
 	height: 40px;
 	color: var(--color-secondary);
-	filter: drop-shadow(0 4px 12px rgba(var.$color-secondary, 60%));
+	filter: drop-shadow(0 4px 12px rgba(var.$color-secondary, 56%));
 	margin: 0 auto 1.4rem;
 }
 .map-addr {
 	font-family: var(--font-display);
-	font-weight: var(--semibold);
 	text-transform: var(--text-transform-display);
 	letter-spacing: var(--tracking-normal);
 	color: var(--color-white);

@@ -1,6 +1,8 @@
 @use 'variables' as var;
 
 body {
+	min-width: 320px;
+	overflow-x: hidden;
 	font-family: var(--font-body);
 	font-size: var(--text-base);
 	line-height: var(--line-height-copy);
