@@ -11,7 +11,7 @@
 .visit-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 3.5rem;
+	gap: clamp(2rem, 5vw, 3.5rem);
 	align-items: stretch;
 }
 .visit-info {
@@ -19,7 +19,7 @@
 }
 .visit-info .section-header {
 	max-width: none;
-	margin-bottom: 1.5rem;
+	margin-bottom: var(--space-6);
 }
 .visit-info .lead {
 	color: var(--color-text);
@@ -28,7 +28,7 @@
 .hours-table {
 	list-style: none;
 	padding: 0;
-	margin: 0 0 2rem;
+	margin: 0 0 var(--space-8);
 	display: flex;
 	flex-direction: column;
 	gap: 0;
@@ -65,7 +65,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.9rem;
-	margin-top: 1.5rem;
+	margin-top: var(--space-6);
 }
 .visit-line {
 	display: flex;
@@ -141,10 +141,8 @@
 }
 
 .hours-table li.today {
-	// background: rgba(var.$color-secondary, 20%);
-	background: #dfd2c0;
-	border-bottom: 0;
-	margin-top: -1px;
+	background: rgba(var.$color-accent, 22%);
+	border-bottom: 1px solid rgba(var.$color-ink, 0.12);
 }
 .hours-table li.closed.today {
 	color: var(--color-secondary);

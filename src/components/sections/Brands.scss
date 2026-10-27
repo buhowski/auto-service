@@ -7,10 +7,16 @@
 	.section-header .eyebrow {
 		color: var(--color-secondary);
 	}
+
+	.container {
+		@media (max-width: 1279px) {
+			padding: 0;
+		}
+	}
 }
 
 .brands-intro {
-	margin: 0 auto 2rem;
+	margin: 0 auto var(--space-8);
 }
 
 .brands-carousel {
@@ -18,8 +24,8 @@
 	overscroll-behavior-inline: contain;
 	scrollbar-width: none;
 	user-select: none;
-	touch-action: auto;
-	cursor: auto;
+	touch-action: pan-y;
+	cursor: grab;
 	mask-image: linear-gradient(
 		to right,
 		transparent,
@@ -31,6 +37,10 @@
 
 .brands-carousel::-webkit-scrollbar {
 	display: none;
+}
+
+.brands-carousel:active {
+	cursor: grabbing;
 }
 
 .brands-track {
@@ -73,6 +83,16 @@
 		color var(--motion-standard) ease,
 		border-color var(--motion-standard) ease,
 		background-color var(--motion-standard) ease;
+
+	&:hover {
+		border-color: rgba(var.$color-secondary, 35%);
+		background: rgba(var.$color-secondary, 20%);
+		color: var(--color-secondary);
+		.brand-logo {
+			filter: none;
+			opacity: 1;
+		}
+	}
 }
 
 .brand-item > span {
@@ -94,21 +114,14 @@
 		opacity var(--motion-standard) ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-	.brand-item:hover {
-		border-color: rgba(var.$color-secondary, 35%);
-		background: rgba(var.$color-secondary, 20%);
-		color: var(--color-secondary);
-		.brand-logo {
-			filter: none;
-			opacity: 1;
-		}
-	}
-}
-
 @media (max-width: 600px) {
+	.brands-carousel {
+		-webkit-overflow-scrolling: touch;
+		scroll-behavior: auto;
+	}
+
 	.brands-intro {
-		margin-bottom: 1.5rem;
+		margin-bottom: var(--space-6);
 	}
 	.brands-grid {
 		gap: 0.55rem;

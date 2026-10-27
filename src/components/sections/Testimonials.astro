@@ -3,6 +3,9 @@ import './Testimonials.scss';
 import Container from '../ui/Container.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import Icon from '../ui/Icon.astro';
+import customerOneImage from '../../assets/img/cust-1.jpg?url';
+import customerTwoImage from '../../assets/img/cust-2.jpg?url';
+import customerThreeImage from '../../assets/img/cust-3.jpg?url';
 const testimonialsData = {
 	sectionTitle: { eyebrow: 'Прямо з парковки', headline: 'Що кажуть наші клієнти' },
 	items: [
@@ -13,7 +16,7 @@ const testimonialsData = {
 			author: {
 				name: 'Олександр К.',
 				role: 'Власник Ford F-150',
-				image: '/cust-1.jpg',
+				image: customerOneImage,
 				imageAlt: 'Фото клієнта Олександра К.',
 			},
 		},
@@ -24,7 +27,7 @@ const testimonialsData = {
 			author: {
 				name: 'Софія Р.',
 				role: 'Власник Honda CR-V',
-				image: '/cust-2.jpg',
+				image: customerTwoImage,
 				imageAlt: 'Фото клієнта Софії Р.',
 			},
 		},
@@ -35,7 +38,7 @@ const testimonialsData = {
 			author: {
 				name: 'Ахмед К.',
 				role: 'Власник Toyota Camry',
-				image: '/cust-3.jpg',
+				image: customerThreeImage,
 				imageAlt: 'Фото клієнта Ахмеда К.',
 			},
 		},
@@ -46,7 +49,7 @@ const testimonialsData = {
 			author: {
 				name: 'Денис М.',
 				role: 'Власник Jeep Grand Cherokee',
-				image: '/cust-1.jpg',
+				image: customerOneImage,
 				imageAlt: 'Фото клієнта Дениса М.',
 			},
 		},

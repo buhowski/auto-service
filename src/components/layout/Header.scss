@@ -8,18 +8,40 @@
 }
 
 .nav-phone {
-	display: inline-flex;
-	align-items: center;
-	color: var(--color-white);
-	font-size: 1.05rem;
-	font-weight: 600;
-	white-space: nowrap;
+	display: grid;
+	width: 42px;
+	height: 42px;
+	flex: none;
+	place-items: center;
+	border: var(--border-width) solid rgba(var.$color-white, 16%);
+	border-radius: var(--radius-sm);
+	background: var(--color-surface-dark);
+	color: var(--color-text-on-dark);
 	text-decoration: none;
-	transition: color 0.2s ease;
+	transition:
+		color var(--motion-fast) ease,
+		background-color var(--motion-fast) ease,
+		border-color var(--motion-fast) ease,
+		transform var(--motion-fast) ease;
 }
 .nav-phone:hover,
 .nav-phone:focus-visible {
-	color: var(--color-accent);
+	transform: translateY(-2px);
+	border-color: var(--color-accent);
+	background: var(--color-accent);
+	color: var(--color-ink);
+}
+.nav-phone svg {
+	display: block;
+	width: 21px;
+	height: 21px;
+	fill: currentColor;
+}
+.mobile .nav-phone {
+	display: inline-flex;
+	width: 100%;
+	min-height: 48px;
+	gap: 0.65rem;
 }
 .nav-cta {
 	justify-content: flex-end;
@@ -301,10 +323,6 @@ body.nav-lock {
 	.burger {
 		display: grid;
 	}
-	.nav-phone {
-		font-size: 0.95rem;
-		margin-left: auto;
-	}
 	.burger {
 		margin-left: 0;
 	}
@@ -317,9 +335,6 @@ body.nav-lock {
 	.header .brand-mark {
 		width: 36px;
 		height: 36px;
-	}
-	.nav-phone {
-		font-size: 0.82rem;
 	}
 	.nav .container {
 		gap: 0.55rem;

@@ -54,13 +54,13 @@
 .cta-actions {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1rem;
+	gap: 1.25rem;
 	justify-content: center;
-	margin-top: 1.8rem;
+	margin-top: var(--space-8);
 }
 
 @media (max-width: 767px) {
 	.cta-actions {
-		gap: 0.75rem;
+		gap: var(--space-3);
 	}
 }

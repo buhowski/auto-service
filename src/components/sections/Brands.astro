@@ -106,6 +106,8 @@ const brandsData = {
 		let isDragging = false;
 		let dragStartX = 0;
 		let dragStartScroll = 0;
+		let touchStartY = 0;
+		let isTouchDragging = false;
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const speed = 24;
 
@@ -124,6 +126,7 @@ const brandsData = {
 
 		brandsCarousel.addEventListener('pointerdown', (event) => {
 			if (event.pointerType === 'mouse' && event.button !== 0) return;
+			if (event.pointerType !== 'mouse') return;
 			isDragging = true;
 			dragStartX = event.clientX;
 			dragStartScroll = brandsCarousel.scrollLeft;
@@ -144,9 +147,42 @@ const brandsData = {
 				brandsCarousel.scrollLeft = position;
 			}
 		};
-		brandsCarousel.addEventListener('pointerup', endDrag);
-		brandsCarousel.addEventListener('pointercancel', endDrag);
+		brandsCarousel.addEventListener('pointerup', (event) => {
+			if (event.pointerType === 'mouse') endDrag();
+		});
+		brandsCarousel.addEventListener('pointercancel', (event) => {
+			if (event.pointerType === 'mouse') endDrag();
+		});
 		brandsCarousel.addEventListener('lostpointercapture', endDrag);
+		brandsCarousel.addEventListener('touchstart', (event) => {
+			const touch = event.touches[0];
+			if (!touch) return;
+			isTouchDragging = true;
+			dragStartX = touch.clientX;
+			touchStartY = touch.clientY;
+			dragStartScroll = position;
+		}, { passive: true });
+		brandsCarousel.addEventListener('touchmove', (event) => {
+			if (!isTouchDragging) return;
+			const touch = event.touches[0];
+			if (!touch) return;
+			const deltaX = touch.clientX - dragStartX;
+			const deltaY = touch.clientY - touchStartY;
+			if (Math.abs(deltaX) <= Math.abs(deltaY)) return;
+			event.preventDefault();
+			position = dragStartScroll - deltaX;
+			brandsCarousel.scrollLeft = position;
+		}, { passive: false });
+		const endTouchDrag = () => {
+			isTouchDragging = false;
+			const loopPoint = brandsGrid.scrollWidth;
+			if (loopPoint) {
+				position = ((brandsCarousel.scrollLeft % loopPoint) + loopPoint) % loopPoint;
+				brandsCarousel.scrollLeft = position;
+			}
+		};
+		brandsCarousel.addEventListener('touchend', endTouchDrag, { passive: true });
+		brandsCarousel.addEventListener('touchcancel', endTouchDrag, { passive: true });
 
 		document.fonts.ready.then(updateBrandItemWidth);
 		window.addEventListener('resize', updateBrandItemWidth, { passive: true });

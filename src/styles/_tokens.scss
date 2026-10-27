@@ -2,14 +2,14 @@
 
 :root {
 	--color-ink: #{var.$color-ink};
-	--color-surface-dark: #24272c;
-	--color-text-on-dark: #b9bcc2;
-	--color-text-muted: #73777d;
-	--color-paper: #f3f2ee;
-	--color-line: #d9dde2;
+	--color-surface-dark: #22262b;
+	--color-text-on-dark: #c4c7cc;
+	--color-text-muted: #68717c;
+	--color-paper: #f4f3ef;
+	--color-line: #dfe1df;
 	--color-white: #{var.$color-white};
 	--color-black: #{var.$color-black};
-	--color-text: #4b535f;
+	--color-text: #454c55;
 	--color-accent: #{var.$color-accent};
 	--color-secondary: #{var.$color-secondary};
 	--color-error: #c0392b;
@@ -17,15 +17,23 @@
 	/* Typography */
 	--font-display: 'Fira Sans Condensed', 'Roboto Condensed', sans-serif;
 	--font-body: 'Inter', -apple-system, system-ui, sans-serif;
-	--text-caption: 0.78rem;
-	--text-small: 0.95rem;
+	--text-caption: 0.75rem;
+	--text-small: 0.9375rem;
 	--text-base: 1rem;
-	--heading-section: clamp(1.75rem, 4vw, 3rem);
+	--heading-section: clamp(1.875rem, 3.6vw, 3rem);
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+	--space-10: 2.5rem;
+	--space-12: 3rem;
 
 	/* Layout and component geometry */
-	--section-space: clamp(3.5rem, 7vw, 5.5rem);
+	--section-space: clamp(4.5rem, 7vw, 6.25rem);
 	--radius-sm: 4px;
-	--radius-md: 6px;
+	--radius-md: 3px;
 	--radius-pill: 999px;
 	--border-width: 1px;
 	--shadow-md: 0 8px 22px -14px #{rgba(var.$color-ink, 45%)};

@@ -8,7 +8,7 @@
 }
 
 .services-section .section-header {
-	margin-bottom: 3rem;
+	margin-bottom: var(--space-10);
 }
 
 .services-catalog {
@@ -256,7 +256,7 @@
 		padding: 4rem 0;
 	}
 	.services-section .section-header {
-		margin-bottom: 2rem;
+		margin-bottom: var(--space-8);
 	}
 	.services-catalog {
 		display: block;
@@ -272,7 +272,7 @@
 	}
 	.service-entry {
 		display: block;
-		margin-bottom: 0.45rem;
+		margin-bottom: var(--space-2);
 	}
 	.service-category {
 		min-height: 68px;
@@ -290,7 +290,11 @@
 		transform: rotate(180deg);
 	}
 	.services-panel {
-		margin-top: 0.45rem;
+		margin-top: var(--space-2);
+		animation: none;
+	}
+	.service-category-arrow {
+		transition: none;
 	}
 }
 

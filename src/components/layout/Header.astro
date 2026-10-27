@@ -22,12 +22,17 @@ import { site } from '../../data/site';
 			<NavLinks className='nav-links nav-desktop' />
 
 			<div class='nav-cta nav-desktop'>
-				<SocialLinks />
 				<a
 					class='nav-phone'
 					href={site.phone.href}
-					aria-label={`Зателефонувати: ${site.phone.display}`}>{site.phone.display}</a
+					aria-label={`Зателефонувати: ${site.phone.display}`}
+					title={`Зателефонувати: ${site.phone.display}`}
 				>
+					<Icon name='phone' width='21' height='21' />
+				</a
+				>
+
+				<SocialLinks />
 			</div>
 
 			<button

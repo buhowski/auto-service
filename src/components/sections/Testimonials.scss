@@ -6,7 +6,7 @@
 }
 
 .testimonials .section-header {
-	margin-bottom: 3rem;
+	margin-bottom: var(--space-10);
 }
 
 .testimonials .section-header .h2 {
@@ -37,7 +37,7 @@
 	display: flex;
 	height: 100%;
 	flex-direction: column;
-	padding: 2rem;
+	padding: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .testi-stars {
@@ -53,7 +53,7 @@
 
 .testi-quote {
 	flex: 1;
-	margin: 0 0 1.4rem;
+	margin: 0 0 var(--space-6);
 	color: var(--color-white);
 	font-size: 1.12rem;
 	line-height: 1.6;
@@ -137,6 +137,6 @@
 	}
 
 	.testi-card {
-		padding: 1.5rem;
+		padding: 1.25rem;
 	}
 }
