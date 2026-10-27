@@ -2,8 +2,9 @@
 import './Footer.scss';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
+import BusinessHours from '../ui/BusinessHours.astro';
 import SocialLinks from './SocialLinks.astro';
-import { openingHoursSummary, site } from '../../data/site';
+import { site } from '../../data/site';
 
 const year = new Date().getFullYear();
 const footerAbout = `Сімейне СТО у Львові: чесні кошториси, сертифіковані майстри та гарантія 24 місяці на кожну роботу.`;
@@ -39,10 +40,11 @@ const footerAbout = `Сімейне СТО у Львові: чесні кошт�
 					<Icon name='location' width='20' height='20' />
 					<span>{site.address.full}</span>
 				</a>
-				<p class='footer-contact__item'>
+				<div class='footer-contact__item'>
 					<Icon name='clock' width='20' height='20' />
-					<span>{openingHoursSummary}</span>
-				</p>
+
+					<BusinessHours id='footer-business-hours' class='footer-business-hours' />
+				</div>
 			</address>
 		</div>
 

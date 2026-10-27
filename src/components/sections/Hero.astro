@@ -2,11 +2,10 @@
 import './Hero.scss';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
-import { openingHoursSummary, site } from '../../data/site';
+import BusinessHours from '../ui/BusinessHours.astro';
+import { site } from '../../data/site';
 import heroGarageImage from '../../assets/img/hero-garage.jpg?url';
 const heroData = {
-	badge: site.city,
-	openingHours: openingHoursSummary,
 	headline: 'Чесні ремонти Прямі відповіді',
 	highlightedWord: 'Прямі',
 	subtext:
@@ -34,11 +33,7 @@ const [headlineStart, headlineEnd = ''] = heroData.headline.split(heroData.highl
 	<Container>
 		<div class='hero-grid'>
 			<div class='hero-content'>
-				<div class='hero-meta' aria-label='Місто та графік роботи'>
-					<span class='hero-location'>{heroData.badge}</span>
-					<span class='hero-meta-divider' aria-hidden='true'></span>
-					<span class='hero-hours'>{heroData.openingHours}</span>
-				</div>
+				<BusinessHours id='hero-business-hours' class='hero-meta' />
 				<h1 id='hero-heading' class='hero-title'>
 					<span class='hero-title-line'>{headlineStart}</span>
 					<span class='u'>{heroData.highlightedWord}</span>{headlineEnd}

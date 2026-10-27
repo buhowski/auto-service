@@ -1,0 +1,248 @@
+@use '../../styles/variables' as var;
+
+.business-hours {
+	position: relative;
+	z-index: 4;
+	width: fit-content;
+	max-width: 100%;
+	color: var(--color-white);
+}
+
+.business-hours__trigger {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	max-width: 100%;
+	padding: 12px 20px;
+	border: 1px solid rgba(var.$color-white, 18%);
+	border-radius: var(--radius-sm);
+	background: rgba(var.$color-ink, 76%);
+	color: inherit;
+	font: inherit;
+	font-weight: 600;
+	text-align: left;
+	cursor: pointer;
+	backdrop-filter: blur(8px);
+	will-change: transform;
+	transition:
+		background-color var(--motion-fast) ease,
+		transform var(--motion-fast) ease;
+
+	&:active {
+		transform: scale(0.96);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 3px;
+	}
+}
+
+.business-hours {
+	&__trigger {
+		&:hover,
+		&:focus-visible,
+		.business-hours:hover & {
+			background: rgba(var.$color-ink, 90%);
+		}
+
+		&[aria-expanded='true'] {
+			background: rgba(var.$color-ink, 96%);
+		}
+	}
+
+	&:hover .business-hours__chevron {
+		transform: rotate(-90deg);
+	}
+}
+
+.business-hours__city {
+	flex: none;
+	font-size: 0.85rem;
+	font-weight: 600;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+.business-hours__status {
+	display: inline-flex;
+	min-width: 0;
+	align-items: center;
+	gap: 0.6rem;
+	color: var(--color-white);
+	font-size: 0.85rem;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.business-hours__status.is-open {
+	color: var(--color-white);
+}
+
+.business-hours__status.is-closed .business-hours__dot {
+	background: #e15d58;
+}
+
+.business-hours__dot {
+	width: 9px;
+	height: 9px;
+	flex: none;
+	border-radius: 50%;
+	background: #62c982;
+}
+
+.business-hours__status.is-open .business-hours__dot {
+	animation: business-hours-pulse 1s ease-out infinite;
+}
+
+.business-hours__chevron {
+	width: 14px;
+	height: 14px;
+	flex: none;
+	transform: rotate(90deg);
+	transition: transform var(--motion-fast) ease;
+	margin-bottom: 1px;
+}
+
+.business-hours__trigger[aria-expanded='true'] .business-hours__chevron {
+	transform: rotate(-90deg);
+}
+
+.business-hours__panel {
+	position: absolute;
+	top: calc(100% + 0.45rem);
+	left: 0;
+	width: max-content;
+	min-width: 100%;
+	padding: 0.35rem;
+	border: 1px solid rgba(var.$color-white, 14%);
+	border-radius: var(--radius-sm);
+	background: #24272c;
+	box-shadow: 0 12px 30px rgba(var.$color-black, 32%);
+	backdrop-filter: blur(12px);
+
+	&::before {
+		position: absolute;
+		right: 0;
+		bottom: 100%;
+		left: 0;
+		height: 0.5rem;
+		content: '';
+	}
+
+	&[hidden] {
+		display: none;
+	}
+}
+
+.footer-business-hours {
+	.business-hours__trigger {
+		min-height: 0;
+		gap: 0.65rem;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		backdrop-filter: none;
+		color: inherit;
+		font-size: 0.9375rem;
+		transition:
+			color var(--motion-fast) ease,
+			transform var(--motion-fast) ease;
+
+		&:hover,
+		&[aria-expanded='true'] {
+			background: transparent;
+			color: var(--color-accent);
+
+			svg {
+				fill: currentColor;
+			}
+		}
+	}
+
+	&:hover .business-hours__trigger {
+		background: transparent;
+		color: var(--color-accent);
+	}
+
+	.business-hours__city,
+	.business-hours__status {
+		color: inherit;
+		font-size: inherit;
+		font-weight: 600;
+	}
+
+	.business-hours__panel {
+		top: auto;
+		bottom: calc(100% + 0.45rem);
+
+		&::before {
+			top: 100%;
+			bottom: auto;
+		}
+	}
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.business-hours:hover .business-hours__panel[hidden] {
+		display: block;
+	}
+}
+
+.business-hours__row {
+	display: flex;
+	min-height: 34px;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	padding: 0.35rem 0.6rem;
+	border-radius: 2px;
+	color: var(--color-text-on-dark);
+	font-size: 0.8rem;
+	white-space: nowrap;
+
+	&.is-current {
+		background: rgba(var.$color-accent, 14%);
+		color: var(--color-accent);
+		font-weight: 700;
+	}
+}
+
+.business-hours__closed {
+	color: #e87570;
+	font-weight: 600;
+}
+
+@keyframes business-hours-pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(98, 201, 130, 55%);
+	}
+	70% {
+		box-shadow: 0 0 0 8px rgba(98, 201, 130, 0%);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(98, 201, 130, 0%);
+	}
+}
+
+@media (max-width: 600px) {
+	.business-hours__trigger {
+		min-height: 46px;
+		gap: 0.55rem;
+		padding-inline: 0.9rem;
+	}
+
+	.business-hours__status {
+		max-width: 220px;
+		font-size: 0.75rem;
+		white-space: normal;
+		line-height: 1.25;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.business-hours__status.is-open .business-hours__dot {
+		animation: none;
+	}
+}

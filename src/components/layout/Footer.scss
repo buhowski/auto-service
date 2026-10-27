@@ -50,23 +50,23 @@
 	align-items: start;
 	column-gap: 0.75rem;
 	margin: 0;
-	color: var(--color-text-on-dark);
+	color: var(--color-white);
 	font-size: 0.9375rem;
 	line-height: 1.5;
 	text-decoration: none;
 	transition: color var(--motion-standard) ease;
 }
 
-.footer-contact__item svg {
+.footer-contact__item > svg {
 	width: 20px;
 	height: 20px;
 	margin-top: 2px;
 	color: var(--color-accent);
+	place-self: center;
 }
 
 a.footer-contact__item {
 	font-weight: 600;
-	color: var(--color-paper);
 
 	&:hover,
 	&:focus-visible {
@@ -78,6 +78,28 @@ a.footer-contact__item {
 	border-radius: 2px;
 	outline: 2px solid var(--color-accent);
 	outline-offset: 4px;
+}
+
+.footer-business-hours {
+	margin-top: 0.15rem;
+
+	.business-hours__city {
+		display: none;
+	}
+
+	.business-hours__status {
+		column-gap: 0.75rem;
+	}
+
+	.business-hours__panel {
+		top: auto;
+		bottom: calc(100% + 0.45rem);
+
+		&::before {
+			top: 100%;
+			bottom: auto;
+		}
+	}
 }
 
 .footer-bottom {

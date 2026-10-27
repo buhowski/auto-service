@@ -1,3 +1,5 @@
+import { openingHours, openingHoursSummary } from './openingHours';
+
 const phoneNumber = '+380322345678';
 const bookingLink = `tel:${phoneNumber}`;
 const formattedPhoneNumber = phoneNumber.replace(
@@ -12,12 +14,6 @@ const address = {
 	full: `${addressLabel}, ${postalCode}`,
 	mapLabel: addressLabel,
 };
-type OpeningHour = {
-	day: string;
-	time: string;
-	shortDay: string;
-	isClosed?: boolean;
-};
 type SocialLink = {
 	href: string;
 	label: string;
@@ -27,17 +23,6 @@ type SocialLink = {
 };
 const brand = { prefix: 'СТО', name: 'Поршень' };
 const businessName = `${brand.prefix} ${brand.name}`;
-const weekdayHours = '07:30 – 18:00';
-const saturdayHours = '08:00 – 15:00';
-const openingHours: OpeningHour[] = [
-	{ day: 'Понеділок', time: weekdayHours, shortDay: 'Пн' },
-	{ day: 'Вівторок', time: weekdayHours, shortDay: 'Вт' },
-	{ day: 'Середа', time: weekdayHours, shortDay: 'Ср' },
-	{ day: 'Четвер', time: weekdayHours, shortDay: 'Чт' },
-	{ day: "П'ятниця", time: weekdayHours, shortDay: 'Пт' },
-	{ day: 'Субота', time: saturdayHours, shortDay: 'Сб' },
-	{ day: 'Неділя', time: 'Зачинено', shortDay: 'Нд', isClosed: true },
-];
 const socialLinks: SocialLink[] = [
 	{
 		href: `viber://chat?number=${encodeURIComponent(phoneNumber)}`,
@@ -82,9 +67,5 @@ export const site = {
 	},
 	socialLinks,
 } as const;
+export { openingHoursSummary };
 
-const monday = site.openingHours[0]!;
-const friday = site.openingHours[4]!;
-const saturday = site.openingHours[5]!;
-const sunday = site.openingHours[6]!;
-export const openingHoursSummary = `${monday.shortDay}–${friday.shortDay} ${monday.time} · ${saturday.shortDay} ${saturday.time} · ${sunday.shortDay} ${sunday.time.toLowerCase()}`;
