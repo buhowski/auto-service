@@ -12,6 +12,7 @@ out/
 .output/
 .vercel/
 .netlify/
+.github/
 
 # TypeScript
 *.tsbuildinfo
