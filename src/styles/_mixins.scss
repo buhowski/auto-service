@@ -1,0 +1,86 @@
+@use 'functions' as fn;
+@use 'variables' as var;
+
+@mixin tablet-lg {
+	@media (max-width: fn.rem(1279)) {
+		@content;
+	}
+}
+
+@mixin tablet-md {
+	@media (max-width: fn.rem(1023)) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: fn.rem(767)) {
+		@content;
+	}
+}
+
+@mixin fine-pointer {
+	@media (hover: hover) and (pointer: fine) {
+		@content;
+	}
+}
+
+@mixin reduced-motion {
+	@media (prefers-reduced-motion: reduce) {
+		@content;
+	}
+}
+
+@mixin focus-ring($color: var.$color-accent, $offset: fn.rem(3)) {
+	&:focus-visible {
+		outline: fn.rem(2) solid $color;
+		outline-offset: $offset;
+	}
+}
+
+@mixin hazard-pattern {
+	height: fn.rem(8);
+	background-image: repeating-linear-gradient(
+		-45deg,
+		var.$color-accent 0,
+		var.$color-accent fn.rem(12),
+		var.$color-surface-dark fn.rem(12),
+		var.$color-surface-dark fn.rem(24)
+	);
+}
+
+@mixin carbon-pattern {
+	background-color: var.$color-ink;
+	background-image: linear-gradient(
+		135deg,
+		rgba(var.$color-paper, 1.8%) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(var.$color-paper, 1.8%) 50%,
+		rgba(var.$color-paper, 1.8%) 75%,
+		transparent 75%
+	);
+	background-size: fn.rem(8) fn.rem(8);
+}
+
+@mixin background-overlay {
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(
+				140deg,
+				var.$color-overlay-strong 0%,
+				var.$color-overlay-stronger 35%,
+				var.$color-overlay-medium 60%,
+				var.$color-overlay-stronger 100%
+			),
+			radial-gradient(ellipse at 65% 40%, var.$color-overlay-blue 0%, transparent 65%);
+	}
+}
+
+@mixin surface-card {
+	background: var.$color-light;
+	box-shadow: var.$shadow-md;
+}

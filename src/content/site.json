@@ -8,7 +8,6 @@
 	"navigation": [
 		{ "href": "#services", "label": "Послуги" },
 		{ "href": "#why-choose", "label": "Переваги" },
-		{ "href": "#testimonials", "label": "Відгуки" },
 		{ "href": "#visit", "label": "Контакти" }
 	],
 	"socialLinks": [

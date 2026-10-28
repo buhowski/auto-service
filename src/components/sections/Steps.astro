@@ -7,7 +7,7 @@ import content from '../../content/homepage.json';
 const stepsData = content.steps;
 ---
 
-<section class="steps-section" id="steps" aria-labelledby="steps-heading">
+<section class="steps" id="steps" aria-labelledby="steps-heading">
 	<Container size="lg">
 		<SectionHeader
 			id="steps-heading"
@@ -16,12 +16,12 @@ const stepsData = content.steps;
 			centered
 		/>
 
-		<div class="steps-grid">
+		<div class="steps__grid">
 			{stepsData.items.map((step, index) => (
-				<article class="step surface-card reveal" style={`--delay: ${index * 100}ms`}>
-					<div class="step-meta">
-						<span class="step-number">{String(index + 1).padStart(2, '0')}</span>
-						<span class="step-icon"><Icon name={step.icon as 'step1' | 'step2' | 'step3'} width="24" height="24" /></span>
+				<article class="steps__item reveal" data-delay={index * 100}>
+					<div class="steps__meta">
+						<span class="steps__number">{String(index + 1).padStart(2, '0')}</span>
+						<span class="steps__icon"><Icon name={step.icon as 'step1' | 'step2' | 'step3'} width="24" height="24" /></span>
 					</div>
 					<h3>{step.title}</h3>
 					<p>{step.description}</p>

@@ -1,4 +1,5 @@
 ---
+import './SocialLinks.scss';
 import Icon from '../ui/Icon.astro';
 import { site } from '../../data/site';
 
@@ -31,6 +32,7 @@ const links = [
 	{
 		links.map((link) => (
 			<a
+				class='social-links__item'
 				href={link.href}
 				aria-label={link.label}
 				title={link.title}

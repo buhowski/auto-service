@@ -11,26 +11,22 @@ const [headlineStart, headlineEnd = ''] = heroData.headline.split(heroData.highl
 ---
 
 <section class='hero' id='hero' aria-labelledby='hero-heading'>
-	<div class='hero-bg bg-overlay'>
+	<div class='hero__background'>
 		<BackgroundMedia media={heroData.background} fetchPriority='high' />
 	</div>
 
 	<Container>
-		<div class='hero-grid'>
-			<div class='hero-content'>
-				<BusinessHours class='hero-meta' />
-				<h1 id='hero-heading' class='hero-title'>
-					<span class='hero-title-line'>{headlineStart}</span>
-					<span class='u'>{heroData.highlightedWord}</span>{headlineEnd}
-				</h1>
-				<p class='hero-sub'>{heroData.subtext}</p>
+		<BusinessHours class='hero__meta' />
+		<h1 id='hero-heading' class='hero__title'>
+			<span class='hero__title-line'>{headlineStart}</span>
+			<span class='hero__highlight'>{heroData.highlightedWord}</span>{headlineEnd}
+		</h1>
+		<p class='hero__sub'>{heroData.subtext}</p>
 
-				<div class='hero-actions'>
-					<Button variant='primary' data-booking-open>{heroData.primaryCta}</Button>
+		<div class='hero__actions'>
+			<Button variant='primary' data-booking-open>{heroData.primaryCta}</Button>
 
-					<Button variant='secondary' href={site.links.services}>{heroData.secondaryCta}</Button>
-				</div>
-			</div>
+			<Button variant='secondary' href={site.links.services}>{heroData.secondaryCta}</Button>
 		</div>
 	</Container>
 </section>

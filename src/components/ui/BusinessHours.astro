@@ -7,13 +7,14 @@ interface Props {
 	class?: string;
 }
 
+const { class: className = '' } = Astro.props;
 const weekdays = openingSchedule.find((group) => group.days.includes(1));
 const saturday = openingSchedule.find((group) => group.days.includes(6));
 const formatHours = (group?: (typeof openingSchedule)[number]) =>
 	group?.open && group.close ? `${group.open}–${group.close}` : 'Зачинено';
 ---
 
-<div class={`business-hours`}>
+<div class:list={['business-hours', className]}>
 	<span class='business-hours__city'>{site.city}</span>
 	<svg
 		xmlns='http://www.w3.org/2000/svg'

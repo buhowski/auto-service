@@ -1,4 +1,5 @@
 ---
+import './ServiceCategoryTrigger.scss';
 import Icon from '../ui/Icon.astro';
 import servicesData from '../../content/services.json';
 
@@ -13,18 +14,18 @@ const { category, triggerId, panelId, active } = Astro.props;
 ---
 
 <button
-	class:list={['service-category', { 'is-active': active }]}
+	class:list={['service-category', { 'service-category--active': active }]}
 	id={triggerId}
 	data-service-trigger
 	aria-expanded={active}
 	aria-controls={panelId}
 	type='button'
 >
-	<span class='service-category-copy'>
-		<span class='service-category-title'>{category.title}</span>
-		<span class='service-category-count'>{category.services.length} послуг</span>
+	<span class='service-category__copy'>
+		<span class='service-category__title'>{category.title}</span>
+		<span class='service-category__count'>{category.services.length} послуг</span>
 	</span>
-	<span class='service-category-arrow' aria-hidden='true'>
+	<span class='service-category__arrow' aria-hidden='true'>
 		<Icon name='circleArrowDown' width='20' height='20' />
 	</span>
 </button>

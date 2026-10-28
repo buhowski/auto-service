@@ -1,0 +1,19 @@
+---
+import './Brand.scss';
+import Icon from './Icon.astro';
+import { site } from '../../data/site';
+
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<a class:list={['brand', className]} href='#main' aria-label={`${site.name} — на головну`}>
+	<span class='brand__mark' aria-hidden='true'>
+		<Icon name='brandMark' width='24' height='24' />
+	</span>
+	{site.brand.prefix}
+	<b class='brand__name'>{site.brand.name}</b>
+</a>

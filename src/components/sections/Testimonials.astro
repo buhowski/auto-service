@@ -7,7 +7,7 @@ import content from '../../content/homepage.json';
 const testimonialsData = content.testimonials;
 ---
 
-<section class='testimonials carbon' id='testimonials' aria-labelledby='testimonials-heading'>
+<section class='testimonials' id='testimonials' aria-labelledby='testimonials-heading'>
 	<Container>
 		<SectionHeader
 			id='testimonials-heading'
@@ -16,14 +16,14 @@ const testimonialsData = content.testimonials;
 			centered
 		/>
 
-		<div class='testi' data-testi>
-			<div class='testi-viewport'>
-				<div class='testi-track' aria-live='polite'>
+		<div class='testimonials__carousel' data-testi>
+			<div class='testimonials__viewport'>
+				<div class='testimonials__track' data-testi-track aria-live='polite'>
 					{
 						testimonialsData.items.map((testi, index) => (
-							<div class='testi-slide' aria-label={`Відгук ${index + 1}`} tabindex='-1'>
-								<article class='testi-card surface-card surface-card--dark'>
-									<div class='testi-stars' aria-label={`Оцінка ${testi.rating} з 5`} role='img'>
+							<div class='testimonials__slide' data-testi-slide aria-label={`Відгук ${index + 1}`} tabindex='-1'>
+								<article class='testimonials__card'>
+									<div class='testimonials__stars' aria-label={`Оцінка ${testi.rating} з 5`} role='img'>
 										{Array.from({ length: 5 }).map((_, i) => (
 											<Icon
 												name={i < testi.rating ? 'star' : 'starOutline'}
@@ -32,8 +32,8 @@ const testimonialsData = content.testimonials;
 											/>
 										))}
 									</div>
-									<p class='testi-quote' tabindex='0'>"{testi.quote}"</p>
-									<div class='testi-who'>
+									<p class='testimonials__quote' tabindex='0'>"{testi.quote}"</p>
+									<div class='testimonials__author'>
 										<img
 											src={testi.author.image}
 											alt={testi.author.imageAlt}
@@ -52,11 +52,11 @@ const testimonialsData = content.testimonials;
 					}
 				</div>
 			</div>
-			<div class='testi-nav' aria-label='Навігація відгуків'>
-				<button class='testi-btn' data-testi-prev aria-label='Попередній відгук'>
+			<div class='testimonials__navigation' aria-label='Навігація відгуків'>
+				<button class='testimonials__button' data-testi-prev aria-label='Попередній відгук'>
 					<Icon name='chevronLeft' width='20' height='20' />
 				</button>
-				<button class='testi-btn' data-testi-next aria-label='Наступний відгук'>
+				<button class='testimonials__button' data-testi-next aria-label='Наступний відгук'>
 					<Icon name='chevronRight' width='20' height='20' />
 				</button>
 			</div>

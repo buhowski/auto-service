@@ -1,21 +1,7 @@
 ---
-interface Props {
-	name: string;
-	class?: string;
-	width?: number | string;
-	height?: number | string;
-	'aria-hidden'?: boolean;
-}
+import './Icon.scss';
 
-const {
-	name,
-	class: className = '',
-	width = 24,
-	height = 24,
-	'aria-hidden': ariaHidden = true,
-} = Astro.props;
-
-const iconFiles: Record<string, string> = {
+const iconFiles = {
 	brandMark: 'brandMark.svg',
 	certified: 'certified.svg',
 	circleArrowDown: 'circle-arrow-down.svg',
@@ -37,17 +23,30 @@ const iconFiles: Record<string, string> = {
 	telegram: 'telegram.svg',
 	viber: 'viber.svg',
 	warranty: 'warranty.svg',
-};
+} as const;
 
-const iconPath = `/uploads/icons/${iconFiles[name] ?? iconFiles.brandMark}`;
-const toCssSize = (size: number | string) =>
-	typeof size === 'number' || /^\d+(\.\d+)?$/.test(size) ? `${size}px` : size;
-const iconWidth = toCssSize(width);
-const iconHeight = toCssSize(height);
+interface Props {
+	name: keyof typeof iconFiles;
+	class?: string;
+	width?: 16 | 20 | 22 | 24 | '16' | '20' | '22' | '24';
+	height?: 16 | 20 | 22 | 24 | '16' | '20' | '22' | '24';
+	'aria-hidden'?: boolean;
+}
+
+const {
+	name,
+	class: className = '',
+	width = 24,
+	height = 24,
+	'aria-hidden': ariaHidden = true,
+} = Astro.props;
+
 ---
 
 <span
-	class:list={['icon-mask', className]}
-	style={`--icon-width: ${iconWidth}; --icon-height: ${iconHeight}; --icon-source: url('${iconPath}');`}
+	class:list={['icon', className]}
+	data-icon={name in iconFiles ? name : 'brandMark'}
+	data-width={String(width)}
+	data-height={String(height)}
 	aria-hidden={ariaHidden}
 ></span>

@@ -1,51 +1,57 @@
-@use '../../styles/breakpoints' as bp;
+@use '../../styles/mixins' as bp;
+@use '../../styles/variables' as var;
 
 .section-header {
 	width: min(100%, 50rem);
+	// .section-header--center
 	&--center {
 		margin-inline: auto;
 		text-align: center;
 	}
-	.eyebrow {
+
+	// .section-header__eyebrow
+	&__eyebrow {
 		display: block;
-		font-family: var(--font-display);
-		font-weight: var(--semibold);
-		text-transform: var(--text-transform-display);
-		letter-spacing: var(--tracking-widest);
-		font-size: var(--text-xs);
-		color: var(--color-accent);
-		margin: 0 0 var(--space-3);
+		font-family: var.$font-display;
+		font-weight: var.$font-weight-semibold;
+		text-transform: var.$text-transform-display;
+		letter-spacing: var.$tracking-widest;
+		font-size: var.$text-xs;
+		color: var.$color-accent;
+		margin: 0 0 var.$space-3;
 	}
-	.h2 {
+	// .section-header__title
+	&__title {
 		max-width: 24ch;
 	}
-	&--center .h2 {
+	&--center &__title {
 		margin-inline: auto;
 	}
-	&--center .section-description {
+	&--center &__description {
 		margin-inline: auto;
 	}
-	.section-description {
+	// .section-header__description
+	&__description {
 		max-width: 42rem;
-		margin-top: var(--space-4);
-		color: var(--color-text-muted);
-		font-size: var(--text-lg);
-		line-height: var(--line-height-copy-relaxed);
+		margin-top: var.$space-4;
+		color: var.$color-text-muted;
+		font-size: var.$text-lg;
+		line-height: var.$line-height-copy-relaxed;
 	}
 }
 
 .section-header + p,
 .section-header + .lead {
-	margin-top: var(--space-4);
+	margin-top: var.$space-4;
 }
 
 .section-header {
 	@include bp.mobile {
-		.h2 {
+		&__title {
 			max-width: 20ch;
 		}
-		.section-description {
-			margin-top: var(--space-3);
+		&__description {
+			margin-top: var.$space-3;
 		}
 	}
 }

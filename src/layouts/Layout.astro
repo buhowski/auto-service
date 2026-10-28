@@ -1,5 +1,5 @@
 ---
-import '../styles/index.scss';
+import '../styles/global.scss';
 import Header from '../components/header/Header.astro';
 import Footer from '../components/footer/Footer.astro';
 import BookingModal from '../components/ui/BookingModal.astro';
@@ -9,16 +9,13 @@ import { site } from '../data/site';
 <!doctype html>
 <html lang='uk'>
 	<head>
-		<script is:inline>
-			document.documentElement.classList.add('js');
-		</script>
 		<meta charset='utf-8' />
 		<meta name='viewport' content='width=device-width, initial-scale=1' />
 		<meta
 			name='description'
 			content={`${site.name} — чесний автосервіс у ${site.city}. Сертифіковані майстри, прозорі ціни, гарантія 24 місяці. Запис онлайн або за телефоном ${site.phone.display}.`}
 		/>
-		<meta name='theme-color' content='var(--color-ink)' />
+		<meta name='theme-color' content='#121316' />
 		<link rel='preconnect' href='https://fonts.googleapis.com' />
 		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 		<link
@@ -36,6 +33,7 @@ import { site } from '../data/site';
 		<Footer />
 		<BookingModal />
 
+		<script src='../scripts/enable-js.ts'></script>
 		<script src='../scripts/reveal.ts'></script>
 	</body>
 </html>

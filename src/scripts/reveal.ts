@@ -14,9 +14,9 @@ function initReveal() {
 			entries.forEach((entry) => {
 				if (!entry.isIntersecting) return;
 				const element = entry.target as HTMLElement;
-				const delay = element.style.getPropertyValue('--delay');
-				if (delay) {
-					window.setTimeout(() => element.classList.add('in'), Number.parseInt(delay, 10));
+				const delay = Number(element.dataset.delay);
+				if (delay > 0) {
+					window.setTimeout(() => element.classList.add('in'), delay);
 				} else {
 					element.classList.add('in');
 				}

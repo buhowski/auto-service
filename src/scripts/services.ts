@@ -13,7 +13,7 @@ document.querySelectorAll<HTMLElement>('[data-service-set]').forEach((serviceSet
 				triggers.forEach((item, index) => {
 					const expanded = !shouldClose && index === activeIndex;
 					item.setAttribute('aria-expanded', String(expanded));
-					item.classList.toggle('is-active', expanded);
+					item.classList.toggle('service-category--active', expanded);
 					if (panels[index]) panels[index]!.hidden = !expanded;
 				});
 

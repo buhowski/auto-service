@@ -8,7 +8,7 @@ import servicesData from '../../content/services.json';
 const { categories } = servicesData;
 ---
 
-<section class='services-section' id='services' aria-labelledby='services-heading'>
+<section class='services' id='services' aria-labelledby='services-heading'>
 	<Container>
 		<SectionHeader
 			id='services-heading'
@@ -16,8 +16,8 @@ const { categories } = servicesData;
 			headline={servicesData.headline}
 		/>
 
-		<div class='services-catalog'>
-			<div class='services-category-list' data-service-set='desktop'>
+		<div class='services__catalog'>
+			<div class='services__category-list' data-service-set='desktop'>
 				{
 					categories.map((category, index) => (
 						<ServiceCategoryTrigger
@@ -30,7 +30,7 @@ const { categories } = servicesData;
 				}
 			</div>
 
-			<div class='services-panel-list' data-service-set='desktop'>
+			<div class='services__panel-list' data-service-set='desktop'>
 				{
 					categories.map((category, index) => (
 						<ServicePricePanel
@@ -45,10 +45,10 @@ const { categories } = servicesData;
 			</div>
 		</div>
 
-		<div class='services-mobile-list' data-service-set='mobile'>
+		<div class='services__mobile-list' data-service-set='mobile'>
 			{
 				categories.map((category, index) => (
-					<div class='service-entry'>
+					<div class='services__entry'>
 						<ServiceCategoryTrigger
 							category={category}
 							triggerId={`mobile-service-trigger-${category.id}`}

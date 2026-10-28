@@ -14,4 +14,6 @@ const dayIndexes: Record<string, number> = {
 };
 
 const todayIndex = dayIndexes[localDay];
-document.querySelector(`.hours-table [data-day="${todayIndex}"]`)?.classList.add('today');
+document
+	.querySelector(`[data-hours-table] [data-day="${todayIndex}"]`)
+	?.classList.add('hours__row--today');

@@ -18,7 +18,7 @@ const classes = [
 ].filter(Boolean).join(' ');
 ---
 <div class={classes}>
-  <span class="eyebrow">{eyebrow}</span>
-  <h2 id={id} class="h2">{headline}</h2>
-  {description && <p class="section-description">{description}</p>}
+  <span class="section-header__eyebrow">{eyebrow}</span>
+  <h2 id={id} class="section-header__title">{headline}</h2>
+  {description && <p class="section-header__description">{description}</p>}
 </div>

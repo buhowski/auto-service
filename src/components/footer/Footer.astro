@@ -3,6 +3,7 @@ import './Footer.scss';
 import Container from '../ui/Container.astro';
 import Icon from '../ui/Icon.astro';
 import BusinessHours from '../ui/BusinessHours.astro';
+import Brand from '../ui/Brand.astro';
 import SocialLinks from '../header/SocialLinks.astro';
 import { footerAbout, site } from '../../data/site';
 
@@ -10,39 +11,33 @@ const year = new Date().getFullYear();
 ---
 
 <footer class='footer' role='contentinfo'>
-	<div class='hazard-thin' role='presentation'></div>
+	<div class='footer__hazard' role='presentation'></div>
 	<Container>
-		<div class='footer-main'>
-			<div class='footer-brand'>
-				<a class='brand' href='#main' aria-label={`${site.name} — на головну`}>
-					<span class='brand-mark' aria-hidden='true'>
-						<Icon name='brandMark' width='24' height='24' />
-					</span>
-					{site.brand.prefix}
-					<b>{site.brand.name}</b>
-				</a>
-				<p class='footer-about'>{footerAbout}</p>
+		<div class='footer__main'>
+			<div>
+				<Brand class='footer__brand-link' />
+				<p class='footer__about'>{footerAbout}</p>
 			</div>
 
-			<address class='footer-contact' aria-label='Контактна інформація'>
+			<address class='footer__contact' aria-label='Контактна інформація'>
 				<a
-					class='footer-contact__item'
+					class='footer__contact-item'
 					href={site.address.mapsUrl}
 					target='_blank'
-					rel='noreferrer'
+					rel='noopener noreferrer'
 				>
 					<Icon name='location' width='20' height='20' />
 					<span>{site.address.full}</span>
 				</a>
 
-				<SocialLinks className='footer-social' />
+			<SocialLinks className='footer__social' />
 			</address>
 		</div>
 
-		<div class='footer-bottom'>
-			<BusinessHours class='footer-business-hours' />
+		<div class='footer__bottom'>
+			<BusinessHours class='footer__business-hours' />
 
-			<p class='copyright'>© {year} {site.name}. Усі права захищено.</p>
+			<p class='footer__copyright'>© {year} {site.name}. Усі права захищено.</p>
 		</div>
 	</Container>
 </footer>

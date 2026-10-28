@@ -58,14 +58,11 @@ content:
       - name: phoneNumber
         label: Phone number in international format
         type: string
-      - name: streetAddress
+      - name: address
         label: Street address
         type: string
       - name: mapEmbedUrl
         label: Google Maps embed URL
-        type: string
-      - name: postalCode
-        label: Postal code
         type: string
       - name: footerAbout
         label: Footer description

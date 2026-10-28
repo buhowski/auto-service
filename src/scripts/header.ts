@@ -1,45 +1,44 @@
-// Mobile navigation
 document.addEventListener('DOMContentLoaded', () => {
-	const burger = document.querySelector('.burger');
-	const menu = document.querySelector('.mobile');
-	const overlay = document.querySelector('.mobile_overlay');
-	const closeBtn = document.querySelector('.mobile-close');
+	const burger = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+	const menu = document.querySelector<HTMLElement>('[data-nav-menu]');
+	const overlay = document.querySelector<HTMLElement>('[data-nav-overlay]');
+	const closeBtn = document.querySelector<HTMLButtonElement>('[data-nav-close]');
 
 	if (!burger || !menu) return;
-	const activeBurger = burger;
-	const activeMenu = menu;
 
 	function open() {
-		activeMenu.classList.add('open');
-		overlay?.classList.add('open');
-		activeBurger.classList.add('open');
-		activeBurger.setAttribute('aria-expanded', 'true');
+		menu.classList.add('header__mobile--open');
+		overlay?.classList.add('header__overlay--open');
+		burger.classList.add('header__burger--open');
+		burger.setAttribute('aria-expanded', 'true');
 		document.body.classList.add('nav-lock');
 	}
 
 	function close() {
-		activeMenu.classList.remove('open');
-		overlay?.classList.remove('open');
-		activeBurger.classList.remove('open');
-		activeBurger.setAttribute('aria-expanded', 'false');
+		menu.classList.remove('header__mobile--open');
+		overlay?.classList.remove('header__overlay--open');
+		burger.classList.remove('header__burger--open');
+		burger.setAttribute('aria-expanded', 'false');
 		document.body.classList.remove('nav-lock');
 	}
 
 	function toggle() {
-		activeMenu.classList.contains('open') ? close() : open();
+		menu.classList.contains('header__mobile--open') ? close() : open();
 	}
 
 	burger.addEventListener('click', toggle);
 	overlay?.addEventListener('click', close);
 	closeBtn?.addEventListener('click', close);
-	activeMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+	menu.querySelectorAll<HTMLAnchorElement>('[data-nav-link], [data-booking-open]').forEach((link) => {
+		link.addEventListener('click', close);
+	});
 
 	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape' && activeMenu.classList.contains('open')) close();
+		if (e.key === 'Escape' && menu.classList.contains('header__mobile--open')) close();
 	});
-	const nav = document.querySelector<HTMLElement>('.header');
+	const nav = document.querySelector<HTMLElement>('[data-site-header]');
 	const sectionLinks = Array.from(
-		document.querySelectorAll<HTMLAnchorElement>('.nav-links a, .mobile-links a'),
+		document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'),
 	);
 
 	function updateActiveLink() {
@@ -66,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	const onScroll = () => {
-		nav?.classList.toggle('scrolled', window.scrollY > 20);
+		nav?.classList.toggle('header--scrolled', window.scrollY > 20);
 		updateActiveLink();
 	};
 	onScroll();

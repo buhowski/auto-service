@@ -1,32 +1,34 @@
+@use '../../styles/functions' as fn;
+@use '../../styles/mixins' as bp;
 @use '../../styles/variables' as var;
 
-.btn {
+.button {
+	@include bp.focus-ring;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: 8px;
-	min-height: 48px;
-	padding: 0 24px;
+	gap: fn.rem(8);
+	padding: fn.rem(15) fn.rem(24);
 	border: 1px solid transparent;
-	border-radius: var(--radius-sm);
-	font-family: var(--font-display);
-	font-size: var(--text-base);
-	font-weight: var(--semibold);
-	line-height: var(--line-height-tight);
-	letter-spacing: var(--tracking-wide);
+	border-radius: var.$radius-sm;
+	font-family: var.$font-display;
+	font-size: var.$text-base;
+	font-weight: var.$font-weight-semibold;
+	line-height: var.$line-height-tight;
+	letter-spacing: var.$tracking-wide;
 	text-align: center;
 	text-decoration: none;
-	text-transform: var(--text-transform-display);
+	text-transform: var.$text-transform-display;
 	white-space: nowrap;
 	cursor: pointer;
 	transition:
-		transform var(--motion-fast) ease,
-		background-color var(--motion-fast) ease,
-		color var(--motion-fast) ease,
-		border-color var(--motion-fast) ease;
+		transform var.$motion-duration ease,
+		background-color var.$motion-duration ease,
+		color var.$motion-duration ease,
+		border-color var.$motion-duration ease;
 
 	&:active {
-		transform: translateY(1px);
+		transform: translateY(fn.rem(3));
 	}
 	&:disabled {
 		cursor: not-allowed;
@@ -34,47 +36,51 @@
 	}
 	svg {
 		flex-shrink: 0;
-		width: 20px;
-		height: 20px;
+		width: fn.rem(20);
+		height: fn.rem(20);
 	}
 
+	// .button--dark
 	&--dark {
-		background: var(--color-ink);
-		color: var(--color-paper);
+		background: var.$color-ink;
+		color: var.$color-paper;
 		&:hover {
-			color: var(--color-accent);
+			color: var.$color-accent;
 		}
 	}
 
+	// .button--outline
 	&--outline {
-		border-color: var(--color-line);
+		border-color: var.$color-line;
 		background: transparent;
-		color: var(--color-ink);
+		color: var.$color-ink;
 
 		&:hover {
-			border-color: var(--color-ink);
-			background: var(--color-ink);
-			color: var(--color-paper);
+			border-color: var.$color-ink;
+			background: var.$color-ink;
+			color: var.$color-paper;
 		}
 	}
 
+	// .button--primary
 	&--primary {
-		background: var(--color-accent);
-		color: var(--color-ink);
+		background: var.$color-accent;
+		color: var.$color-ink;
 
 		&:hover {
-			background: var(--color-paper);
+			background: var.$color-paper;
 		}
 	}
 
+	// .button--secondary
 	&--secondary {
 		background: transparent;
-		color: var(--color-accent);
-		box-shadow: inset 0 0 0 3px var(--color-accent);
+		color: var.$color-accent;
+		box-shadow: inset 0 0 0 3px var.$color-accent;
 
 		&:hover {
-			background: var(--color-ink);
-			color: var(--color-paper);
+			background: var.$color-ink;
+			color: var.$color-paper;
 		}
 	}
 
@@ -82,19 +88,22 @@
 	&--secondary {
 		border: 0;
 		border-radius: 0;
-		letter-spacing: var(--tracking-wider);
+		padding-block: fn.rem(16);
+		letter-spacing: var.$tracking-wider;
 		transition:
-			color var(--motion-fast) ease,
-			background-color var(--motion-fast) ease;
+			transform var.$motion-duration ease,
+			color var.$motion-duration ease,
+			background-color var.$motion-duration ease;
 		clip-path: polygon(
-			10px 0,
+			fn.rem(10) 0,
 			100% 0,
-			100% calc(100% - 10px),
-			calc(100% - 10px) 100%,
+			100% calc(100% - fn.rem(10)),
+			calc(100% - fn.rem(10)) 100%,
 			0 100%,
-			0 10px
+			0 fn.rem(10)
 		);
 	}
+	// .button--block
 	&--block {
 		width: 100%;
 	}

@@ -1,11 +1,9 @@
 ---
-import { site } from '../../data/site';
+import './ServicePricePanel.scss';
 import Button from '../ui/Button.astro';
+import servicesData from '../../content/services.json';
 
-interface Service {
-	name: string;
-	price: string;
-}
+type Service = (typeof servicesData.categories)[number]['services'][number];
 
 interface Props {
 	id: string;
@@ -19,27 +17,27 @@ const { id, triggerId, title, services, active = false } = Astro.props;
 ---
 
 <div
-	class='services-panel surface-card'
+	class='service-price-panel'
 	id={id}
 	role='region'
 	aria-labelledby={triggerId}
 	hidden={!active}
 >
-	<div class='services-panel-heading'>
+	<div class='service-price-panel__heading'>
 		<div>
-			<span class='services-panel-kicker'>Послуги та ціни</span>
-			<h3 class='services-panel-title'>{title}</h3>
+			<span class='service-price-panel__kicker'>Послуги та ціни</span>
+			<h3>{title}</h3>
 		</div>
 	</div>
-	<div class='services-list'>
+	<div class='service-price-panel__list'>
 		{
 			services.map((service) => (
-				<div class='service-row'>
-					<span class='service-name'>{service.name}</span>
-					<span class='service-price'>{service.price}</span>
+				<div class='service-price-panel__row'>
+					<span class='service-price-panel__name'>{service.name}</span>
+					<span class='service-price-panel__price'>{service.price}</span>
 					<Button
 						variant='primary'
-						class='service-order'
+						class='service-price-panel__order'
 						aria-label={`Замовити послугу: ${service.name}`}
 						data-booking-open
 					>
@@ -49,7 +47,7 @@ const { id, triggerId, title, services, active = false } = Astro.props;
 			))
 		}
 	</div>
-	<p class='services-note'>
+	<p class='service-price-panel__note'>
 		Точна вартість залежить від марки авто та складності робіт. Підтвердимо ціну перед ремонтом.
 	</p>
 </div>

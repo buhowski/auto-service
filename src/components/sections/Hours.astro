@@ -33,39 +33,48 @@ const hoursData = {
 };
 ---
 
-<section class='hours-section' id='visit' aria-labelledby='visit-heading'>
+<section class='hours' id='visit' aria-labelledby='visit-heading'>
 	<Container>
-		<div class='visit-grid'>
-			<div class='visit-info reveal'>
+		<div class='hours__grid'>
+			<div class='hours__info reveal'>
 				<SectionHeader
 					id='visit-heading'
 					eyebrow={hoursData.sectionTitle.eyebrow}
 					headline={hoursData.sectionTitle.headline}
 				/>
-				<p class='lead'>{hoursData.lead}</p>
+				<p class='lead hours__lead'>{hoursData.lead}</p>
 
-				<ul class='hours-table' role='list' aria-label='Графік роботи'>
+				<ul class='hours__table' data-hours-table role='list' aria-label='Графік роботи'>
 					{
 						hoursData.hours.map((hour) => (
-							<li class={hour.isClosed ? 'closed' : ''} data-day={hour.weekday}>
-								<span class='day'>{hour.day}</span>
-								<span class='hrs'>{hour.time}</span>
+							<li
+								class:list={['hours__row', hour.isClosed && 'hours__row--closed']}
+								data-hours-row
+								data-day={hour.weekday}
+							>
+								<span class='hours__day'>{hour.day}</span>
+								<span class='hours__time'>{hour.time}</span>
 							</li>
 						))
 					}
 				</ul>
 
-				<div class='visit-contact'>
+				<div class='hours__contact'>
 					{
 						hoursData.contact.map((item) => (
-							<div class='visit-line'>
+							<div class='hours__line'>
 								<Icon name={item.icon} width='20' height='20' />
 								<div>
 									<b>{item.label}</b>
 
-									<div class='visit-line__block'>
+									<div class='hours__links'>
 										{item.links.map((link) => (
-											<a class='visit-line__link' href={link.href}>
+											<a
+												class='hours__link'
+												href={link.href}
+												target={link.href.startsWith('http') ? '_blank' : undefined}
+												rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+											>
 												{link.display}
 											</a>
 										))}
@@ -76,12 +85,22 @@ const hoursData = {
 					}
 				</div>
 			</div>
-			<div class='visit-map surface-card reveal'>
+			<div class='hours__map reveal'>
 				<iframe
-					class='visit-map__canvas'
+					class='hours__map-canvas'
 					src={hoursData.map.embedUrl}
 					loading='lazy'
 					title={`Карта: ${hoursData.map.address}`}></iframe>
+				<Button
+					variant='primary'
+					class='hours__map-route'
+					href={hoursData.map.directionsUrl}
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					<Icon name='google-maps' width='20' height='20' />
+					{hoursData.map.directionsLabel}
+				</Button>
 			</div>
 		</div>
 	</Container>

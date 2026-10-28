@@ -1,13 +1,15 @@
+@use 'functions' as fn;
+@use 'mixins' as mixin;
 @use 'variables' as var;
 
 body {
-	min-width: 320px;
+	min-width: fn.rem(320);
 	overflow-x: hidden;
-	font-family: var(--font-body);
-	font-size: var(--text-base);
-	line-height: var(--line-height-copy);
-	color: var(--color-text);
-	background: var(--color-paper);
+	font-family: var.$font-body;
+	font-size: var.$text-base;
+	line-height: var.$line-height-copy;
+	color: var.$color-text;
+	background: var.$color-paper;
 	text-rendering: optimizeLegibility;
 	cursor: default;
 }
@@ -17,34 +19,34 @@ h2,
 h3,
 h4,
 h5 {
-	font-family: var(--font-display);
-	line-height: var(--line-height-heading);
-	letter-spacing: var(--tracking-tight);
-	color: var(--color-ink);
-	text-transform: var(--text-transform-display);
+	font-family: var.$font-display;
+	line-height: var.$line-height-heading;
+	letter-spacing: var.$tracking-tight;
+	color: var.$color-ink;
+	text-transform: var.$text-transform-display;
 }
 
 h1,
 h2 {
-	font-weight: var(--semibold);
+	font-weight: var.$font-weight-semibold;
 }
 
 h3,
 h4,
 h5 {
-	font-weight: var(--medium);
+	font-weight: var.$font-weight-medium;
 }
 
 h1 {
-	font-size: var(--heading-hero);
+	font-size: var.$heading-hero;
 }
 
 h2 {
-	font-size: var(--heading-section);
+	font-size: var.$heading-section;
 }
 
 h3 {
-	font-size: var(--heading-subsection);
+	font-size: var.$heading-subsection;
 }
 
 section {
@@ -58,97 +60,45 @@ p {
 .lead {
 	max-width: 60ch;
 	margin-bottom: 2rem;
-	font-size: var(--text-lg);
-	line-height: var(--line-height-copy-relaxed);
-}
-
-.brand {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.6rem;
-	font-family: var(--font-display);
-	font-size: var(--text-2xl);
-	font-weight: var(--semibold);
-	letter-spacing: var(--tracking-normal);
-	color: var(--color-paper);
-	text-decoration: none;
-	text-transform: var(--text-transform-display);
-}
-
-.brand:hover {
-	color: var(--color-paper);
-}
-
-.brand b {
-	color: var(--color-accent);
-	font-weight: var(--semibold);
-}
-
-.brand-mark {
-	display: grid;
-	width: 40px;
-	height: 40px;
-	flex: none;
-	place-items: center;
-	border-radius: var(--radius-sm);
-	background: var(--color-accent);
-	color: var(--color-black);
-}
-
-.icon-mask {
-	display: inline-block;
-	width: var(--icon-width);
-	height: var(--icon-height);
-	flex: none;
-	background-color: currentColor;
-	mask: var(--icon-source) center / contain no-repeat;
-}
-
-.social-links {
-	display: flex;
-	gap: 0.6rem;
-}
-
-.social-links a {
-	display: grid;
-	width: 40px;
-	height: 40px;
-	place-items: center;
-	border: var(--border-width) solid rgba(var.$color-paper, 16%);
-	border-radius: var(--radius-sm);
-	background: var(--color-surface-dark);
-	color: var(--color-text-on-dark);
-	text-decoration: none;
-	transition:
-		color var(--motion-fast) ease,
-		background-color var(--motion-fast) ease,
-		border-color var(--motion-fast) ease,
-		transform var(--motion-fast) ease;
-}
-
-.social-links a:hover,
-.social-links a:focus-visible {
-	transform: translateY(-2px);
-	border-color: var(--color-accent);
-	background: var(--color-accent);
-	color: var(--color-ink);
+	font-size: var.$text-lg;
+	line-height: var.$line-height-copy-relaxed;
 }
 
 a {
-	color: var(--color-ink);
+	color: var.$color-ink;
 	text-decoration: none;
 }
 
 a:hover {
-	color: var(--color-surface-dark);
+	color: var.$color-surface-dark;
 }
 
-:focus-visible {
-	outline: 2px solid var(--color-secondary);
-	outline-offset: 2px;
+.js .reveal {
+	opacity: 0;
+	transform: translateY(fn.rem(20));
 }
 
-@media (prefers-reduced-motion: reduce) {
+.js .reveal.in {
+	opacity: 1;
+	transform: translateY(0);
+	transition:
+		opacity 0.6s ease,
+		transform 0.6s ease;
+}
+
+:where(a, button, input, [tabindex]) {
+	@include mixin.focus-ring;
+}
+
+:where(a, button, [role='button']) {
+	transition: scale var.$motion-duration ease;
+}
+
+:where(a, button, [role='button']):not(.button):active {
+	scale: 0.92;
+}
+
+@include mixin.reduced-motion {
 	*,
 	*::before,
 	*::after {
@@ -156,5 +106,12 @@ a:hover {
 		animation-iteration-count: 1 !important;
 		scroll-behavior: auto !important;
 		transition-duration: 0.01ms !important;
+	}
+
+	.js .reveal,
+	.js .reveal.in {
+		opacity: 1;
+		transform: none;
+		transition: none;
 	}
 }

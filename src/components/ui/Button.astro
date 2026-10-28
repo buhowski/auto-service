@@ -2,7 +2,7 @@
 import './Button.scss';
 
 interface Props {
-	variant?: string;
+	variant?: 'dark' | 'outline' | 'primary' | 'secondary';
 	block?: boolean;
 	href?: string;
 	type?: 'button' | 'submit' | 'reset';
@@ -13,23 +13,33 @@ interface Props {
 }
 
 const {
-	variant = 'accent',
+	variant = 'primary',
 	block = false,
 	href,
 	type = 'button',
 	class: className = '',
 	'aria-label': ariaLabel,
+	target,
+	rel,
 	...attrs
 } = Astro.props;
 
-const classes = ['btn', `btn--${variant}`, block && 'btn--block', className]
+const isExternal = href?.startsWith('http://') || href?.startsWith('https://');
+const classes = ['button', `button--${variant}`, block && 'button--block', className]
 	.filter(Boolean)
 	.join(' ');
 ---
 
 {
 	href ? (
-		<a class={classes} href={href} aria-label={ariaLabel} {...attrs}>
+		<a
+			class={classes}
+			href={href}
+			aria-label={ariaLabel}
+			target={isExternal ? '_blank' : target}
+			rel={isExternal ? 'noopener noreferrer' : rel}
+			{...attrs}
+		>
 			<slot />
 		</a>
 	) : (
