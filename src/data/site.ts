@@ -6,8 +6,13 @@ const formattedPhone = settings.phoneNumber.replace(
 	/^\+380(\d{2})(\d{3})(\d{2})(\d{2})$/,
 	'0$1 $2 $3 $4',
 );
-const addressLabel = `${settings.streetAddress}, ${settings.city}`;
+const addressLabel = settings.address;
 const businessName = `${settings.brandPrefix} ${settings.brandName}`;
+
+const mapCoordinates = {
+	lat: 49.8068669,
+	lng: 24.0550478,
+};
 
 export const site = {
 	name: businessName,
@@ -15,9 +20,11 @@ export const site = {
 	city: settings.city,
 	phone: { display: formattedPhone, href: phoneHref },
 	address: {
-		full: `${addressLabel}, ${settings.postalCode}`,
+		full: addressLabel,
 		mapLabel: addressLabel,
 		mapsUrl: `https://maps.google.com/?q=${encodeURIComponent(addressLabel)}`,
+		coordinates: mapCoordinates,
+		directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${mapCoordinates.lat}%2C${mapCoordinates.lng}&travelmode=driving`,
 	},
 	openingHours,
 	links: {

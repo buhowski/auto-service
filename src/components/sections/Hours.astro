@@ -6,11 +6,18 @@ import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
 import { site } from '../../data/site';
 import content from '../../content/homepage.json';
+
 const hoursContent = content.hours;
 const hoursData = {
 	sectionTitle: { eyebrow: hoursContent.eyebrow, headline: hoursContent.headline },
 	lead: hoursContent.lead.replace('{address}', site.address.mapLabel),
 	hours: site.openingHours,
+	map: {
+		address: site.address.mapLabel,
+		coordinates: site.address.coordinates,
+		directionsUrl: site.address.directionsUrl,
+		directionsLabel: hoursContent.directionsLabel,
+	},
 	contact: [
 		{
 			icon: 'location',
@@ -23,11 +30,6 @@ const hoursData = {
 			links: [site.phone],
 		},
 	],
-	map: {
-		address: site.address.mapLabel,
-		directionsUrl: site.address.mapsUrl,
-		directionsLabel: hoursContent.directionsLabel,
-	},
 };
 ---
 
@@ -76,14 +78,24 @@ const hoursData = {
 			</div>
 
 			<div class='visit-map reveal'>
-				<div class='map-pin'>
-					<Icon name='location' class='map-pin-dot' width='40' height='40' aria-hidden={true} />
-
-					<div class='map-addr'>{hoursData.map.address}</div>
-					<Button variant='dark' href={hoursData.map.directionsUrl} target='_blank' rel='noopener'>
-						{hoursData.map.directionsLabel}
-					</Button>
+				<div
+					class='visit-map__canvas'
+					data-visit-map
+					data-lat={hoursData.map.coordinates.lat}
+					data-lng={hoursData.map.coordinates.lng}
+					role='region'
+					aria-label={`Карта: ${hoursData.map.address}`}
+				>
 				</div>
+				<Button
+					class='visit-map__directions'
+					href={hoursData.map.directionsUrl}
+					variant='primary'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					{hoursData.map.directionsLabel}
+				</Button>
 			</div>
 		</div>
 	</Container>

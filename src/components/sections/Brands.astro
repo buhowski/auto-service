@@ -27,7 +27,7 @@ const brandsData = content.brands;
 						<ul class='brands-grid' aria-hidden={isDuplicate ? 'true' : undefined}>
 							{brandsData.items.map(({ name, logo }) => (
 								<li class='brand-item surface-card'>
-								<img class='brand-logo' src={logo} alt='' aria-hidden='true' draggable={false} />
+									<img class='brand-logo' src={logo} alt='' aria-hidden='true' draggable={false} />
 									<span>{name}</span>
 								</li>
 							))}
@@ -39,4 +39,4 @@ const brandsData = content.brands;
 	</Container>
 </section>
 
-<script src="../../scripts/brands.ts"></script>
+<script src='../../scripts/brands.ts'></script>

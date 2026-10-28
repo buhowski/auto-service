@@ -2,9 +2,8 @@
 	"brandPrefix": "СТО",
 	"brandName": "Поршень",
 	"city": "Львів",
-	"phoneNumber": "+380322345678",
-	"streetAddress": "вул. Сирецька, 42",
-	"postalCode": "79000",
+	"phoneNumber": "+380668573564",
+	"address": "м. Львів, вул. Луганська, 3а",
 	"navigation": [
 		{ "href": "#services", "label": "Послуги" },
 		{ "href": "#why-choose", "label": "Переваги" },
@@ -27,7 +26,7 @@
 			"external": true
 		},
 		{
-			"href": "https://instagram.com/sto_porshen",
+			"href": "https://www.instagram.com/ois_auto.sto",
 			"label": "СТО Поршень в Instagram",
 			"title": "Instagram",
 			"icon": "instagram",

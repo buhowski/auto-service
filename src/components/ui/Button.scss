@@ -37,17 +37,6 @@
 		width: 20px;
 		height: 20px;
 	}
-	&--accent {
-		background: var(--color-accent);
-		color: var(--color-black);
-		box-shadow: 0 8px 18px -12px rgba(var.$color-ink, 55%);
-
-		&:hover {
-			background: var(--color-ink);
-			color: var(--color-accent);
-			border-color: var(--color-accent);
-		}
-	}
 
 	&--dark {
 		background: var(--color-ink);

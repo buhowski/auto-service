@@ -9,6 +9,15 @@
 		padding-top: 0;
 	}
 
+	.maplibregl-ctrl-bottom-right {
+		display: none !important;
+	}
+
+	.maplibregl-ctrl-top-right {
+		top: unset;
+		bottom: 10px;
+	}
+
 	.section-header .eyebrow {
 		color: var(--color-secondary);
 	}
@@ -32,6 +41,11 @@
 	margin-bottom: var(--space-6);
 }
 .visit-info .lead {
+	color: var(--color-text);
+}
+.hours-table li,
+.hours-table .day,
+.visit-line__link {
 	color: var(--color-text);
 }
 
@@ -66,7 +80,7 @@
 	font-weight: var(--semibold);
 	text-transform: var(--text-transform-display);
 	letter-spacing: var(--tracking-normal);
-	color: var(--color-ink);
+	color: var(--color-text);
 }
 .visit-contact {
 	display: flex;
@@ -85,7 +99,7 @@
 
 	// .visit-line__link
 	&__link {
-		color: var(--color-ink);
+		color: var(--color-text);
 		font-weight: var(--medium);
 		display: block;
 		width: max-content;
@@ -101,7 +115,6 @@
 	display: block;
 	font-size: var(--text-sm);
 	font-weight: var(--semibold);
-	semiboldnsform: var(--text-transform-display);
 	letter-spacing: var(--tracking-wide);
 	color: var(--color-text-muted);
 }
@@ -113,52 +126,31 @@
 .visit-map {
 	position: relative;
 	min-height: 380px;
-	display: grid;
-	place-items: center;
 	overflow: hidden;
-	background: var(--color-surface-dark);
+	background: var(--color-paper);
 	border-radius: var(--radius-md);
 	box-shadow: var(--shadow-md);
 
 	@include bp.tablet-md {
-		margin: 0 -15px;
 		order: -1;
+		margin-inline: -15px;
 	}
-}
-.map-diag {
-	position: absolute;
-	inset: 0;
-	background-color: var(--color-surface-dark);
-	background-image: repeating-linear-gradient(
-		-45deg,
-		transparent 0 40px,
-		rgba(var.$color-accent, 4%) 40px 41px
-	);
-}
-.map-pin {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	z-index: 2;
-	padding: 0 1rem;
-}
-.map-pin-dot {
-	display: block;
-	width: 40px;
-	height: 40px;
-	color: var(--color-secondary);
-	filter: drop-shadow(0 4px 12px rgba(var.$color-secondary, 56%));
-	margin: 0 auto 1.4rem;
-}
-.map-addr {
-	font-family: var(--font-display);
-	text-transform: var(--text-transform-display);
-	letter-spacing: var(--tracking-normal);
-	color: var(--color-white);
-	margin-bottom: 1.2rem;
-	font-size: var(--text-xl);
+
+	&__canvas {
+		height: 100%;
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
+	// .visit-map__directions
+	&__directions {
+		position: absolute;
+		z-index: 10;
+		bottom: 1rem;
+		left: 1rem;
+		min-height: 38px;
+	}
 }
 
 .hours-table li.today {
