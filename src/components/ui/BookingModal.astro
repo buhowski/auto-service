@@ -2,7 +2,7 @@
 import './BookingModal.scss';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
-import { site } from '../../data/site';
+import SocialLinks from '../header/SocialLinks.astro';
 import settings from '../../content/site.json';
 ---
 
@@ -75,12 +75,13 @@ import settings from '../../content/site.json';
 				<p class='booking-form__status' data-booking-status aria-live='polite' hidden>
 					{settings.booking.status}
 				</p>
-				<p class='booking-form__call'>
-					Або зателефонуйте: <a href={site.phone.href}>{site.phone.display}</a>
-				</p>
+				<div class='booking-form__alternative'>
+					<p class='booking-form__call'>Або зв'яжіться з нами:</p>
+					<SocialLinks className='booking-form__social' />
+				</div>
 			</form>
 		</div>
 	</div>
 </div>
 
-<script src="../../scripts/booking-modal.ts"></script>
+<script src='../../scripts/booking-modal.ts'></script>
