@@ -11,7 +11,7 @@
 }
 
 .testimonials .section-header .h2 {
-	color: var(--color-white);
+	color: var(--color-paper);
 }
 
 .testi {
@@ -67,7 +67,7 @@
 	max-height: calc(1.5em * 5);
 	overflow-y: auto;
 	margin: 0 0 var(--space-6);
-	color: var(--color-white);
+	color: var(--color-paper);
 	font-size: var(--text-lg);
 	line-height: 1.5;
 	overscroll-behavior: contain;
@@ -100,7 +100,7 @@
 }
 
 .testi-who b {
-	color: var(--color-white);
+	color: var(--color-paper);
 	font-family: var(--font-display);
 	font-size: var(--text-xl);
 	letter-spacing: var(--tracking-normal);
@@ -124,10 +124,10 @@
 	width: 48px;
 	height: 48px;
 	place-items: center;
-	border: 1px solid rgba(var.$color-white, 16%);
+	border: 1px solid rgba(var.$color-paper, 16%);
 	border-radius: var(--radius-sm);
 	background: var(--color-surface-dark);
-	color: var(--color-white);
+	color: var(--color-paper);
 	cursor: pointer;
 	transition:
 		background-color var(--motion-fast) ease,

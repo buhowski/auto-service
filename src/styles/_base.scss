@@ -7,7 +7,7 @@ body {
 	font-size: var(--text-base);
 	line-height: var(--line-height-copy);
 	color: var(--color-text);
-	background: var(--color-white);
+	background: var(--color-paper);
 	text-rendering: optimizeLegibility;
 	cursor: default;
 }
@@ -70,13 +70,13 @@ p {
 	font-size: var(--text-2xl);
 	font-weight: var(--semibold);
 	letter-spacing: var(--tracking-normal);
-	color: var(--color-white);
+	color: var(--color-paper);
 	text-decoration: none;
 	text-transform: var(--text-transform-display);
 }
 
 .brand:hover {
-	color: var(--color-white);
+	color: var(--color-paper);
 }
 
 .brand b {
@@ -114,7 +114,7 @@ p {
 	width: 40px;
 	height: 40px;
 	place-items: center;
-	border: var(--border-width) solid rgba(var.$color-white, 16%);
+	border: var(--border-width) solid rgba(var.$color-paper, 16%);
 	border-radius: var(--radius-sm);
 	background: var(--color-surface-dark);
 	color: var(--color-text-on-dark);

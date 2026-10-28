@@ -23,7 +23,7 @@
 	grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
 	gap: clamp(2rem, 6vw, 6rem);
 	padding: 2.5rem 0 2rem;
-	border-bottom: 1px solid rgba(var.$color-white, 16%);
+	border-bottom: 1px solid rgba(var.$color-paper, 16%);
 	align-items: start;
 }
 
@@ -41,7 +41,7 @@
 
 .footer-social a:focus-visible,
 .footer .brand:focus-visible {
-	outline: 2px solid var(--color-white);
+	outline: 2px solid var(--color-paper);
 	outline-offset: 3px;
 }
 
@@ -59,7 +59,7 @@
 	display: flex;
 	column-gap: 0.75rem;
 	margin: 0;
-	color: var(--color-white);
+	color: var(--color-paper);
 	font-size: var(--text-sm);
 	text-decoration: none;
 	transition: color var(--motion-standard) ease;

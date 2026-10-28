@@ -47,7 +47,7 @@
 	padding: 1rem 1.15rem 1rem 1.35rem;
 	border: 1px solid var(--color-line);
 	border-radius: var(--radius-sm);
-	background: var(--color-white);
+	background: var(--color-light);
 	box-shadow: var(--shadow-md);
 	color: var(--color-ink);
 	text-align: left;
@@ -83,7 +83,7 @@
 	&.is-active {
 		border-color: var(--color-ink);
 		background: var(--color-ink);
-		color: var(--color-white);
+		color: var(--color-paper);
 
 		&::before {
 			transform: scaleY(1);
@@ -142,6 +142,7 @@
 	align-self: start;
 	min-width: 0;
 	padding: clamp(1.25rem, 3vw, 2.25rem);
+	background: var(--color-light);
 	animation: services-panel-in var(--motion-standard) ease both;
 
 	&[hidden] {
@@ -194,7 +195,7 @@
 	padding: 10px 15px 9px;
 
 	background: var(--color-ink);
-	color: var(--color-white);
+	color: var(--color-paper);
 
 	&:hover {
 		background: var(--color-ink);

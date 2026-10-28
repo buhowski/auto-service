@@ -3,7 +3,7 @@
 .cta-band {
 	position: relative;
 	padding-block: var(--section-space);
-	color: var(--color-white);
+	color: var(--color-paper);
 	overflow: hidden;
 }
 .cta-bg {
@@ -28,9 +28,9 @@
 	z-index: 1;
 	height: 12px;
 	background: conic-gradient(
-			var(--color-white) 25%,
+			var(--color-paper) 25%,
 			var(--color-black) 0 50%,
-			var(--color-white) 0 75%,
+			var(--color-paper) 0 75%,
 			var(--color-black) 0
 		)
 		0 0 / 12px 12px;
@@ -56,7 +56,7 @@
 }
 
 .cta-band .section-header .h2 {
-	color: var(--color-white);
+	color: var(--color-paper);
 }
 .cta-band .section-header .section-description {
 	color: var(--color-text-on-dark);

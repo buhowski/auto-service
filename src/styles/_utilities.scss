@@ -37,11 +37,11 @@
 	background-color: var(--color-ink);
 	background-image: linear-gradient(
 		135deg,
-		rgba(var.$color-white, 1.8%) 25%,
+		rgba(var.$color-paper, 1.8%) 25%,
 		transparent 25%,
 		transparent 50%,
-		rgba(var.$color-white, 1.8%) 50%,
-		rgba(var.$color-white, 1.8%) 75%,
+		rgba(var.$color-paper, 1.8%) 50%,
+		rgba(var.$color-paper, 1.8%) 75%,
 		transparent 75%
 	);
 	background-size: 8px 8px;
@@ -60,4 +60,9 @@
 			rgba(7, 8, 10, 0.88) 100%
 		),
 		radial-gradient(ellipse at 65% 40%, rgba(50, 75, 105, 0.11) 0%, transparent 65%);
+}
+
+.surface-card {
+	background: var(--color-light);
+	box-shadow: var(--shadow-md);
 }

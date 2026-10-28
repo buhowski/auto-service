@@ -13,7 +13,7 @@
 	&.scrolled {
 		background-color: rgba(var.$color-ink, 90%);
 		backdrop-filter: blur(6px);
-		border-bottom: 1px solid rgba(var.$color-white, 12%);
+		border-bottom: 1px solid rgba(var.$color-paper, 12%);
 		box-shadow: 0 4px 20px rgba(var.$color-black, 66%);
 	}
 }
@@ -64,7 +64,7 @@
 	transition: width 0.2s ease;
 }
 .nav-links a:is(:hover, .is-active) {
-	color: var(--color-white);
+	color: var(--color-paper);
 }
 .nav-links a:is(:hover, .is-active)::after {
 	width: 100%;
@@ -81,7 +81,7 @@
 	z-index: 2;
 	width: 44px;
 	height: 44px;
-	border: 1px solid rgba(var.$color-white, 16%);
+	border: 1px solid rgba(var.$color-paper, 16%);
 	background: var(--color-surface-dark);
 	border-radius: var(--radius-sm);
 	cursor: pointer;
@@ -96,14 +96,14 @@
 .burger:hover,
 .burger:focus-visible {
 	background: var(--color-surface-dark);
-	border-color: rgba(var.$color-white, 35%);
+	border-color: rgba(var.$color-paper, 35%);
 }
 .burger span {
 	display: block;
 	width: 24px;
 	height: 2px;
 	border-radius: 2px;
-	background: var(--color-white);
+	background: var(--color-paper);
 	transition:
 		transform 0.2s ease,
 		opacity 0.2s ease;
@@ -119,7 +119,7 @@
 }
 .burger.open {
 	background: var(--color-surface-dark);
-	border-color: rgba(var.$color-white, 35%);
+	border-color: rgba(var.$color-paper, 35%);
 }
 
 .mobile_overlay {
@@ -168,9 +168,9 @@
 	height: 44px;
 	place-items: center;
 	padding: 0;
-	color: var(--color-white);
+	color: var(--color-paper);
 	background: var(--color-surface-dark);
-	border: 1px solid rgba(var.$color-white, 16%);
+	border: 1px solid rgba(var.$color-paper, 16%);
 	border-radius: var(--radius-sm);
 	cursor: pointer;
 	transition:
@@ -180,7 +180,7 @@
 .mobile-close:hover,
 .mobile-close:focus-visible {
 	background: var(--color-surface-dark);
-	border-color: rgba(var.$color-white, 35%);
+	border-color: rgba(var.$color-paper, 35%);
 }
 .mobile-links a {
 	color: var(--color-text-on-dark);
