@@ -1,55 +1,39 @@
 ---
 import './BusinessHours.scss';
-import Icon from './Icon.astro';
 import { site } from '../../data/site';
 import { openingSchedule } from '../../data/openingHours';
 
 interface Props {
 	class?: string;
-	id: string;
 }
 
-const { class: className = '', id } = Astro.props;
-const dayLabels = ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+const weekdays = openingSchedule.find((group) => group.days.includes(1));
+const saturday = openingSchedule.find((group) => group.days.includes(6));
+const formatHours = (group?: (typeof openingSchedule)[number]) =>
+	group?.open && group.close ? `${group.open}–${group.close}` : 'Зачинено';
 ---
 
-<div class={`business-hours ${className}`.trim()} data-business-hours>
-	<button
-		class='business-hours__trigger'
-		type='button'
-		aria-expanded='false'
-		aria-controls={`${id}-panel`}
+<div class={`business-hours`}>
+	<span class='business-hours__city'>{site.city}</span>
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		width='1em'
+		height='1em'
+		viewBox='0 0 24 24'
+		fill='none'
+		stroke='currentColor'
+		stroke-width='2'
+		stroke-linecap='round'
+		stroke-linejoin='round'
+		class='business-hours__clock lucide lucide-clock3'
+		aria-hidden='true'
 	>
-		<span class='business-hours__city'>{site.city}</span>
-		<span class='business-hours__status' data-business-status>
-			<span class='business-hours__dot' aria-hidden='true'></span>
-			<span data-business-status-text>Перевіряємо статус</span>
-		</span>
-		<Icon name='chevronRight' class='business-hours__chevron' width='14' height='14' />
-	</button>
-	<div
-		class='business-hours__panel'
-		id={`${id}-panel`}
-		role='group'
-		aria-label='Графік роботи'
-		hidden
-	>
-		{
-			openingSchedule.map((group) => (
-				<div
-					class='business-hours__row'
-					data-schedule-days={group.days.join(',')}
-					data-open={group.open}
-					data-close={group.close}
-				>
-					<span>{group.label}</span>
-					<span class={!group.open ? 'business-hours__closed' : undefined}>
-						{group.open && group.close ? `${group.open}–${group.close}` : 'Зачинено'}
-					</span>
-				</div>
-			))
-		}
-	</div>
+		<circle cx='12' cy='12' r='10'></circle>
+		<polyline points='12 6 12 12 16.5 12'></polyline>
+	</svg>
+	<span class='business-hours__schedule'>
+		<span>Пн-Пт: {formatHours(weekdays)}</span>
+		<span class='business-hours__schedule-dot' aria-hidden='true'> · </span>
+		<span>Сб: {formatHours(saturday)}</span>
+	</span>
 </div>
-
-<script src="../../scripts/business-hours.ts"></script>

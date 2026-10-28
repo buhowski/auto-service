@@ -5,6 +5,13 @@
 	background: var(--color-ink);
 	color: var(--color-text-on-dark);
 	padding: 0;
+
+	.business-hours {
+		padding: 0;
+		border: none;
+		background: none;
+		backdrop-filter: none;
+	}
 }
 
 .footer > .container {
@@ -79,18 +86,6 @@ a.footer-contact__item {
 	border-radius: 2px;
 	outline: 2px solid var(--color-accent);
 	outline-offset: 4px;
-}
-
-.footer-business-hours {
-	.business-hours__panel {
-		top: auto;
-		bottom: calc(100% + 0.45rem);
-
-		&::before {
-			top: 100%;
-			bottom: auto;
-		}
-	}
 }
 
 .footer-bottom {

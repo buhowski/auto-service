@@ -11,7 +11,11 @@
 	min-height: 100dvh;
 
 	@include bp.mobile {
-		padding: 7rem 0;
+		padding: 6.5rem 0 5rem;
+	}
+
+	.business-hours {
+		margin-bottom: var(--space-6);
 	}
 }
 .hero-bg {
@@ -33,9 +37,6 @@
 	z-index: 2;
 }
 
-.hero-meta {
-	margin-bottom: var(--space-6);
-}
 .hero-title {
 	color: var(--color-white);
 	margin-bottom: 1.25rem;

@@ -1,228 +1,36 @@
-@use '../../styles/variables' as var;
-@use '../../styles/breakpoints' as bp;
-
-:root {
-	--dot-size: 9px;
-}
-
 .business-hours {
-	position: relative;
-	z-index: 4;
-	color: var(--color-white);
-	font-variant-numeric: tabular-nums;
-	font-size: var(--text-xs);
+	display: flex;
 	width: fit-content;
-}
-
-.business-hours__trigger {
-	display: flex;
 	align-items: center;
-	gap: 0.7rem;
-	padding: 12px 20px;
-	border: 1px solid rgba(var.$color-white, 16%);
+	gap: 0.45rem;
+	padding: 0.65rem 0.9rem;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: var(--radius-sm);
-	background: rgba(var.$color-ink, 30%);
-	text-align: left;
-	cursor: pointer;
-	backdrop-filter: blur(6px);
-	will-change: transform;
-	transition:
-		background-color var(--motion-fast) ease,
-		transform var(--motion-fast) ease;
-
-	&:active {
-		transform: scale(0.96);
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--color-accent);
-		outline-offset: 3px;
-	}
+	background: rgba(18, 19, 22, 0.3);
+	backdrop-filter: blur(4px);
+	color: var(--color-white);
+	font-size: var(--text-xs);
+	line-height: normal;
+	font-variant-numeric: tabular-nums;
 }
 
-.business-hours {
-	&__trigger {
-		&:focus-visible {
-			background: rgba(var.$color-ink, 90%);
-		}
-
-		&[aria-expanded='true'] {
-			background: rgba(var.$color-ink, 96%);
-		}
-	}
+.business-hours__city {
+	font-weight: inherit;
 }
 
-.business-hours__status {
-	display: inline-flex;
-	min-width: 0;
-	align-items: center;
-	gap: 0.6rem;
-}
-
-.business-hours__status.is-closed .business-hours__dot {
-	background: #e15d58;
-}
-
-.business-hours__dot {
-	width: var(--dot-size);
-	height: var(--dot-size);
+.business-hours__clock {
 	flex: none;
-	border-radius: 50%;
-	background: #62c982;
+	color: var(--color-accent);
+	font-size: 16px;
 }
 
-.business-hours__status.is-open .business-hours__dot {
-	animation: business-hours-pulse 1s ease-out infinite;
-}
-
-.business-hours__chevron {
-	width: 11px;
-	height: 11px;
-	flex: none;
-	transform: rotate(90deg);
-	transition: transform var(--motion-fast) ease;
-	margin-bottom: 1px;
-}
-
-.business-hours__trigger[aria-expanded='true'] .business-hours__chevron {
-	transform: rotate(-90deg);
-}
-
-.business-hours__panel {
-	position: absolute;
-	top: calc(100% + 0.45rem);
-	left: 0;
-	width: max-content;
-	min-width: 100%;
-	padding: 0.35rem;
-	border: 1px solid rgba(var.$color-white, 14%);
-	border-radius: var(--radius-sm);
-	background: #24272c;
-	box-shadow: 0 12px 30px rgba(var.$color-black, 32%);
-	backdrop-filter: blur(12px);
-
-	&::before {
-		position: absolute;
-		right: 0;
-		bottom: 100%;
-		left: 0;
-		height: 0.5rem;
-		content: '';
+.business-hours__schedule {
+	span {
+		display: inline-block;
 	}
 
-	&[hidden] {
-		display: none;
-	}
-}
-
-.footer-business-hours {
-	.business-hours__trigger {
-		min-height: 0;
-		gap: 0.65rem;
-		padding: 0;
-		border: 0;
-		border-radius: 0;
-		background: transparent;
-		backdrop-filter: none;
-		transition:
-			color var(--motion-fast) ease,
-			transform var(--motion-fast) ease;
-
-		&[aria-expanded='true'] {
-			background: transparent;
-			color: var(--color-accent);
-
-			svg {
-				fill: currentColor;
-			}
-		}
-	}
-
-	.business-hours__panel {
-		top: auto;
-		bottom: calc(100% + 0.45rem);
-
-		&::before {
-			top: 100%;
-			bottom: auto;
-		}
-	}
-}
-
-@media (hover: hover) and (pointer: fine) {
-	.business-hours__trigger:hover,
-	.business-hours:hover .business-hours__trigger {
-		background: rgba(var.$color-ink, 90%);
-	}
-
-	.business-hours:hover .business-hours__chevron {
-		transform: rotate(-90deg);
-	}
-
-	.business-hours:hover .business-hours__panel[hidden] {
-		display: block;
-	}
-
-	.footer-business-hours {
-		.business-hours__trigger:hover {
-			background: transparent;
-			color: var(--color-accent);
-
-			svg {
-				fill: currentColor;
-			}
-		}
-
-		&:hover .business-hours__trigger {
-			background: transparent;
-			color: var(--color-accent);
-		}
-	}
-}
-
-.business-hours__row {
-	display: flex;
-	min-height: 34px;
-	align-items: center;
-	justify-content: space-between;
-	gap: 1.5rem;
-	padding: 0.35rem 0.6rem;
-	border-radius: 2px;
-	color: var(--color-text-on-dark);
-	white-space: nowrap;
-
-	&.is-current {
-		background: rgba(var.$color-accent, 14%);
-		font-weight: var(--semibold);
-	}
-}
-
-.business-hours__closed {
-	color: #e87570;
-}
-
-@keyframes business-hours-pulse {
-	0% {
-		box-shadow: 0 0 0 0 rgba(98, 201, 130, 55%);
-	}
-	70% {
-		box-shadow: 0 0 0 8px rgba(98, 201, 130, 0%);
-	}
-	100% {
-		box-shadow: 0 0 0 0 rgba(98, 201, 130, 0%);
-	}
-}
-
-@include bp.mobile {
-	.business-hours__trigger {
-		min-height: 46px;
-		gap: 0.55rem;
-		padding-inline: 0.9rem;
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.business-hours__status.is-open .business-hours__dot {
-		animation: none;
+	// .business-hours__schedule-dot
+	&-dot {
+		margin-inline: 5px;
 	}
 }
