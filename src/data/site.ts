@@ -23,6 +23,7 @@ export const site = {
 		full: addressLabel,
 		mapLabel: addressLabel,
 		mapsUrl: `https://maps.google.com/?q=${encodeURIComponent(addressLabel)}`,
+		mapEmbedUrl: settings.mapEmbedUrl,
 		coordinates: mapCoordinates,
 		directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${mapCoordinates.lat}%2C${mapCoordinates.lng}&travelmode=driving`,
 	},

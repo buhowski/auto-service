@@ -4,6 +4,7 @@
 	"city": "Львів",
 	"phoneNumber": "+380668573564",
 	"address": "м. Львів, вул. Луганська, 3а",
+	"mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2574.89365717332!2d24.055047800000004!3d49.806866899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ae734df4d4723%3A0x295611f0460cb7f1!2z0KHQotCeICLQn9C-0YDRiNC10L3RjCIgLyDQkNCy0YLQvtC30LDQv9GH0LDRgdGC0LjQvdC4INCe0ZbRgdCQ0LLRgtC-!5e0!3m2!1sen!2sua!4v1793200788451!5m2!1sen!2sua",
 	"navigation": [
 		{ "href": "#services", "label": "Послуги" },
 		{ "href": "#why-choose", "label": "Переваги" },

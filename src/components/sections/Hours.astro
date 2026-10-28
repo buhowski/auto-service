@@ -14,7 +14,7 @@ const hoursData = {
 	hours: site.openingHours,
 	map: {
 		address: site.address.mapLabel,
-		coordinates: site.address.coordinates,
+		embedUrl: site.address.mapEmbedUrl,
 		directionsUrl: site.address.directionsUrl,
 		directionsLabel: hoursContent.directionsLabel,
 	},
@@ -76,26 +76,12 @@ const hoursData = {
 					}
 				</div>
 			</div>
-
-			<div class='visit-map reveal'>
-				<div
+			<div class='visit-map surface-card reveal'>
+				<iframe
 					class='visit-map__canvas'
-					data-visit-map
-					data-lat={hoursData.map.coordinates.lat}
-					data-lng={hoursData.map.coordinates.lng}
-					role='region'
-					aria-label={`Карта: ${hoursData.map.address}`}
-				>
-				</div>
-				<Button
-					class='visit-map__directions'
-					href={hoursData.map.directionsUrl}
-					variant='primary'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					{hoursData.map.directionsLabel}
-				</Button>
+					src={hoursData.map.embedUrl}
+					loading='lazy'
+					title={`Карта: ${hoursData.map.address}`}></iframe>
 			</div>
 		</div>
 	</Container>
