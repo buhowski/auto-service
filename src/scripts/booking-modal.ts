@@ -19,6 +19,7 @@ const bookingModal = document.querySelector<HTMLElement>('[data-booking-modal]')
 		if (trigger && bookingModal) {
 			event.preventDefault();
 			lastBookingTrigger = trigger;
+			clearValidationState();
 			bookingModal.hidden = false;
 			document.body.classList.add('booking-modal-open');
 			bookingModal.querySelector<HTMLInputElement>('#booking-name')?.focus();
@@ -51,12 +52,28 @@ const bookingModal = document.querySelector<HTMLElement>('[data-booking-modal]')
 		field.setAttribute('aria-invalid', String(!field.validity.valid));
 	}
 
+	function clearValidationState() {
+		formFields.forEach((field) => field.removeAttribute('aria-invalid'));
+		if (submitStatus) submitStatus.hidden = true;
+	}
+
 	formFields.forEach((field) => {
 		field.addEventListener('blur', () => updateFieldState(field, true));
 		field.addEventListener('input', () => {
 			if (field.hasAttribute('aria-invalid')) updateFieldState(field, true);
 		});
 	});
+
+	bookingForm?.addEventListener(
+		'invalid',
+		(event) => {
+			const field = event.target;
+			if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) {
+				updateFieldState(field, true);
+			}
+		},
+		true,
+	);
 
 	phoneInput?.addEventListener('input', () => {
 		const oldValue = phoneInput.value;

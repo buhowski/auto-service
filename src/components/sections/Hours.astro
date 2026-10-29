@@ -4,7 +4,7 @@ import Container from '../ui/Container.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
-import { site } from '../../data/site';
+import { formatText, site } from '../../data/site';
 import content from '../../content/homepage.json';
 
 const hoursContent = content.hours;
@@ -21,15 +21,15 @@ const hoursData = {
 	contact: [
 		{
 			icon: 'location',
-			label: 'Адреса',
+			label: hoursContent.addressLabel,
 			links: [{ display: site.address.full, href: site.address.mapsUrl }],
 		},
 		{
 			icon: 'phone',
-			label: 'Контакти',
+			label: hoursContent.contactLabel,
 			links: [site.phone],
 		},
-	],
+	] as const,
 };
 ---
 
@@ -44,28 +44,40 @@ const hoursData = {
 				/>
 				<p class='lead hours__lead'>{hoursData.lead}</p>
 
-				<ul class='hours__table' data-hours-table role='list' aria-label='Графік роботи'>
-					{
-						hoursData.hours.map((hour) => (
-							<li
-								class:list={['hours__row', hour.isClosed && 'hours__row--closed']}
-								data-hours-row
-								data-day={hour.weekday}
-							>
-								<span class='hours__day'>{hour.day}</span>
-								<span class='hours__time'>{hour.time}</span>
-							</li>
-						))
-					}
-				</ul>
-
 				<div class='hours__contact'>
+					<div class='hours__line'>
+						<Icon name='clock' width='20' height='20' />
+						<span>{hoursContent.scheduleTitle}</span>
+					</div>
+
+					<div class='hours__details'>
+						<ul
+							class='hours__table'
+							data-hours-table
+							role='list'
+							aria-label={hoursContent.scheduleAriaLabel}
+						>
+							{
+								hoursData.hours.map((hour) => (
+									<li
+										class:list={['hours__row', hour.isClosed && 'hours__row--closed']}
+										data-hours-row
+										data-day={hour.weekday}
+									>
+										<span class='hours__day'>{hour.day}</span>
+										<span class='hours__time'>{hour.time}</span>
+									</li>
+								))
+							}
+						</ul>
+					</div>
+
 					{
 						hoursData.contact.map((item) => (
 							<div class='hours__line'>
 								<Icon name={item.icon} width='20' height='20' />
 								<div>
-									<b>{item.label}</b>
+									<span>{item.label}</span>
 
 									<div class='hours__links'>
 										{item.links.map((link) => (
@@ -90,7 +102,7 @@ const hoursData = {
 					class='hours__map-canvas'
 					src={hoursData.map.embedUrl}
 					loading='lazy'
-					title={`Карта: ${hoursData.map.address}`}></iframe>
+					title={formatText(hoursContent.mapTitle, { address: hoursData.map.address })}></iframe>
 				<Button
 					variant='primary'
 					class='hours__map-route'

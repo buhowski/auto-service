@@ -57,11 +57,21 @@ p {
 	margin-bottom: 1rem;
 }
 
+b,
+strong {
+	font-weight: var.$font-weight-semibold;
+}
+
 .lead {
 	max-width: 60ch;
 	margin-bottom: 2rem;
 	font-size: var.$text-lg;
 	line-height: var.$line-height-copy-relaxed;
+}
+
+a,
+button {
+	font-family: var.$font-display;
 }
 
 a {
@@ -82,8 +92,8 @@ a:hover {
 	opacity: 1;
 	transform: translateY(0);
 	transition:
-		opacity 0.6s ease,
-		transform 0.6s ease;
+		opacity 0.4s ease,
+		transform 0.4s ease;
 }
 
 :where(a, button, input, [tabindex]) {
@@ -91,10 +101,15 @@ a:hover {
 }
 
 :where(a, button, [role='button']) {
-	transition: scale var.$motion-duration ease;
+	transition:
+		scale var.$motion-duration ease,
+		color var.$motion-duration ease;
 }
 
-:where(a, button, [role='button']):not(.button):active {
+:where(a, button, [role='button'], .booking-form__contact-options label):not(
+		.button,
+		.social-links__item
+	):active {
 	scale: 0.92;
 }
 

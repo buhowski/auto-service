@@ -3,7 +3,8 @@ import './BookingModal.scss';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 import SocialLinks from '../header/SocialLinks.astro';
-import settings from '../../content/site.json';
+import { siteSettings } from '../../data/site';
+const settings = siteSettings;
 ---
 
 <div class='booking-modal' data-booking-modal hidden>
@@ -17,7 +18,7 @@ import settings from '../../content/site.json';
 			<button
 				class='booking-modal__close'
 				type='button'
-				aria-label='Закрити форму'
+				aria-label={settings.ui.bookingCloseLabel}
 				data-booking-close
 			>
 				<Icon name='close' width='16' height='16' />
@@ -28,7 +29,7 @@ import settings from '../../content/site.json';
 
 			<form class='booking-form' data-booking-form>
 				<div class='booking-form__field'>
-					<label for='booking-name'>Ім'я <span aria-hidden='true'>*</span></label>
+					<label for='booking-name'>{settings.ui.nameLabel} <span class='booking-form__required' aria-hidden='true'>*</span></label>
 					<input
 						id='booking-name'
 						name='name'
@@ -42,9 +43,9 @@ import settings from '../../content/site.json';
 				</div>
 
 				<div class='booking-form__field'>
-					<label for='booking-phone'>Телефон <span aria-hidden='true'>*</span></label>
+					<label for='booking-phone'>{settings.ui.phoneLabel} <span class='booking-form__required' aria-hidden='true'>*</span></label>
 					<div class='booking-form__phone'>
-						<span class='booking-form__country-code' aria-hidden='true'>+380</span>
+						<span class='booking-form__country-code' aria-hidden='true'>{settings.phoneCountryCode}</span>
 						<input
 							id='booking-phone'
 							name='phone'
@@ -61,7 +62,10 @@ import settings from '../../content/site.json';
 				</div>
 
 				<div class='booking-form__field'>
-					<label for='booking-note'>Що потрібно зробити?</label>
+					<label for='booking-note'>
+						{settings.ui.noteLabel}{' '}
+						<span class='booking-form__optional'>({settings.booking.optionalLabel})</span>
+					</label>
 					<textarea
 						id='booking-note'
 						name='note'
@@ -71,12 +75,21 @@ import settings from '../../content/site.json';
 						placeholder={settings.booking.notePlaceholder}></textarea>
 				</div>
 
+				<fieldset class='booking-form__contact-method'>
+					<legend>{settings.ui.contactMethodLegend}</legend>
+					<div class='booking-form__contact-options'>
+						{settings.ui.contactMethods.map((method, index) => (
+							<label><input type='radio' name='contactMethod' value={method} checked={index === 0} />{method}</label>
+						))}
+					</div>
+				</fieldset>
+
 				<Button variant='primary' block type='submit'>{settings.booking.submitLabel}</Button>
 				<p class='booking-form__status' data-booking-status aria-live='polite' hidden>
 					{settings.booking.status}
 				</p>
 				<div class='booking-form__alternative'>
-					<p class='booking-form__call'>Або зв'яжіться з нами:</p>
+					<p class='booking-form__call'>{settings.ui.alternativeContact}</p>
 					<SocialLinks className='booking-form__social' />
 				</div>
 			</form>

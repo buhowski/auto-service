@@ -38,6 +38,16 @@
 	}
 }
 
+@mixin press-feedback($hover-offset: fn.rem(-3), $active-offset: fn.rem(3)) {
+	&:not(:disabled):hover {
+		transform: translateY($hover-offset);
+	}
+
+	&:not(:disabled):active {
+		transform: translateY($active-offset);
+	}
+}
+
 @mixin hazard-pattern {
 	height: fn.rem(8);
 	background-image: repeating-linear-gradient(

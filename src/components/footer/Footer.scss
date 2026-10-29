@@ -24,7 +24,7 @@
 	&__main {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) minmax(fn.rem(280), 0.8fr);
-		align-items: start;
+		align-items: center;
 		gap: clamp(2rem, 6vw, 5rem);
 		padding: 2.5rem 0;
 		border-bottom: 1px solid rgba(var.$color-paper, 16%);
@@ -78,8 +78,8 @@
 		color: var.$color-paper;
 		font-size: var.$text-sm;
 		text-decoration: none;
-		font-weight: var.$font-weight-semibold;
-		transition: color var.$motion-duration ease;
+		font-weight: var.$font-weight-medium;
+		font-style: italic;
 
 		&:focus-visible {
 			border-radius: fn.rem(2);
@@ -122,6 +122,10 @@
 		border: none;
 		background: none;
 		backdrop-filter: none;
+	}
+
+	.business-hours__city {
+		display: none;
 	}
 
 	// .footer__copyright

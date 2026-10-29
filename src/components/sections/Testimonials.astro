@@ -21,9 +21,9 @@ const testimonialsData = content.testimonials;
 				<div class='testimonials__track' data-testi-track aria-live='polite'>
 					{
 						testimonialsData.items.map((testi, index) => (
-							<div class='testimonials__slide' data-testi-slide aria-label={`Відгук ${index + 1}`} tabindex='-1'>
+							<div class='testimonials__slide' data-testi-slide aria-label={testimonialsData.ui.slideLabel.replace('{number}', String(index + 1))} tabindex='-1'>
 								<article class='testimonials__card'>
-									<div class='testimonials__stars' aria-label={`Оцінка ${testi.rating} з 5`} role='img'>
+									<div class='testimonials__stars' aria-label={testimonialsData.ui.ratingLabel.replace('{rating}', String(testi.rating))} role='img'>
 										{Array.from({ length: 5 }).map((_, i) => (
 											<Icon
 												name={i < testi.rating ? 'star' : 'starOutline'}
@@ -52,11 +52,11 @@ const testimonialsData = content.testimonials;
 					}
 				</div>
 			</div>
-			<div class='testimonials__navigation' aria-label='Навігація відгуків'>
-				<button class='testimonials__button' data-testi-prev aria-label='Попередній відгук'>
+			<div class='testimonials__navigation' aria-label={testimonialsData.ui.navigationLabel}>
+				<button class='testimonials__button' data-testi-prev aria-label={testimonialsData.ui.previousLabel}>
 					<Icon name='chevronLeft' width='20' height='20' />
 				</button>
-				<button class='testimonials__button' data-testi-next aria-label='Наступний відгук'>
+				<button class='testimonials__button' data-testi-next aria-label={testimonialsData.ui.nextLabel}>
 					<Icon name='chevronRight' width='20' height='20' />
 				</button>
 			</div>

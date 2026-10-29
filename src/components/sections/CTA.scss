@@ -71,5 +71,9 @@
 		justify-content: center;
 		gap: 1.5rem;
 		margin-top: var.$space-8;
+
+		.button {
+			min-width: 200px;
+		}
 	}
 }

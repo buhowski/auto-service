@@ -9,6 +9,7 @@
 	// .social-links__item
 	&__item {
 		@include bp.focus-ring;
+		@include bp.press-feedback(fn.rem(-2));
 		display: grid;
 		width: fn.rem(40);
 		height: fn.rem(40);
@@ -19,14 +20,12 @@
 		color: var.$color-text-on-dark;
 		text-decoration: none;
 		transition:
-			scale var.$motion-duration ease,
 			color var.$motion-duration ease,
 			background-color var.$motion-duration ease,
 			border-color var.$motion-duration ease,
 			transform var.$motion-duration ease;
 
 		&:is(:hover, :focus-visible) {
-			transform: translateY(fn.rem(-2));
 			border-color: var.$color-accent;
 			background: var.$color-accent;
 			color: var.$color-ink;

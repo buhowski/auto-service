@@ -5,7 +5,7 @@ import Icon from '../ui/Icon.astro';
 import BusinessHours from '../ui/BusinessHours.astro';
 import Brand from '../ui/Brand.astro';
 import SocialLinks from '../header/SocialLinks.astro';
-import { footerAbout, site } from '../../data/site';
+import { formatText, footerAbout, site, siteSettings } from '../../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -19,25 +19,25 @@ const year = new Date().getFullYear();
 				<p class='footer__about'>{footerAbout}</p>
 			</div>
 
-			<address class='footer__contact' aria-label='Контактна інформація'>
-				<a
-					class='footer__contact-item'
-					href={site.address.mapsUrl}
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<Icon name='location' width='20' height='20' />
-					<span>{site.address.full}</span>
-				</a>
+			<address class='footer__contact' aria-label={siteSettings.ui.footerContactLabel}>
+				<BusinessHours />
 
 				<SocialLinks className='footer__social' />
 			</address>
 		</div>
 
 		<div class='footer__bottom'>
-			<BusinessHours />
+			<p class='footer__copyright'>{formatText(siteSettings.ui.copyright, { year, name: site.name })}</p>
 
-			<p class='footer__copyright'>© {year} {site.name}. Усі права захищено.</p>
+			<a
+				class='footer__contact-item'
+				href={site.address.mapsUrl}
+				target='_blank'
+				rel='noopener noreferrer'
+			>
+				<Icon name='location' width='20' height='20' />
+				<span>{site.address.full}</span>
+			</a>
 		</div>
 	</Container>
 </footer>

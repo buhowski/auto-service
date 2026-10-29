@@ -27,13 +27,12 @@
 		color var.$motion-duration ease,
 		border-color var.$motion-duration ease;
 
-	&:active {
-		transform: translateY(fn.rem(3));
-	}
+	@include bp.press-feedback;
 	&:disabled {
 		cursor: not-allowed;
 		opacity: 0.6;
 	}
+
 	svg {
 		flex-shrink: 0;
 		width: fn.rem(20);

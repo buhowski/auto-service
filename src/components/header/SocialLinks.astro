@@ -1,7 +1,7 @@
 ---
 import './SocialLinks.scss';
 import Icon from '../ui/Icon.astro';
-import { site } from '../../data/site';
+import { formatText, site, siteSettings } from '../../data/site';
 
 interface Props {
 	className?: string;
@@ -12,8 +12,8 @@ const { className = '', socialOnly = false } = Astro.props;
 const socialLinks = Object.fromEntries(site.socialLinks.map((link) => [link.icon, link]));
 const phoneLink = {
 	href: site.phone.href,
-	label: `Зателефонувати: ${site.phone.display}`,
-	title: 'Телефон',
+	label: formatText(siteSettings.ui.phoneAccessibleLabel, { phone: site.phone.display }),
+	title: siteSettings.ui.phoneTitle,
 	icon: 'phone',
 	external: false,
 };
@@ -27,7 +27,7 @@ const links = [
 
 <nav
 	class={`social-links ${className}`.trim()}
-	aria-label={socialOnly ? 'Соціальні мережі' : 'Телефон і соціальні мережі'}
+	aria-label={socialOnly ? siteSettings.ui.socialNavLabel : siteSettings.ui.contactSocialNavLabel}
 >
 	{
 		links.map((link) => (

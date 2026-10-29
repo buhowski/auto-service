@@ -42,24 +42,19 @@
 		color: var.$color-text;
 	}
 
-	// .hours__table
-	&__table {
-		display: flex;
-		flex-direction: column;
-		gap: 0;
-		margin: 0 0 var.$space-8;
-		padding: 0;
-		list-style: none;
-	}
-
 	// .hours__row
 	&__row {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0.7rem 0.8rem;
+		padding: fn.rem(10) fn.rem(36);
 		border-bottom: 1px solid rgba(var.$color-ink, 20%);
 		color: var.$color-text;
+
+		@include bp.tablet-md {
+			padding-inline: fn.rem(51);
+			margin-inline: -15px;
+		}
 
 		&:last-child {
 			border-bottom: none;
@@ -113,19 +108,13 @@
 	// .hours__line
 	&__line {
 		display: flex;
-		gap: 1rem;
+		align-items: flex-start;
+		gap: fn.rem(16);
 		padding: 0;
+		color: var.$color-text-muted;
 
-		> .icon {
-			flex: none;
-			color: var.$color-secondary;
-		}
-
-		b {
-			display: block;
-			color: var.$color-text-muted;
+		span {
 			font-size: var.$text-sm;
-			font-weight: var.$font-weight-semibold;
 			letter-spacing: var.$tracking-wide;
 		}
 	}

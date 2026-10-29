@@ -1,0 +1,25 @@
+{
+	"language": "uk",
+	"title": "{name} — {city}",
+	"description": "{name} — чесний автосервіс у {cityLocative}. Сертифіковані майстри, прозорі ціни, гарантія 24 місяці. Запис онлайн або за телефоном {phone}.",
+	"canonicalUrl": "",
+	"robots": "index, follow",
+	"themeColor": "#121316",
+	"favicon": "/favicon.ico",
+	"appleTouchIcon": "/logo.png",
+	"openGraph": {
+		"locale": "uk_UA",
+		"type": "website",
+		"siteName": "{name}",
+		"title": "",
+		"description": "",
+		"image": "/uploads/hero-garage.jpg",
+		"imageAlt": "СТО Поршень — сервіс та ремонт автомобілів у Львові"
+	},
+	"twitter": {
+		"card": "summary_large_image",
+		"title": "",
+		"description": "",
+		"image": ""
+	}
+}

@@ -9,6 +9,9 @@ const formattedPhone = settings.phoneNumber.replace(
 const addressLabel = settings.address;
 const businessName = `${settings.brandPrefix} ${settings.brandName}`;
 
+export const formatText = (template: string, values: Record<string, string | number>) =>
+	template.replace(/\{(\w+)\}/g, (_, key: string) => String(values[key] ?? `{${key}}`));
+
 const mapCoordinates = {
 	lat: 49.8068669,
 	lng: 24.0550478,
@@ -39,8 +42,9 @@ export const site = {
 			link.icon === 'viber'
 				? `viber://chat?number=${encodeURIComponent(settings.phoneNumber)}`
 				: link.href,
-		label: link.label.replace('СТО Поршень', businessName),
+		label: formatText(link.label, { name: businessName }),
 	})),
 } as const;
 
 export const footerAbout = settings.footerAbout;
+export const siteSettings = settings;

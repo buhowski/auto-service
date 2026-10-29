@@ -12,7 +12,7 @@ const brandsData = content.brands;
 			id='brands-heading'
 			eyebrow={brandsData.eyebrow}
 			headline={brandsData.headline}
-			description={`${brandsData.eyebrow}. Не знайшли свою марку? Зателефонуйте — уточнимо можливість обслуговування.`}
+			description={brandsData.description}
 			centered
 			class='brands__intro reveal'
 		/>
@@ -20,7 +20,7 @@ const brandsData = content.brands;
 			class='brands__carousel reveal'
 			data-brands-carousel
 			role='region'
-			aria-label='Марки автомобілів, які ми обслуговуємо'
+			aria-label={brandsData.carouselLabel}
 		>
 			<div class='brands__track' data-brands-track>
 				{

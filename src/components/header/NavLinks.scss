@@ -30,7 +30,6 @@
 		letter-spacing: var.$tracking-wide;
 		text-decoration: none;
 		text-transform: var.$text-transform-display;
-		transition: scale var.$motion-duration ease;
 
 		&::after {
 			position: absolute;
@@ -59,10 +58,6 @@
 	padding: 0;
 
 	.nav-links__item {
-		transition:
-			scale var.$motion-duration ease,
-			color var.$motion-duration ease,
-			background-color var.$motion-duration ease;
 		display: flex;
 		min-height: fn.rem(48);
 		align-items: center;

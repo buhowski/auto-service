@@ -55,8 +55,14 @@ content:
       - name: city
         label: City
         type: string
+      - name: cityLocative
+        label: City name in locative case, used in copy such as "in {cityLocative}"
+        type: string
       - name: phoneNumber
         label: Phone number in international format
+        type: string
+      - name: phoneCountryCode
+        label: Phone country code displayed in the booking form
         type: string
       - name: address
         label: Street address
@@ -67,6 +73,71 @@ content:
       - name: footerAbout
         label: Footer description
         type: text
+      - name: ui
+        label: Interface text and accessibility labels
+        type: object
+        fields:
+          - name: brandHomeLabel
+            label: Home link label. Supports {name}.
+            type: string
+          - name: bookingCloseLabel
+            label: Close booking form button
+            type: string
+          - name: nameLabel
+            label: Name field label
+            type: string
+          - name: phoneLabel
+            label: Phone field label
+            type: string
+          - name: noteLabel
+            label: Request field label
+            type: string
+          - name: contactMethodLegend
+            label: Contact method legend
+            type: string
+          - name: contactMethods
+            label: Contact method choices
+            type: string
+            list: true
+          - name: alternativeContact
+            label: Alternative contact heading
+            type: string
+          - name: headerNavLabel
+            label: Main navigation accessibility label
+            type: string
+          - name: mobileNavLabel
+            label: Mobile navigation accessibility label
+            type: string
+          - name: openMenuLabel
+            label: Open menu button
+            type: string
+          - name: closeMenuLabel
+            label: Close menu button
+            type: string
+          - name: bookingButtonLabel
+            label: Booking button
+            type: string
+          - name: phoneAccessibleLabel
+            label: Phone link accessibility label. Supports {phone}.
+            type: string
+          - name: phoneTitle
+            label: Phone link title
+            type: string
+          - name: socialNavLabel
+            label: Social navigation accessibility label
+            type: string
+          - name: contactSocialNavLabel
+            label: Contact and social navigation accessibility label
+            type: string
+          - name: footerContactLabel
+            label: Footer contacts accessibility label
+            type: string
+          - name: copyright
+            label: Copyright text
+            type: string
+          - name: loaderLabel
+            label: Page loading accessibility label
+            type: string
       - name: navigation
         label: Navigation links
         type: object
@@ -108,6 +179,9 @@ content:
           - name: intro
             label: Intro
             type: text
+          - name: optionalLabel
+            label: Optional field marker
+            type: string
           - name: submitLabel
             label: Submit button
             type: string
@@ -123,6 +197,84 @@ content:
           - name: status
             label: Status message
             type: text
+  - name: seo
+    label: SEO and social preview
+    type: file
+    path: src/content/seo.json
+    fields:
+      - name: language
+        label: HTML language code
+        type: string
+      - name: title
+        label: Page title template. Supports {name} and {city}.
+        type: string
+      - name: description
+        label: Search description template. Supports {name}, {city}, {cityLocative}, and {phone}.
+        type: text
+      - name: canonicalUrl
+        label: Canonical URL override. Leave empty to use the current page URL.
+        type: string
+      - name: robots
+        label: Robots policy
+        type: string
+      - name: themeColor
+        label: Browser theme color
+        type: string
+      - name: favicon
+        label: Favicon path
+        type: string
+      - name: appleTouchIcon
+        label: Apple touch icon path
+        type: string
+      - name: openGraph
+        label: Open Graph
+        type: object
+        fields:
+          - name: locale
+            label: Locale
+            type: string
+          - name: type
+            label: Content type
+            type: string
+          - name: siteName
+            label: Site name template. Supports {name}.
+            type: string
+          - name: title
+            label: Social title. Leave empty to use page title.
+            type: string
+          - name: description
+            label: Social description. Leave empty to use search description.
+            type: text
+          - name: image
+            label: Share image
+            type: image
+            options:
+              media: uploads
+              path: public/uploads
+              categories: [image]
+          - name: imageAlt
+            label: Share image description
+            type: string
+      - name: twitter
+        label: X/Twitter card
+        type: object
+        fields:
+          - name: card
+            label: Card type
+            type: string
+          - name: title
+            label: Card title. Leave empty to use Open Graph title.
+            type: string
+          - name: description
+            label: Card description. Leave empty to use Open Graph description.
+            type: text
+          - name: image
+            label: Card image. Leave empty to use Open Graph image.
+            type: image
+            options:
+              media: uploads
+              path: public/uploads
+              categories: [image]
   - name: homepage
     label: Homepage content
     type: file
@@ -186,17 +338,27 @@ content:
       - name: steps
         label: Process steps
         type: object
-        list: true
         fields:
-          - name: icon
-            label: SVG icon name
+          - name: eyebrow
+            label: Eyebrow
             type: string
           - name: title
-            label: Title
+            label: Headline
             type: string
-          - name: description
-            label: Description
-            type: text
+          - name: items
+            label: Steps
+            type: object
+            list: true
+            fields:
+              - name: icon
+                label: SVG icon name
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: description
+                label: Description
+                type: text
       - name: testimonials
         label: Testimonials
         type: object
@@ -207,6 +369,25 @@ content:
           - name: headline
             label: Headline
             type: string
+          - name: ui
+            label: Carousel accessibility labels. Supports {number} and {rating}.
+            type: object
+            fields:
+              - name: slideLabel
+                label: Slide label
+                type: string
+              - name: ratingLabel
+                label: Rating label
+                type: string
+              - name: navigationLabel
+                label: Navigation label
+                type: string
+              - name: previousLabel
+                label: Previous button
+                type: string
+              - name: nextLabel
+                label: Next button
+                type: string
           - name: items
             label: Reviews
             type: object
@@ -243,6 +424,12 @@ content:
             type: string
           - name: headline
             label: Headline
+            type: string
+          - name: description
+            label: Description
+            type: text
+          - name: carouselLabel
+            label: Brand list accessibility label
             type: string
           - name: items
             label: Brands
@@ -293,6 +480,21 @@ content:
           - name: directionsLabel
             label: Directions button
             type: string
+          - name: scheduleTitle
+            label: Schedule heading
+            type: string
+          - name: scheduleAriaLabel
+            label: Schedule accessibility label
+            type: string
+          - name: addressLabel
+            label: Address heading
+            type: string
+          - name: contactLabel
+            label: Contact heading
+            type: string
+          - name: mapTitle
+            label: Map title. Supports {address}.
+            type: string
   - name: services
     label: Services and prices
     type: file
@@ -304,6 +506,25 @@ content:
       - name: headline
         label: Headline
         type: string
+      - name: ui
+        label: Service interface text
+        type: object
+        fields:
+          - name: serviceCountLabel
+            label: Category service count label. Supports {count}.
+            type: string
+          - name: panelKicker
+            label: Price panel heading
+            type: string
+          - name: orderLabel
+            label: Order service button
+            type: string
+          - name: orderAriaLabel
+            label: Order button accessibility label. Supports {service}.
+            type: string
+          - name: priceNote
+            label: Price note
+            type: text
       - name: categories
         label: Categories
         type: object
@@ -331,6 +552,20 @@ content:
     type: file
     path: src/content/opening-hours.json
     fields:
+      - name: closedLabel
+        label: Closed days status
+        type: string
+      - name: daysOfWeek
+        label: Weekday names
+        type: object
+        list: true
+        fields:
+          - name: weekday
+            label: Weekday index (Sunday is 0)
+            type: number
+          - name: full
+            label: Full weekday name
+            type: string
       - name: groups
         label: Schedule groups
         type: object

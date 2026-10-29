@@ -1,7 +1,7 @@
 ---
 import './Brand.scss';
+import { formatText, site, siteSettings } from '../../data/site';
 import Icon from './Icon.astro';
-import { site } from '../../data/site';
 
 interface Props {
 	class?: string;
@@ -10,9 +10,15 @@ interface Props {
 const { class: className = '' } = Astro.props;
 ---
 
-<a class:list={['brand', className]} href='#main' aria-label={`${site.name} — на головну`}>
+<a
+	class:list={['brand', className]}
+	href='#main'
+	aria-label={formatText(siteSettings.ui.brandHomeLabel, { name: site.name })}
+>
 	<span class='brand__mark' aria-hidden='true'>
 		<Icon name='brandMark' width='24' height='24' />
+
+		<!-- <img src='/logo.png' alt='' width='40' height='40' /> -->
 	</span>
 	{site.brand.prefix}
 	<b class='brand__name'>{site.brand.name}</b>

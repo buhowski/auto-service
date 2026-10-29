@@ -11,9 +11,10 @@
 	background: rgba(var.$color-ink, 30%);
 	backdrop-filter: blur(fn.rem(4));
 	color: var.$color-paper;
-	font-size: var.$text-xs;
-	line-height: normal;
+	font-size: fn.rem(13);
 	font-variant-numeric: tabular-nums;
+	font-family: var.$font-display;
+	letter-spacing: var.$tracking-wide;
 }
 
 .business-hours__city {
