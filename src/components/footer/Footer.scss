@@ -22,17 +22,17 @@
 
 	// .footer__main
 	&__main {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(fn.rem(280), 0.8fr);
-		align-items: center;
-		gap: clamp(2rem, 6vw, 5rem);
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		// align-items: center;
+		gap: fn.rem(22);
 		padding: 2.5rem 0;
 		border-bottom: 1px solid rgba(var.$color-paper, 16%);
 
 		@include bp.mobile {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
 			padding: 2rem 0;
+			flex-direction: column;
 		}
 	}
 
@@ -52,21 +52,13 @@
 
 	// .footer__contact
 	&__contact {
-		display: grid;
-		justify-items: end;
-		gap: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: fn.rem(22);
 
 		@include bp.mobile {
-			justify-items: start;
-			gap: 1rem;
-		}
-
-		> a > .icon {
-			width: fn.rem(20);
-			height: fn.rem(20);
-			margin-top: fn.rem(2);
-			color: var.$color-accent;
-			place-self: center;
+			align-items: flex-start;
 		}
 	}
 
@@ -79,6 +71,7 @@
 		font-size: var.$text-sm;
 		text-decoration: none;
 		font-weight: var.$font-weight-medium;
+		letter-spacing: var.$tracking-wide;
 		font-style: italic;
 
 		&:focus-visible {
@@ -92,28 +85,45 @@
 		}
 	}
 
-	// .footer__social
-	&__social {
-		a:focus-visible {
-			outline: fn.rem(2) solid var.$color-paper;
-			outline-offset: fn.rem(3);
-		}
-	}
-
 	// .footer__bottom
 	&__bottom {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 1.5rem;
+		gap: fn.rem(15);
 		padding: 1.125rem 0 1.5rem;
 		font-size: var.$text-sm;
 
 		@include bp.mobile {
 			align-items: flex-start;
-			flex-direction: column;
-			gap: 0.75rem;
+			flex-direction: column-reverse;
 			padding: 1rem 0 1.5rem;
+		}
+	}
+
+	// .footer__nav
+	&__nav {
+		li + li {
+			margin-top: fn.rem(8);
+		}
+	}
+
+	.nav-links__item {
+		padding: 0;
+		text-transform: unset;
+		font-weight: normal;
+		font-size: fn.rem(14);
+
+		&:hover {
+			color: var.$color-accent;
+		}
+
+		&.is-active {
+			color: currentColor;
+		}
+
+		&::after {
+			display: none;
 		}
 	}
 

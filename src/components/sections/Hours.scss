@@ -47,7 +47,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: fn.rem(10) fn.rem(36);
+		padding: fn.rem(8) fn.rem(36);
 		border-bottom: 1px solid rgba(var.$color-ink, 20%);
 		color: var.$color-text;
 
@@ -131,6 +131,7 @@
 		width: max-content;
 		margin-top: fn.rem(5);
 		color: var.$color-text;
+		letter-spacing: var.$tracking-normal;
 		font-weight: var.$font-weight-medium;
 		transition: scale var.$motion-duration ease;
 

@@ -6,7 +6,7 @@
 	position: fixed;
 	inset: 0;
 	z-index: var.$z-modal;
-	background: var.$color-overlay-dark;
+	background: rgba(var.$color-deep-slate, 0.6);
 	backdrop-filter: blur(fn.rem(6));
 	overflow: hidden;
 	height: 100dvh;
@@ -17,10 +17,6 @@
 		overflow-y: auto;
 		display: grid;
 		place-items: center;
-	}
-
-	&[hidden] {
-		display: none;
 	}
 
 	// .booking-modal__panel

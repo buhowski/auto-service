@@ -80,13 +80,13 @@
 		inset: 0;
 		background:
 			linear-gradient(
-				140deg,
-				var.$color-overlay-strong 0%,
-				var.$color-overlay-stronger 35%,
-				var.$color-overlay-medium 60%,
-				var.$color-overlay-stronger 100%
+				165deg,
+				rgba(var.$color-black, 0.82) 0%,
+				rgba(var.$color-ink, 0.9) 35%,
+				rgba(var.$color-deep-slate, 0.8) 60%,
+				rgba(var.$color-ink, 0.88) 100%
 			),
-			radial-gradient(ellipse at 65% 40%, var.$color-overlay-blue 0%, transparent 65%);
+			radial-gradient(ellipse at 65% 40%, rgba(var.$color-slate-glow, 0.14) 0%, transparent 65%);
 	}
 }
 

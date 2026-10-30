@@ -2,18 +2,6 @@ components:
   backgroundMedia:
     type: object
     fields:
-      - name: type
-        label: Background type
-        type: select
-        required: true
-        options:
-          values:
-            - name: none
-              label: No media
-            - name: image
-              label: Image
-            - name: video
-              label: Video
       - name: image
         label: Background image or video poster
         type: image
@@ -23,6 +11,14 @@ components:
           categories: [image]
       - name: video
         label: Background video
+        type: file
+        options:
+          media: uploads
+          path: public/uploads
+          categories: [video]
+          extensions: [mp4, webm]
+      - name: mobileVideo
+        label: Mobile background video (up to 767px)
         type: file
         options:
           media: uploads
@@ -335,86 +331,6 @@ content:
               - name: description
                 label: Description
                 type: text
-      - name: steps
-        label: Process steps
-        type: object
-        fields:
-          - name: eyebrow
-            label: Eyebrow
-            type: string
-          - name: title
-            label: Headline
-            type: string
-          - name: items
-            label: Steps
-            type: object
-            list: true
-            fields:
-              - name: icon
-                label: SVG icon name
-                type: string
-              - name: title
-                label: Title
-                type: string
-              - name: description
-                label: Description
-                type: text
-      - name: testimonials
-        label: Testimonials
-        type: object
-        fields:
-          - name: eyebrow
-            label: Eyebrow
-            type: string
-          - name: headline
-            label: Headline
-            type: string
-          - name: ui
-            label: Carousel accessibility labels. Supports {number} and {rating}.
-            type: object
-            fields:
-              - name: slideLabel
-                label: Slide label
-                type: string
-              - name: ratingLabel
-                label: Rating label
-                type: string
-              - name: navigationLabel
-                label: Navigation label
-                type: string
-              - name: previousLabel
-                label: Previous button
-                type: string
-              - name: nextLabel
-                label: Next button
-                type: string
-          - name: items
-            label: Reviews
-            type: object
-            list: true
-            fields:
-              - name: rating
-                label: Rating
-                type: number
-              - name: quote
-                label: Review
-                type: text
-              - name: author
-                label: Author
-                type: object
-                fields:
-                  - name: name
-                    label: Name
-                    type: string
-                  - name: role
-                    label: Vehicle
-                    type: string
-                  - name: image
-                    label: Photo
-                    type: image
-                  - name: imageAlt
-                    label: Photo description
-                    type: string
       - name: brands
         label: Car brands
         type: object

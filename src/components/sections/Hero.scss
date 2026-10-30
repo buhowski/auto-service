@@ -12,6 +12,14 @@
 	color: var.$color-paper;
 	overflow: hidden;
 
+	@include bp.mobile {
+		padding: 6.5rem 0 5rem;
+
+		.business-hours {
+			font-size: fn.rem(13);
+		}
+	}
+
 	> .container {
 		position: relative;
 		z-index: 2;
@@ -67,9 +75,5 @@
 		.button {
 			min-width: 240px;
 		}
-	}
-
-	@include bp.mobile {
-		padding: 6.5rem 0 5rem;
 	}
 }

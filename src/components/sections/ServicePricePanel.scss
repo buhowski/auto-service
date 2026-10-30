@@ -10,10 +10,6 @@
 	background: var.$color-light;
 	box-shadow: var.$shadow-md;
 
-	&[hidden] {
-		display: none;
-	}
-
 	// .service-price-panel__heading
 	&__heading {
 		padding-bottom: 1.2rem;
@@ -89,7 +85,6 @@
 	@include bp.tablet-md {
 		margin-top: var.$space-2;
 		padding: 1rem;
-		animation: none;
 
 		&__heading {
 			padding-bottom: 0.9rem;

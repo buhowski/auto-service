@@ -1,3 +1,4 @@
+@use '../../styles/mixins' as bp;
 @use '../../styles/functions' as fn;
 @use '../../styles/variables' as var;
 .business-hours {
@@ -11,7 +12,7 @@
 	background: rgba(var.$color-ink, 30%);
 	backdrop-filter: blur(fn.rem(4));
 	color: var.$color-paper;
-	font-size: fn.rem(13);
+	font-size: fn.rem(14);
 	font-variant-numeric: tabular-nums;
 	font-family: var.$font-display;
 	letter-spacing: var.$tracking-wide;
