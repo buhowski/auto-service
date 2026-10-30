@@ -26,7 +26,6 @@ const getVideoType = (source?: string) => {
 	desktopSource ? (
 		<video
 			class='background-media'
-			data-lazy-media
 			data-poster={imageSource || undefined}
 			autoplay
 			muted
@@ -47,7 +46,6 @@ const getVideoType = (source?: string) => {
 	) : imageSource ? (
 		<img
 			class='background-media'
-			data-lazy-media
 			data-src={imageSource}
 			alt={media.alt ?? ''}
 			width='1920'
